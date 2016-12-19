@@ -1,0 +1,19 @@
+{
+  "name" : "Marcelo",
+  "description" : "Marcelo Skeleton application",
+  "require" : {
+    "php" : ">=5.4.0",
+    "zendframework/zendframework" : "~2.3",
+    "doctrine/doctrine-orm-module" : "~0.8",
+    "zf-commons/zfc-user-doctrine-orm" : "~1.0",
+    "phpunit/phpunit": "3.7.*",
+    "zendframework/zftool": "dev-master"
+    
+  },
+  "require-dev" : {
+    "zendframework/zend-developer-tools" : "=0.0.2"
+  },
+  "keywords" : [ "framework", "zf2" ],
+  "license" : "BSD-3-Clause",
+  "homepage" : "http://github.com/marcelo-idoso"
+}

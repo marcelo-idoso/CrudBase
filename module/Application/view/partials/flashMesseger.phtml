@@ -1,0 +1,16 @@
+<?php if ($this->success) : ?>
+    <div class="alert alert-success alert-dismissible fade in" role="alert">
+        <i class="fa fa-check-circle fa-3x pull-left center-block"></i>
+        <button type="button" class="close fa fa-times-circle" data-dismiss="alert" aria-label="Close" "></button>
+        <i class="fa fa-exclamation- fa-5x pull-left"></i>
+        <strong>Sucesso: </strong><p><?= $this->success[0] ?></p>
+    </div>   
+<?php endif; ?>
+<?php if ($this->error[0]) : ?>
+    <div class="alert alert-danger alert-dismissible fade in" role="alert">
+        <i class="fa fa-exclamation-triangle fa-5x pull-left center-block"></i>
+        <button type="button" class="close fa fa-times-circle" data-dismiss="alert" aria-label="Close" "></button>
+        <i class="fa fa-exclamation- fa-5x pull-left"></i>
+        <strong>Error: </strong><p><?= $this->error[0] ?></p>
+    </div>
+<?php endif; ?>
