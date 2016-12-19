@@ -8,6 +8,8 @@ use Base\Controller\AbstractBaseController;
 use Base\Entity\EntityManagerAwareTrait;
 use Zend\Stdlib\Hydrator\ClassMethods;
 use DoctrineORMModule\Stdlib\Hydrator\DoctrineEntity as DoctrineHydrator;
+use Zend\Paginator\Paginator;
+use Zend\Paginator\Adapter\ArrayAdapter;
 
 abstract class AbstractCrudORMController extends AbstractBaseController {
 
@@ -124,7 +126,32 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
     }
 
     public function indexAction() {
+       // Recupera todos os registros no banco de Dados
+        $list = $this->getEntityManager()->getRepository($this->getEntityClass())->findAll();
+        $viewModel = new ViewModel(array(
+            'router' => $this->getControllerName(1),
+        ));
         
+      
+        $page       = $this->params()->fromRoute('page');
+        $paginator  = new Paginator(new ArrayAdapter($list));
+        $paginator->setCurrentPageNumber($page)
+                  ->setDefaultItemCountPerPage(2);
+        
+        // Verifica Se Exisite Alguma Messagem Para Ser Retornar a View
+        if ($this->flashMessenger()->hasSuccessMessages()){
+            return new ViewModel(
+                    array(
+                        'success'   => $this->flashMessenger()->getSuccessMessages(),
+                        'data'      => $paginator,
+                        'page'      => $page,
+                        'router'    => $this->route,
+                    )
+            );
+        }
+        
+        $viewModel->setVariable('data' , $paginator);
+        return $viewModel; 
     }
 
     public function inserirAction() {
