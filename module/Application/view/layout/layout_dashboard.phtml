@@ -154,6 +154,7 @@ echo $this->doctype();
                     </div>
                 </form>
                 <!-- /.search form -->
+                <?= $this->navigation('navigation')->menu(); ?>
                 <!-- sidebar menu: : style can be found in sidebar.less -->               
                 
             </section>
@@ -170,10 +171,8 @@ echo $this->doctype();
                     <small>de Controle</small>
                 </h1>    
                 <!-- Breadcrumb -->
-                <?php
-                    echo $this->navigation('navigation')->breadcrumbs()
-                          ->setMinDepth(0)
-                          ->setPartial('partials/breadcrumbs.phtml');
+                <?= 
+                    $this->navigation('navigation')->breadcrumbs()->setMinDepth()->setPartial('partials/breadcrumbs.phtml');
                 ?>
                 <!-- fim Breadcrumb -->
             </section>

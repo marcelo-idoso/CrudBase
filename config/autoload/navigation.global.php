@@ -1,18 +1,25 @@
 <?php
-
 return array(
     'navigation' => array(
         'default' => array(
             array(
                 'label' => 'Home',
-                'route' => 'application',
-                'icon' => 'fa fa-dashboard',
+                'route' => 'home',
+                'icon'  => 'fa fa-dashboard',
+                'pages' => array(
+                    array(
+                        'label' => 'Module',
+                        'route' => 'module',
+                        'pages' => array(
+                            array(
+                                'label' => 'Module Inserir',
+                                'route' => 'module/inserir',
+                            ),
+                        ),
+                    ),
+                ),
             ),
-        ),
-    ),
-    'service_manager' => array(
-        'factories' => array(
-            'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
-        ),
-    ),
+            
+        )
+    )
 );
