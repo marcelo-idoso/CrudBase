@@ -102,6 +102,32 @@ return array(
                             )
                         )
                     ),
+                    'excluir' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route' => '/excluir[/:id]',
+                            'constraints' => array(
+                                'id' => '\d+'
+                            ),
+                            'defaults' => array(
+                                'action' => 'excluir',
+                                'id' => 0,
+                            )
+                        )
+                    ),
+                     'editar' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route' => '/editar[/:id]',
+                            'constraints' => array(
+                                'id' => '\d+'
+                            ),
+                            'defaults' => array(
+                                'action' => 'editar',
+                                'id' => 0,
+                            )
+                        )
+                    ),
                     'paginator' => array(
                         'type' => 'Segment',
                         'options'  => array(

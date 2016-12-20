@@ -47,6 +47,14 @@ class AbstractServiceORM extends EventProvider implements ServiceLocatorAwareInt
     }
     
     
-
-//put your code here
+    public function delete($entity) {
+        $em = $this->getServiceLocator()->get('doctrine.entitymanager.orm_default');
+        if ($entity->getId() > 0) {
+            $id = $entity->getId();
+            $em->remove($entity);
+            $em->flush();
+        }
+        
+        return $entity;
+    }
 }

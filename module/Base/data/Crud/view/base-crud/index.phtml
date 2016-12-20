@@ -28,7 +28,7 @@
                 </div>
                 <div class="panel-body">
                     <?php 
-                    if ($this->data): ?>
+                    if ($this->data->count() > 0): ?>
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
@@ -58,7 +58,7 @@
                                                 <i class="glyphicon glyphicon-edit"></i>
                                             </a>
                                             <a class="btn btn-danger" href="<?php
-                                            echo $this->url("$this->router/inserir", array(
+                                            echo $this->url("$this->router/excluir", array(
                                                 'controller' => 'controller',
                                                 'action' => 'excluir',
                                                 'id' => $entity->getId()));
@@ -67,12 +67,12 @@
                                             </a>
                                         </td>
                                     </tr>
+                            </tbody>
+                        </table>        
                                 <?php endforeach; ?>
                             <?php else: ?>
                             <p>  Nenhum registro encontrado </p>
                         <?php endif; ?>
-                        </tbody>
-                    </table>
                 </div>
                 <div class="panel-footer">
                     <div class="row">
