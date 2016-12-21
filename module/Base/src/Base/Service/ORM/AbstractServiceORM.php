@@ -29,6 +29,7 @@ class AbstractServiceORM extends EventProvider implements ServiceLocatorAwareInt
         $em = $this->getServiceLocator()->get('doctrine.entitymanager.orm_default');
         
         if ($entity->getId() > 0) {
+<<<<<<< HEAD
             try {
                 $entity = $em->merge($entity);
             } catch (\Exception $exc) {
@@ -36,6 +37,9 @@ class AbstractServiceORM extends EventProvider implements ServiceLocatorAwareInt
                 return $mensage;
             }
 
+=======
+            $entity = $em->merge($entity);
+>>>>>>> origin/master
         }
         try {
             $em->persist($entity);

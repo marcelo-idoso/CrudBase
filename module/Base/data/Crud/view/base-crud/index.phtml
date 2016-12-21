@@ -32,14 +32,27 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
+<<<<<<< HEAD
                                     <th> # </th>
                                     <th style="width: 100px"><em class="fa fa-cog"></em>  </th>
+=======
+                                    <th>
+                                        #
+                                    </th>
+                                    <th>
+                                        Nome 
+                                    </th>
+                                    <th style="width: 100px">
+                                        <em class="fa fa-cog"></em>
+                                    </th>
+>>>>>>> origin/master
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach ($this->data as $entity) : ?>
                                     <tr>
                                         <td> <?php echo $entity->getId(); ?> </td>
+<<<<<<< HEAD
                                         <td>
                                             <a class="btn btn-success" href="
                                                 <?= $this->url("$this->router/editar", ['controller' => 'controller', 'action' => 'editar','id' => $entity->getId()]); ?>"
@@ -57,6 +70,31 @@
                                 <?php endforeach; ?>
                             </tbody>
                         </table>          
+=======
+                                        <td> <?php echo $entity->getNome(); ?> </td>
+                                        <td>
+                                            <a class="btn btn-success" href="<?php
+                                            echo $this->url("$this->router/inserir", array(
+                                                'controller' => 'controller',
+                                                'action' => 'editar',
+                                                'id' => $entity->getId()));
+                                            ?>">
+                                                <i class="glyphicon glyphicon-edit"></i>
+                                            </a>
+                                            <a class="btn btn-danger" href="<?php
+                                            echo $this->url("$this->router/excluir", array(
+                                                'controller' => 'controller',
+                                                'action' => 'excluir',
+                                                'id' => $entity->getId()));
+                                            ?>">
+                                                <i class="glyphicon glyphicon-remove"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                            </tbody>
+                        </table>        
+                                <?php endforeach; ?>
+>>>>>>> origin/master
                             <?php else: ?>
                             <p>  Nenhum registro encontrado </p>
                         <?php endif; ?>

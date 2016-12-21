@@ -205,13 +205,20 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
             'router' => $this->getControllerName(1)
         ));
 
+<<<<<<< HEAD
         $id = $this->params()->fromRoute('id', 0);
 
         if ($id > 0) {
+=======
+        $id = $this->params()->fromRoute('id' , 0);
+
+        if($id > 0){
+>>>>>>> origin/master
             $em = $this->getEntityManager();
             $objRepository = $em->getRepository($this->getEntityClass());
             $entity = $objRepository->find($id);
             $form->bind($entity);
+<<<<<<< HEAD
             $viewModel->setVariable('id', $id);
         } else {
             return $this->redirect()->toRoute($this->getControllerName(1), ['controller' => $this->getControllerName(1)], FALSE);
@@ -254,6 +261,50 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
         return $viewModel;
     }
 
+=======
+            $viewModel->setVariable( 'id' , $id);
+        }else{
+            return $this->redirect()->toRoute($this->getControllerName(1), ['controller' => $this->getControllerName(1)], FALSE);
+        }
+        
+        
+
+        $request = $this->getRequest();
+        
+        if ($request->isPost()) {
+            
+            // Remove os Elementos para não ser nessesario criar um validação de insert
+            // assim sendo possivel utilizar o doctrine HasLifecycleCallbacks
+            $form->remove('date_update');
+            $form->getInputFilter()->remove('date_update');
+            $form->remove('date_create');
+            $form->getInputFilter()->remove('date_create');
+            
+            
+            $form->setData($request->getPost());
+
+            if ($form->isValid()) {
+                $savedEntity = $this->getEntityService()->save($form, $entity);
+
+                if (!is_object($savedEntity)) {
+                    $this->flashMessenger()->addErrorMessage($this->errorMessage . "</br>" . $savedEntity);
+                } else {
+                    $this->flashMessenger()->addSuccessMessage($this->successMessage);
+                }
+                return $this->redirect()->toRoute($this->getActionRouter(), [], TRUE);
+            }
+        }
+        if ($this->flashMessenger()->hasSuccessMessages()) {
+            $viewModel->setVariable('success', $this->flashMessenger()->getSuccessMessages());
+        } elseif ($this->flashMessenger()->hasErrorMessages()) {
+            $viewModel->setVariable('error', $this->flashMessenger()->getErrorMessages());
+        } elseif ($this->flashMessenger()->hasInfoMessages()) {
+            $viewModel->setVariable('error', $this->flashMessenger()->getInfoMessages());
+        }
+        return $viewModel;
+    }
+
+>>>>>>> origin/master
     public function excluirAction() {
 
         $id = $this->params()->fromRoute('id', 0);
@@ -316,10 +367,17 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
                     'label' => "Codigo"
                 ],
                 'attributes' => [
+<<<<<<< HEAD
                     'id' => 'id',
                     'value' => $id,
                     'class' => 'form-control input-lg col-md-3',
                     'disabled' => 'disabled'
+=======
+                    'id'        => 'id',
+                    'value'     => $id,
+                    'class'     => 'form-control input-lg col-md-3',
+                    'disabled'  => 'disabled'
+>>>>>>> origin/master
                 ],
                 'filters' => [
                     [
@@ -336,12 +394,18 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
                         'name' => 'Digits',
                     ],
                 ],
+<<<<<<< HEAD
                     ], ['priority' => 100]);
 
+=======
+            ],['priority' => 100]);
+            
+>>>>>>> origin/master
             $form->add([
                 'type' => 'Date-Time',
                 'name' => 'date_create',
                 'attributes' => [
+<<<<<<< HEAD
                     'class' => 'form-control input-lg',
                     'readonly' => TRUE
                 ],
@@ -351,10 +415,26 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
                 ],
              ], ['priority' => - 80]);
 
+=======
+                    'class'     => 'form-control input-lg',
+                    'readonly' => TRUE
+                ],
+                'options' => [
+                    'format' => 'd/m/Y'
+                ],
+                'validators' => [
+                    [
+                        'name' => 'Digits',
+                    ],
+                ]
+            ],['priority' => - 80]);
+            
+>>>>>>> origin/master
             $form->add([
                 'type' => 'Date-Time',
                 'name' => 'date_update',
                 'attributes' => [
+<<<<<<< HEAD
                     'class' => 'form-control input-lg',
                     'disabled' => 'Disabled'
                 ],
@@ -364,6 +444,18 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
                 ],
             ], ['priority' => - 80]);
 
+=======
+                    'class'     => 'form-control input-lg',
+                    'disabled'   => 'Disabled'
+                ],
+                'validators' => [
+                    [
+                        'name' => 'Digits',
+                    ],
+                ]
+            ],['priority' => - 80]);
+            
+>>>>>>> origin/master
 
             // Adicionar o Button Cancelar
             $form->add(array(
