@@ -8,11 +8,15 @@
 return array(
     'modules' => array(
         'ZFTool',
+        'ZendDeveloperTools',
         'Application',
         'Base',
-        'ZendDeveloperTools',
+        'ZfcBase',
+        'ZfcUser',
         'DoctrineModule',
         'DoctrineORMModule',
+        'ZfcUserDoctrineORM',
+        'BjyAuthorize',
     ),
     'module_listener_options' => array(
         'config_glob_paths' => array(

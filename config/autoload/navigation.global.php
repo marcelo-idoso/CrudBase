@@ -12,8 +12,34 @@ return array(
                         'route' => 'module',
                         'pages' => array(
                             array(
-                                'label' => 'Module Inserir',
+                                'label' => 'Inserir',
                                 'route' => 'module/inserir',
+                            ),
+                            array(
+                                'label' => 'Excluir',
+                                'route' => 'module/excluir',
+                            ),
+                            array(
+                                'label' => 'Editar',
+                                'route' => 'module/editar',
+                            ),
+                        ),
+                    ),
+                    array(
+                        'label' => 'Controlador',
+                        'route' => 'controlador',
+                        'pages' => array(
+                            array(
+                                'label' => 'Inserir',
+                                'route' => 'controlador/inserir',
+                            ),
+                            array(
+                                'label' => 'Excluir',
+                                'route' => 'controlador/excluir',
+                            ),
+                            array(
+                                'label' => 'Editar',
+                                'route' => 'controlador/editar',
                             ),
                         ),
                     ),

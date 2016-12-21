@@ -42,7 +42,7 @@ abstract class AbstractForm extends Form {
             'type' => 'Button',
             'name' => 'Clear',
             'options' => array(
-                'label' => '<i class="fa fa-sticky-note-o"></i> Limpar',
+                'label' => '<i class="fa fa-paint-brush"></i> Limpar',
                 'label_options' => array(
                     'disable_html_escape' => true,
                 )

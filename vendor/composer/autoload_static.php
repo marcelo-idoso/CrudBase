@@ -145,6 +145,13 @@ class ComposerStaticInitd34eafd3a0785f75ba5aa576ab4c596b
                 0 => __DIR__ . '/..' . '/doctrine/doctrine-module/src',
             ),
         ),
+        'B' => 
+        array (
+            'BjyAuthorize\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/bjyoungblood/bjy-authorize/src',
+            ),
+        ),
     );
 
     public static $classMap = array (

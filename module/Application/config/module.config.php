@@ -56,30 +56,6 @@ return array(
                     ),
                 ),
             ),
-            'produto' => array(
-                'type' => 'Literal',
-                'options' => array(
-                    'route' => '/produto',
-                    'defaults' => array(
-                        'controller' => 'Produto',
-                        'action' => 'index',
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'module' => 'application'
-                    ),
-                ),
-                'may_terminate' => true,
-                'child_routes' => array(
-                    'inserir' => array(
-                        'type' => 'Segment',
-                        'options' => array(
-                            'route' => '/inserir',
-                            'defaults' => array(
-                                'action' => 'inserir',
-                            )
-                        )
-                    ),
-                ),
-            ),
             'module' => array(
                 'type' => 'Literal',
                 'options' => array(
@@ -102,6 +78,32 @@ return array(
                             )
                         )
                     ),
+                    'excluir' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route' => '/excluir[/:id]',
+                            'constraints' => array(
+                                'id' => '\d+'
+                            ),
+                            'defaults' => array(
+                                'action' => 'excluir',
+                                'id' => 0,
+                            )
+                        )
+                    ),
+                     'editar' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route' => '/editar[/:id]',
+                            'constraints' => array(
+                                'id' => '\d+'
+                            ),
+                            'defaults' => array(
+                                'action' => 'editar',
+                                'id' => 0,
+                            )
+                        )
+                    ),
                     'paginator' => array(
                         'type' => 'Segment',
                         'options'  => array(
@@ -118,30 +120,7 @@ return array(
                     ),
                 ),
             ),
-            'servico' => array(
-                'type' => 'Literal',
-                'options' => array(
-                    'route' => '/servico',
-                    'defaults' => array(
-                        'controller' => 'Servico',
-                        'action' => 'index',
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'module' => 'application'
-                    ),
-                ),
-                'may_terminate' => true,
-                'child_routes' => array(
-                    'inserir' => array(
-                        'type' => 'Segment',
-                        'options' => array(
-                            'route' => '/inserir',
-                            'defaults' => array(
-                                'action' => 'inserir',
-                            )
-                        )
-                    )
-                ),
-            )
+            
         ),
     ),
     'service_manager' => array(
@@ -163,10 +142,9 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController',
-            'Application\Controller\Produto' => 'Application\Controller\Produto',
-            'Application\Controller\Servico' => 'Application\Controller\Servico',
-            'Application\Controller\Module' => 'Application\Controller\Module',
+            'Application\Controller\Index'       => 'Application\Controller\IndexController',
+            'Application\Controller\Module'      => 'Application\Controller\Module',
+            'Application\Controller\Controlador' => 'Application\Controller\Controlador',
         ),
     ),
     'view_manager' => array(

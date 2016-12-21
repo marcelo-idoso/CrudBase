@@ -21,6 +21,7 @@ class Module extends AbstractEntity {
      */
     private $nome;
     
+    
     function getNome() {
         return $this->nome;
     }

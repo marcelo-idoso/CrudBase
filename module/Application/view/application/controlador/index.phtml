@@ -1,0 +1,84 @@
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <!--*************** Title da Pagina ***************-->
+        <h3 class="box-title">View <?= $this->router ;?></h3>
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                <i class="fa fa-minus"></i>
+            </button>
+        </div>
+        <!--*************** Fim Title da Pagina ***************-->
+    </div>
+    <!--*************** Corpo da pagina ***************-->
+    <div class="box-body">
+        <?php
+            echo $this->partial('partials/flashMesseger.phtml', array('error' => $this->error, 'success' => $this->success));
+        ?>
+        <div class="table-responsive">
+            <div class="panel panel-default panel-table">
+                <div class="panel-heading">
+                    <div class="row">
+
+                        <div class="col col-xs-6 pull-right  text-right">
+                            <a class="btn btn-success" href="<?php echo $this->url( "$this->router/inserir") ;?>">
+                                Novo Registro  <i class="glyphicon glyphicon-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <?php 
+                    if ($this->data->count() > 0): ?>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th> # </th>
+                                    <th> Controlador   </th>
+                                    <th> Modulo</th>
+                                    <th style="width: 100px">
+                                        <em class="fa fa-cog"></em>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($this->data as $entity) : ?>
+                                    <tr>
+                                        <td> <?php echo $entity->getId(); ?> </td>
+                                        <td> <?= $entity->getDsControlador() ;?> </td>
+                                        <td> <?= $entity->getIdModule()->getNome() ;?></td>
+                                        <td>
+                                            <a class="btn btn-success" href="<?php
+                                            echo $this->url("$this->router/editar", array(
+                                                'controller' => 'controller',
+                                                'action' => 'editar',
+                                                'id' => $entity->getId()));
+                                            ?>">
+                                                <i class="glyphicon glyphicon-edit"></i>
+                                            </a>
+                                            <a class="btn btn-danger" href="<?php
+                                            echo $this->url("$this->router/excluir", array(
+                                                'controller' => 'controller',
+                                                'action' => 'excluir',
+                                                'id' => $entity->getId()));
+                                            ?>">
+                                                <i class="glyphicon glyphicon-remove"></i>
+                                            </a>
+                                        </td>
+                                    </tr>        
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                            <?php else: ?>
+                            <p>  Nenhum registro encontrado </p>
+                        <?php endif; ?>
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <?php echo $this->paginationControl($this->data, 'Sliding', 'partials/paginator', array('route' => "$this->router/paginator")); ?>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
