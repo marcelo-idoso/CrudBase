@@ -49,14 +49,17 @@
                                         <td> <?php echo $entity->getId(); ?> </td>
                                         <td> <?php echo $entity->getNome(); ?> </td>
                                         <td>
-                                            <a class="btn btn-success" href="<?php
-                                            echo $this->url("$this->router/editar", array(
-                                                'controller' => 'controller',
-                                                'action' => 'editar',
-                                                'id' => $entity->getId()));
+                                            
+                                            <?php if ($this->isAllowed('Editar', 'create')): ?>
+                                                <a class="btn btn-success" href="<?php
+                                                    echo $this->url("$this->router/editar", array(
+                                                        'controller' => 'controller',
+                                                        'action' => 'editar',
+                                                        'id' => $entity->getId()));
                                             ?>">
                                                 <i class="glyphicon glyphicon-edit"></i>
                                             </a>
+                                            <?php endif?>
                                             <a class="btn btn-danger" href="<?php
                                             echo $this->url("$this->router/excluir", array(
                                                 'controller' => 'controller',

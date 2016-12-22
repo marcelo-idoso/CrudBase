@@ -2,6 +2,8 @@
 
 namespace Base;
 
+use Base\Identity\Identity;
+
 class Module {
 
     public function getConfig() {
@@ -15,6 +17,15 @@ class Module {
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
                 ),
             ),
+        );
+    }
+
+    public function getServiceConfig() {
+        return array(
+                 'factories' => array(
+                    'Base\Provider\Identity\Identity' => 'Base\Provider\Identity\Identity',
+                    'Base\Service\Identity\IdentityProviderServiceFactory' => 'Base\Service\Identity\IdentityProviderServiceFactory'
+                ),
         );
     }
 
