@@ -24,14 +24,15 @@ return [
         ],
         'resource_providers' => [
             'BjyAuthorize\Provider\Resource\Config' => [
-                'Editar' => [],
-                'Home' => []
+                'Module' => [],
             ]
         ],
         'rule_providers' => [
             'BjyAuthorize\Provider\Rule\Config' => [
                 'allow' => [
-                    ['user', 'Editar', 'create'],
+                    [['agent'], 'Module', 'editar'],
+                    [[], 'Module', 'excluir']
+                    
                 ]
             ]
         ],
@@ -43,6 +44,14 @@ return [
                 ],
                 [
                     'controller' => 'Application\Controller\Module',
+                    'roles' => array('user')
+                ],
+                [
+                    'controller' => 'Application\Controller\Controlador',
+                    'roles' => array('user')
+                ],
+                [
+                    'controller' => 'Application\Controller\Menu',
                     'roles' => array('user')
                 ]
             ]

@@ -50,7 +50,11 @@
                                         <td> <?php echo $entity->getNome(); ?> </td>
                                         <td>
                                             
-                                            <?php if ($this->isAllowed('Editar', 'create')): ?>
+                                            <?php 
+                                            
+                                            var_dump($this->isAllowed('Module', 'editar'));
+                                                          
+                                            if ($this->isAllowed('Module', 'editar')): ?>
                                                 <a class="btn btn-success" href="<?php
                                                     echo $this->url("$this->router/editar", array(
                                                         'controller' => 'controller',
@@ -60,14 +64,16 @@
                                                 <i class="glyphicon glyphicon-edit"></i>
                                             </a>
                                             <?php endif?>
-                                            <a class="btn btn-danger" href="<?php
-                                            echo $this->url("$this->router/excluir", array(
-                                                'controller' => 'controller',
-                                                'action' => 'excluir',
-                                                'id' => $entity->getId()));
-                                            ?>">
-                                                <i class="glyphicon glyphicon-remove"></i>
-                                            </a>
+                                            <?php if ($this->isAllowed('Module', 'excluir')): ?>
+                                                <a class="btn btn-danger" href="<?php
+                                                echo $this->url("$this->router/excluir", array(
+                                                    'controller' => 'controller',
+                                                    'action' => 'excluir',
+                                                    'id' => $entity->getId()));
+                                                ?>">
+                                                    <i class="glyphicon glyphicon-remove"></i>
+                                                </a>
+                                            <?php endif?>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

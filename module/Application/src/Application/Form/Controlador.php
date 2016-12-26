@@ -3,7 +3,6 @@
 namespace Application\Form;
 
 use Base\Form\AbstractForm;
-use Application\Form\Filter\ControladorFilter;
 use Doctrine\Common\Persistence\ObjectManager;
 use DoctrineModule\Persistence\ObjectManagerAwareInterface;
 

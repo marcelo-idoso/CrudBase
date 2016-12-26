@@ -11,9 +11,7 @@
 namespace Application;
 
 use Zend\Mvc\ModuleRouteListener;
-use Application\Service\ModuleService;
-use Application\Service\ControllerService;
-use Application\Form\Controller;
+
 
 class Module {
 
@@ -21,6 +19,13 @@ class Module {
         $eventManager = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
+        
+        
+    $serviceManager = $e->getApplication()->getServiceManager();
+    $config = $serviceManager->get('Config');
+    // You'll need to get the information from the DB here
+   
+   
     }
 
     public function getConfig() {

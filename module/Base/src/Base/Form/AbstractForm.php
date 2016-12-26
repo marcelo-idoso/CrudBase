@@ -12,9 +12,15 @@
 namespace Base\Form;
 
 use Zend\Form\Form;
+use Doctrine\Common\Persistence\ObjectManager;
+use DoctrineModule\Persistence\ObjectManagerAwareInterface;
 
-abstract class AbstractForm extends Form {
 
+abstract class AbstractForm extends Form  implements ObjectManagerAwareInterface{
+    
+    protected $objectManager;
+    
+    
     public function __construct() {
         parent::__construct();
 
@@ -54,5 +60,15 @@ abstract class AbstractForm extends Form {
             ), array('priority' => - 100));
         
     }
+    
+    public function getObjectManager() {
+        return $this->objectManager;
+    }
+
+    public function setObjectManager(ObjectManager $objectManager) {
+        $this->objectManager = $objectManager; 
+    }
+    
+    
 
 }

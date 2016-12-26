@@ -34,6 +34,13 @@
             echo $this->renderForm($form); 
             echo $this->form()->closeTag($form);
         ?>
+        
+                ================
+        <?php 
+            echo $this->form()->openTag($form); 
+            echo $this->formCollection($form); 
+            echo $this->form()->closeTag($form);
+?>
     </div>
     <!--*************** Fim Corpo da pagina***************-->
 </div>

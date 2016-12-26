@@ -136,7 +136,7 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
         $page = $this->params()->fromRoute('page');
         $paginator = new Paginator(new ArrayAdapter($list));
         $paginator->setCurrentPageNumber($page)
-                ->setDefaultItemCountPerPage(2);
+                ->setDefaultItemCountPerPage($this->defaultPageSize);
 
         $viewModel->setVariable('data', $paginator);
 

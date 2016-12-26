@@ -43,6 +43,24 @@ return array(
                             ),
                         ),
                     ),
+                    array(
+                        'label' => 'Menu',
+                        'route' => 'menu',
+                        'pages' => array(
+                            array(
+                                'label' => 'Inserir',
+                                'route' => 'menu/inserir',
+                            ),
+                            array(
+                                'label' => 'Excluir',
+                                'route' => 'menu/excluir',
+                            ),
+                            array(
+                                'label' => 'Editar',
+                                'route' => 'menu/editar',
+                            ),
+                        ),
+                    ),
                 ),
             ),
             

@@ -9,7 +9,7 @@ use Base\Entity\AbstractEntity;
  * Controlador
  *
  * @ORM\Table(name="Controlador", indexes={@ORM\Index(name="fk_module_controlador", columns={"idmodule"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Application\Entity\Repository\ControladorRepository")
  * @ORM\HasLifecycleCallbacks
  * 
  */

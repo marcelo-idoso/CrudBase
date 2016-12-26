@@ -81,6 +81,7 @@ return array(
             'Application\Controller\Index'       => 'Application\Controller\IndexController',
             'Application\Controller\Module'      => 'Application\Controller\Module',
             'Application\Controller\Controlador' => 'Application\Controller\Controlador',
+            'Application\Controller\Menu' => 'Application\Controller\Menu',
         ),
     ),
     'view_manager' => array(

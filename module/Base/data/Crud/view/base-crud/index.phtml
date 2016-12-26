@@ -31,19 +31,8 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <<<<<<< HEAD
                                     <th> # </th>
                                     <th style="width: 100px"><em class="fa fa-cog"></em>  </th>
-                                    =======
-                                    <th>
-                                        #
-                                    </th>
-                                    <th>
-                                        Nome 
-                                    </th>
-                                    <th style="width: 100px">
-                                        <em class="fa fa-cog"></em>
-                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -64,33 +53,9 @@
                                             </a>
                                         </td>
                                     </tr>      
-
+                                <?php endforeach; ?>
                             </tbody>
-                        </table>          
-                        <td> <?php echo $entity->getNome(); ?> </td>
-                        <td>
-                            <a class="btn btn-success" href="<?php
-                            echo $this->url("$this->router/inserir", array(
-                                'controller' => 'controller',
-                                'action' => 'editar',
-                                'id' => $entity->getId()));
-                            ?>">
-                                <i class="glyphicon glyphicon-edit"></i>
-                            </a>
-                            <a class="btn btn-danger" href="<?php
-                            echo $this->url("$this->router/excluir", array(
-                                'controller' => 'controller',
-                                'action' => 'excluir',
-                                'id' => $entity->getId()));
-                            ?>">
-                                <i class="glyphicon glyphicon-remove"></i>
-                            </a>
-                        </td>
-                        </tr>
-
-                        <?php endforeach; ?>
-                        </tbody>
-                  </table> 
+                        </table> 
                     <?php else: ?>
                         <p>  Nenhum registro encontrado </p>
                     <?php endif; ?>
