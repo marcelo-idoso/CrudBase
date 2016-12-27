@@ -7,7 +7,6 @@
  */
 return array(
     'modules' => array(
-        'ZFTool',
         'ZendDeveloperTools',
         'Application',
         'Base',

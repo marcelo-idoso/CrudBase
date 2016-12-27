@@ -4,60 +4,60 @@ return array(
         'default' => array(
             array(
                 'label' => 'Home',
-                'route' => 'home',
+                'route' => 'dashboard',
                 'icon'  => 'fa fa-dashboard',
                 'pages' => array(
                     array(
                         'label' => 'Module',
-                        'route' => 'module',
+                        'route' => 'dashboard/module',
                         'pages' => array(
                             array(
                                 'label' => 'Inserir',
-                                'route' => 'module/inserir',
+                                'route' => 'dashboard/module/inserir',
                             ),
                             array(
                                 'label' => 'Excluir',
-                                'route' => 'module/excluir',
+                                'route' => 'dashboard/module/excluir',
                             ),
                             array(
                                 'label' => 'Editar',
-                                'route' => 'module/editar',
+                                'route' => 'dashboard/module/editar',
                             ),
                         ),
                     ),
                     array(
                         'label' => 'Controlador',
-                        'route' => 'controlador',
+                        'route' => 'dashboard/controlador',
                         'pages' => array(
                             array(
                                 'label' => 'Inserir',
-                                'route' => 'controlador/inserir',
+                                'route' => 'dashboard/controlador/inserir',
                             ),
                             array(
                                 'label' => 'Excluir',
-                                'route' => 'controlador/excluir',
+                                'route' => 'dashboard/controlador/excluir',
                             ),
                             array(
                                 'label' => 'Editar',
-                                'route' => 'controlador/editar',
+                                'route' => 'dashboard/controlador/editar',
                             ),
                         ),
                     ),
                     array(
                         'label' => 'Menu',
-                        'route' => 'menu',
+                        'route' => 'dashboard/menu',
                         'pages' => array(
                             array(
                                 'label' => 'Inserir',
-                                'route' => 'menu/inserir',
+                                'route' => 'dashboard/menu/inserir',
                             ),
                             array(
                                 'label' => 'Excluir',
-                                'route' => 'menu/excluir',
+                                'route' => 'dashboard/menu/excluir',
                             ),
                             array(
                                 'label' => 'Editar',
-                                'route' => 'menu/editar',
+                                'route' => 'dashboard/menu/editar',
                             ),
                         ),
                     ),

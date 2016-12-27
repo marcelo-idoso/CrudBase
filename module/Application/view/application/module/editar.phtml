@@ -1,8 +1,7 @@
-<<<<<<< HEAD
 <div class="box box-primary ">
     <div class="box-header with-border">
         <!--*************** Title da Pagina ***************-->
-        <h3 class="box-title">View Editar Module</h3>
+        <h3 class="box-title">View Editar <?= $this->router ?></h3>
         <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                 <i class="fa fa-minus"></i>
@@ -27,7 +26,7 @@
                     ->setMessageCloseString('</div>')
                     ->render($form);
             $form->setAttribute('role', 'form')   
-                 ->setAttribute('action',$this->url("$this->router/editar", array('controller' => $this->router, 'action' => 'editar' , 'id' => $this->id)));
+                 ->setAttribute('action',$this->url("dashboard/$this->router/editar", array('controller' => "dashboard/".$this->router, 'action' => 'editar' , 'id' => $this->id)));
             $form->prepare();
 
         
@@ -38,44 +37,3 @@
     </div>
     <!--*************** Fim Corpo da pagina***************-->
 </div>
-=======
-<div class="box box-primary ">
-    <div class="box-header with-border">
-        <!--*************** Title da Pagina ***************-->
-        <h3 class="box-title">View Editar Module</h3>
-        <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                <i class="fa fa-minus"></i>
-            </button>
-        </div>
-        <!--*************** Fim Title da Pagina ***************-->
-    </div>
-    <!--*************** Corpo da pagina ***************-->
-    <div class="box-body">
-        <?php
-            echo $this->partial('partials/flashMesseger.phtml', array('error' => $this->error, 'success' => $this->success));
-        ?>
-        
-        <?php
-            $form = $this->form;
-            $this->formElementErrors()
-                    ->setMessageOpenFormat(
-                              '<div class="alert alert-error">'.
-                                    '<button type="button" class="close" data-dismiss="alert">'.
-                                        '<i class="fa fa-times"></i>'.
-                                    '</button>')
-                    ->setMessageCloseString('</div>')
-                    ->render($form);
-            $form->setAttribute('role', 'form')   
-                 ->setAttribute('action',$this->url("$this->router/editar", array('controller' => $this->router, 'action' => 'editar' , 'id' => $this->id)));
-            $form->prepare();
-
-        
-            echo $this->form()->openTag($form); 
-            echo $this->renderForm($form); 
-            echo $this->form()->closeTag($form);
-        ?>
-    </div>
-    <!--*************** Fim Corpo da pagina***************-->
-</div>
->>>>>>> origin/master

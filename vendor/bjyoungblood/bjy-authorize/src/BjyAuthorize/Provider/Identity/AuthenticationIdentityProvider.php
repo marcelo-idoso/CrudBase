@@ -41,8 +41,6 @@ class AuthenticationIdentityProvider implements ProviderInterface
     public function __construct(AuthenticationService $authService)
     {
         $this->authService = $authService;
-        $this->getIdentityRoles();
-        
     }
 
     /**
@@ -51,7 +49,6 @@ class AuthenticationIdentityProvider implements ProviderInterface
     public function getIdentityRoles()
     {
         if (! $identity = $this->authService->getIdentity()) {
-            
             return array($this->defaultRole);
         }
 

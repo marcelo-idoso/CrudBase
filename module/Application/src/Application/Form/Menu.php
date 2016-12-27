@@ -49,45 +49,8 @@ class Menu extends AbstractForm {
             ),
         );
 
-        $this->add(array(
-            'type' => 'Base\Form\Element\MultiCheckbox',
-            'name' => 'teste2',
-            'options' => array(
-                'label' => 'Select countries',
-                'label_attributes' => array(
-                    'class' => 'checkbox'
-                ),
-                'value_options' => array(
-                    'continent' => 'Europe',
-                    [
-                        'value' =>  2,
-                        'label' => 'United Kingdom',
-                        'continent' => 'Europe'
-                    ]
-                )
-            )
-        ));
-        $teste = array(
-            'name' => 'teste',
-            'type' => 'Base\Form\Element\ObjectMultiCheckbox',
-            'options' => array(
-                'object_manager' => $this->getObjectManager(),
-                'target_class' => 'Application\Entity\Controlador',
-                'property'       => 'dsControlador',
-                'is_method'      => true,
-                'find_method'    => array(
-                'name'   => 'findBy',
-                'params' => array(
-                    'criteria' => array('idmodule' => 28),
-                    'orderBy'  => array('idmodule' => 'ASC'),
-                ),
-            ),
-            ),
-        );
-
         $this->add($view);
         $this->add($controlador);
-        $this->add($teste);
     }
 
 }

@@ -26,7 +26,7 @@
                     ->setMessageCloseString('</div>')
                     ->render($form);
             $form->setAttribute('role', 'form')   
-                 ->setAttribute('action',$this->url("$this->router/editar", array('controller' => $this->router, 'action' => 'editar' , 'id' => $this->id)));
+                 ->setAttribute('action',$this->url("dashboard/$this->router/editar", array('controller' =>"dashboard/".$this->router, 'action' => 'editar' , 'id' => $this->id)));
             $form->prepare();
 
         

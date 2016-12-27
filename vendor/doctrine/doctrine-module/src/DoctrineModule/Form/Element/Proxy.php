@@ -552,6 +552,7 @@ class Proxy implements ObjectManagerAwareInterface
         foreach ($objects as $key => $object) {
             if (null !== ($generatedLabel = $this->generateLabel($object))) {
                 $label = $generatedLabel;
+                die;
             } elseif ($property = $this->property) {
                 if ($this->isMethod == false && !$metadata->hasField($property)) {
                     throw new RuntimeException(

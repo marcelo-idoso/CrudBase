@@ -20,7 +20,7 @@
                     <div class="row">
 
                         <div class="col col-xs-6 pull-right  text-right">
-                            <a class="btn btn-success" href="<?php echo $this->url( "$this->router/inserir") ;?>">
+                            <a class="btn btn-success" href="<?php echo $this->url( "dashboard/$this->router/inserir") ;?>">
                                 Novo Registro  <i class="glyphicon glyphicon-plus"></i>
                             </a>
                         </div>
@@ -48,7 +48,7 @@
                                         <td> <?= $entity->getIdModule()->getNome() ;?></td>
                                         <td>
                                             <a class="btn btn-success" href="<?php
-                                            echo $this->url("$this->router/editar", array(
+                                            echo $this->url("dashboard/$this->router/editar", array(
                                                 'controller' => 'controller',
                                                 'action' => 'editar',
                                                 'id' => $entity->getId()));
@@ -56,7 +56,7 @@
                                                 <i class="glyphicon glyphicon-edit"></i>
                                             </a>
                                             <a class="btn btn-danger" href="<?php
-                                            echo $this->url("$this->router/excluir", array(
+                                            echo $this->url("dashboard/$this->router/excluir", array(
                                                 'controller' => 'controller',
                                                 'action' => 'excluir',
                                                 'id' => $entity->getId()));
@@ -74,7 +74,7 @@
                 </div>
                 <div class="panel-footer">
                     <div class="row">
-                        <?php echo $this->paginationControl($this->data, 'Sliding', 'partials/paginator', array('route' => "$this->router/paginator")); ?>
+                        <?php echo $this->paginationControl($this->data, 'Sliding', 'partials/paginator', array('route' => "dashboard/$this->router/paginator")); ?>
                     </div>
                 </div>
             </div>

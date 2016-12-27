@@ -15,7 +15,7 @@ $settings = array(
     'user_form_timeout' => 300,
     'use_redirect_parameter_if_present' => true,
     //'user_login_widget_view_template' => 'zfc-user/user/login.phtml',
-
+    'login_redirect_route' => 'dashboard',
     //'password_cost' => 14,
     'enable_user_state' => false,
     'table_name' => 'user',

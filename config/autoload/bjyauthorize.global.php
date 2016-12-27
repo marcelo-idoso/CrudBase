@@ -53,6 +53,10 @@ return [
                 [
                     'controller' => 'Application\Controller\Menu',
                     'roles' => array('user')
+                ],
+                [
+                    'controller' => 'Application\Controller\Dashboard',
+                    'roles' => array('user')
                 ]
             ]
         ],

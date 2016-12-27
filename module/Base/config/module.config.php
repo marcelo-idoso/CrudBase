@@ -3,7 +3,8 @@
 return array(
     'service_manager' => array(
         'factories' => array(
-            'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
+            'navigation'          => 'Zend\Navigation\Service\DefaultNavigationFactory',
+            'navigationMenu'       => 'Base\Navigation\NavigationMenu'
         ),
     ),
     'view_manager' => array(

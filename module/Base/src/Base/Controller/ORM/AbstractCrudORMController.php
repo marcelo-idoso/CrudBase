@@ -105,7 +105,7 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
                 'attributes' => array(
                     'class' => 'btn btn-app',
                     'onclick' => 'top.location=\'' . $this->url()
-                            ->fromRoute($this->getControllerName(1)) . '\'',
+                            ->fromRoute("dashboard/".$this->getControllerName(1)) . '\'',
                 )
                     ), array('priority' => - 100));
         }
@@ -143,6 +143,10 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
         // Verifica Se Exisite Alguma Messagem Para Ser Retornar a View
         if ($this->flashMessenger()->hasSuccessMessages()) {
             $viewModel->setVariable('success', $this->flashMessenger()->getSuccessMessages());
+        } elseif ($this->flashMessenger()->hasErrorMessages()) {
+            $viewModel->setVariable('error', $this->flashMessenger()->getErrorMessages());
+        } elseif ($this->flashMessenger()->hasInfoMessages()) {
+            $viewModel->setVariable('error', $this->flashMessenger()->getInfoMessages());
         }
 
         return $viewModel;
@@ -179,7 +183,7 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
                     $this->flashMessenger()->addSuccessMessage($this->successMessage);
                 }
 
-                return $this->redirect()->toRoute($this->getActionRouter('inserir'), [], TRUE);
+                return $this->redirect()->toRoute("dashboard/".$this->getActionRouter('inserir'), [], TRUE);
             }
         }
 
@@ -214,7 +218,7 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
             $form->bind($entity);
             $viewModel->setVariable('id', $id);
         } else {
-            return $this->redirect()->toRoute($this->getControllerName(1), ['controller' => $this->getControllerName(1)], FALSE);
+            return $this->redirect()->toRoute("dashboard/".$this->getControllerName(1), ['controller' => "dashboard/".$this->getControllerName(1)], FALSE);
         }
 
 
@@ -241,7 +245,7 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
                 } else {
                     $this->flashMessenger()->addSuccessMessage($this->successMessage);
                 }
-                return $this->redirect()->toRoute($this->getActionRouter(), [], TRUE);
+                return $this->redirect()->toRoute("dashboard/".$this->getActionRouter(), [], TRUE);
             }
         }
         if ($this->flashMessenger()->hasSuccessMessages()) {
@@ -262,15 +266,16 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
             $em = $this->getEntityManager();
             $objRepository = $em->getRepository($this->getEntityClass());
             $entity = $objRepository->find($id);
-
-            if ($this->getEntityService()->delete($entity)) {
+            $delete = $this->getEntityService()->delete($entity);
+            
+            if (is_object($delete)) {
                 $this->flashMessenger()->addSuccessMessage($this->successMessage);
             } else {
-                return $this->flashMessenger()->addErrorMessage($this->errorMessage . "</br>");
+                $this->flashMessenger()->addErrorMessage($this->errorMessage . "</br>" . $delete);
             }
         }
 
-        return $this->redirect()->toRoute($this->getControllerName(1), ['controller' => $this->getControllerName(1)], FALSE);
+        return $this->redirect()->toRoute("dashboard/".$this->getControllerName(1), ['controller' => "dashboard/".$this->getControllerName(1)], true);
     }
 
     public function getEditeForm($entityForm = null) {
@@ -377,7 +382,7 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
                 ),
                 'attributes' => array(
                     'class' => 'btn btn-app ',
-                    'onclick' => 'top.location=\'' . $this->url()->fromRoute($this->getControllerName(1) . '/inserir') . '\'',
+                    'onclick' => 'top.location=\'' . $this->url()->fromRoute("dashboard/".$this->getControllerName(1) . '/inserir') . '\'',
                 )
                     ), array('priority' => - 100));
 
@@ -392,7 +397,7 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
                 ),
                 'attributes' => array(
                     'class' => 'btn btn-app ',
-                    'onclick' => 'top.location=\'' . $this->url()->fromRoute($this->getControllerName(1) . '/excluir', array(
+                    'onclick' => 'top.location=\'' . $this->url()->fromRoute("dashboard/".$this->getControllerName(1) . '/excluir', array(
                         'controller' => 'controller',
                         'action' => 'excluir',
                         'id' => $id)) . '\'',
@@ -411,7 +416,7 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
                 'attributes' => array(
                     'class' => 'btn btn-app',
                     'onclick' => 'top.location=\'' . $this->url()
-                            ->fromRoute($this->getControllerName(1)) . '\'',
+                            ->fromRoute("dashboard/".$this->getControllerName(1)) . '\'',
                 )
                     ), array('priority' => - 100));
         }

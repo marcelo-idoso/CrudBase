@@ -154,8 +154,15 @@ echo $this->doctype();
                     </div>
                 </form>
                 <!-- /.search form -->
-                <?= $this->navigation('navigation')->menu(); ?>
-                <!-- sidebar menu: : style can be found in sidebar.less -->               
+                <?= $this->navigation('navigationMenu')->menu(); ?>
+                
+                
+                
+                <?php $partial = array('partials/menu.phtml', 'default') ?>
+                <?php $this->navigation('navigationMenu')->menu()->setPartial($partial) ?>
+                <?php echo $this->navigation('navigationMenu')->menu() ?>
+                
+                
                 
             </section>
             <!-- /.sidebar -->

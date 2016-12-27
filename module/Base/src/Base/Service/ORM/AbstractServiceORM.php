@@ -12,22 +12,21 @@ use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\ServiceManager\ServiceLocatorAwareTrait;
 use Base\EventManager\EventProvider;
 
-class AbstractServiceORM extends EventProvider implements ServiceLocatorAwareInterface{
-    
+class AbstractServiceORM extends EventProvider implements ServiceLocatorAwareInterface {
+
     use ServiceLocatorAwareTrait;
-    
-    
-    public function save($form, $entity){
-        
-        if ($form->isValid()){
+
+    public function save($form, $entity) {
+
+        if ($form->isValid()) {
             /* @var $form \Zend\Form\Form */
-           $entity = $form->getData();
-        }else{
-            return False ;
+            $entity = $form->getData();
+        } else {
+            return False;
         }
-        
+
         $em = $this->getServiceLocator()->get('doctrine.entitymanager.orm_default');
-        
+
         if ($entity->getId() > 0) {
             try {
                 $entity = $em->merge($entity);
@@ -35,7 +34,6 @@ class AbstractServiceORM extends EventProvider implements ServiceLocatorAwareInt
                 $mensage = $e->getMessage();
                 return $mensage;
             }
-
         }
         try {
             $em->persist($entity);
@@ -45,22 +43,25 @@ class AbstractServiceORM extends EventProvider implements ServiceLocatorAwareInt
             $mensage = $e->getMessage();
             return $mensage;
         }
-        
+
         return $entity;
-        
-        
-        
     }
-    
-    
+
     public function delete($entity) {
         $em = $this->getServiceLocator()->get('doctrine.entitymanager.orm_default');
         if ($entity->getId() > 0) {
             $id = $entity->getId();
-            $em->remove($entity);
-            $em->flush();
+
+            try {
+                $em->remove($entity);
+                $em->flush();
+            } catch (\Exception $e) {
+                $mensage = $e->getMessage();
+                return $mensage;
+            }
         }
-        
+
         return $entity;
     }
+
 }

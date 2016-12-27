@@ -12,20 +12,17 @@ namespace Application;
 
 use Zend\Mvc\ModuleRouteListener;
 
-
 class Module {
 
     public function onBootstrap($e) {
         $eventManager = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
-        
-        
-    $serviceManager = $e->getApplication()->getServiceManager();
-    $config = $serviceManager->get('Config');
-    // You'll need to get the information from the DB here
-   
-   
+
+
+        $serviceManager = $e->getApplication()->getServiceManager();
+        $config = $serviceManager->get('Config');
+        // You'll need to get the information from the DB here
     }
 
     public function getConfig() {

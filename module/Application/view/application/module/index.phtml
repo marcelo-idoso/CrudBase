@@ -1,7 +1,7 @@
 <div class="box box-primary">
     <div class="box-header with-border">
         <!--*************** Title da Pagina ***************-->
-        <h3 class="box-title">View <?= $this->router ;?></h3>
+        <h3 class="box-title">View <?= $this->router; ?></h3>
         <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                 <i class="fa fa-minus"></i>
@@ -12,7 +12,7 @@
     <!--*************** Corpo da pagina ***************-->
     <div class="box-body">
         <?php
-            echo $this->partial('partials/flashMesseger.phtml', array('error' => $this->error, 'success' => $this->success));
+        echo $this->partial('partials/flashMesseger.phtml', array('error' => $this->error, 'success' => $this->success));
         ?>
         <div class="table-responsive">
             <div class="panel panel-default panel-table">
@@ -20,15 +20,14 @@
                     <div class="row">
 
                         <div class="col col-xs-6 pull-right  text-right">
-                            <a class="btn btn-success" href="<?php echo $this->url( "$this->router/inserir") ;?>">
+                            <a class="btn btn-success" href="<?php echo $this->url("dashboard/$this->router/inserir"); ?>">
                                 Novo Registro  <i class="glyphicon glyphicon-plus"></i>
                             </a>
                         </div>
                     </div>
                 </div>
                 <div class="panel-body">
-                    <?php 
-                    if ($this->data->count() > 0): ?>
+                    <?php if ($this->data->count() > 0): ?>
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
@@ -49,45 +48,37 @@
                                         <td> <?php echo $entity->getId(); ?> </td>
                                         <td> <?php echo $entity->getNome(); ?> </td>
                                         <td>
-                                            
-                                            <?php 
-                                            
-                                            var_dump($this->isAllowed('Module', 'editar'));
-                                                          
-                                            if ($this->isAllowed('Module', 'editar')): ?>
-                                                <a class="btn btn-success" href="<?php
-                                                    echo $this->url("$this->router/editar", array(
-                                                        'controller' => 'controller',
-                                                        'action' => 'editar',
-                                                        'id' => $entity->getId()));
-                                            ?>">
+                                            <a class="btn btn-success" href="<?php
+                                                echo $this->url("dashboard/$this->router/editar", array(
+                                                    'controller' => 'controller',
+                                                    'action' => 'editar',
+                                                    'id' => $entity->getId()));
+                                                ?>">
                                                 <i class="glyphicon glyphicon-edit"></i>
                                             </a>
-                                            <?php endif?>
-                                            <?php if ($this->isAllowed('Module', 'excluir')): ?>
-                                                <a class="btn btn-danger" href="<?php
-                                                echo $this->url("$this->router/excluir", array(
+
+                                            <a class="btn btn-danger" href="<?php
+                                                echo $this->url("dashboard/$this->router/excluir", array(
                                                     'controller' => 'controller',
                                                     'action' => 'excluir',
                                                     'id' => $entity->getId()));
                                                 ?>">
-                                                    <i class="glyphicon glyphicon-remove"></i>
-                                                </a>
-                                            <?php endif?>
+                                                <i class="glyphicon glyphicon-remove"></i>
+                                            </a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
                         </table>    
-                            <?php else: ?>
-                            <p>  Nenhum registro encontrado </p>
-                        <?php endif; ?>
-                        
-                    
+                    <?php else: ?>
+                        <p>  Nenhum registro encontrado </p>
+                    <?php endif; ?>
+
+
                 </div>
                 <div class="panel-footer">
                     <div class="row">
-                        <?php echo $this->paginationControl($this->data, 'Sliding', 'partials/paginator', array('route' => "$this->router/paginator")); ?>
+                        <?php echo $this->paginationControl($this->data, 'Sliding', 'partials/paginator', array('route' => "dashboard/$this->router/paginator")); ?>
                     </div>
                 </div>
             </div>
@@ -96,4 +87,3 @@
     </div>
 </div>
 
-                                
