@@ -89,6 +89,29 @@ return [
                         ]
                     ]
                 ]
+            ],
+            [
+                'label' => 'Empresa',
+                'uri'   => '#',
+                'icon'  => 'fa fa-building-o',
+                'pages' => [
+                    [
+                        'label' => 'Inserir',
+                        'route' => 'dashboard/empresa/inserir',  
+                    ],
+                    [
+                        'label' => 'Listar',
+                        'route' => 'dashboard/empresa',  
+                    ],
+                    [
+                        'label' => 'Editar',
+                        'route' => 'dashboard/empresa/editar',  
+                    ],
+                    [
+                        'label' => 'Excluir',
+                        'route' => 'dashboard/empresa/excluir',  
+                    ],
+                ]
             ]
         ]
     ]

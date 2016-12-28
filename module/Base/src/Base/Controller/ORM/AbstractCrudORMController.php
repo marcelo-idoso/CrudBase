@@ -348,7 +348,7 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
                 'name' => 'date_create',
                 'attributes' => [
                     'class' => 'form-control input-lg',
-                    'readonly' => TRUE
+                    'disabled' => 'Disabled'
                 ],
                 'options' => [
                     'label'  => 'Data de Criação',
@@ -364,13 +364,13 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
                     'disabled' => 'Disabled'
                 ],
                 'options' => [
-                    'Date'   => 'Data de Update',
+                    'label'   => 'Data de Update',
                     'format' => 'd/m/Y    H:i:s '
                 ],
             ], ['priority' => - 80]);
 
 
-            // Adicionar o Button Cancelar
+            // Adicionar o Button Novo
             $form->add(array(
                 'type' => 'Button',
                 'name' => 'Novo',
@@ -385,7 +385,8 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
                     'onclick' => 'top.location=\'' . $this->url()->fromRoute("dashboard/".$this->getControllerName(1) . '/inserir') . '\'',
                 )
                     ), array('priority' => - 100));
-
+            
+            // Excluir
             $form->add(array(
                 'type' => 'Button',
                 'name' => 'Excluir',
@@ -403,7 +404,8 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
                         'id' => $id)) . '\'',
                 )
                     ), array('priority' => - 100));
-
+            
+            // Cancelar
             $form->add(array(
                 'type' => 'Button',
                 'name' => 'Cancelar',

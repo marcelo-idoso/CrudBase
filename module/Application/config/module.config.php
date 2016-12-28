@@ -95,6 +95,7 @@ return array(
             'Application\Controller\Controlador' => 'Application\Controller\Controlador',
             'Application\Controller\Menu' => 'Application\Controller\Menu',
             'Application\Controller\Dashboard' => 'Application\Controller\Dashboard',
+            'Application\Controller\Empresa' => 'Application\Controller\Empresa',
         ),
     ),
     'view_manager' => array(

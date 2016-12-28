@@ -57,6 +57,10 @@ return [
                 [
                     'controller' => 'Application\Controller\Dashboard',
                     'roles' => array('user', 'authenticated')
+                ],
+                [
+                    'controller' => 'Application\Controller\Empresa',
+                    'roles' => array('user', 'authenticated')
                 ]
             ]
         ],
