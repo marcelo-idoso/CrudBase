@@ -5,7 +5,7 @@ return [
         
         
         'default_role'       => 'guest',         // not authenticated
-        
+        'template' => 'error/403Permission',
         
        //'unauthorized_strategy' => 'BjyAuthorize\View\RedirectionStrategy',
         
@@ -44,19 +44,19 @@ return [
                 ],
                 [
                     'controller' => 'Application\Controller\Module',
-                    'roles' => array('user')
+                    'roles' => array('user' , 'authenticated')
                 ],
                 [
                     'controller' => 'Application\Controller\Controlador',
-                    'roles' => array('user')
+                    'roles' => array('user', 'authenticated')
                 ],
                 [
                     'controller' => 'Application\Controller\Menu',
-                    'roles' => array('user')
+                    'roles' => array('user', 'authenticated')
                 ],
                 [
                     'controller' => 'Application\Controller\Dashboard',
-                    'roles' => array('user')
+                    'roles' => array('user', 'authenticated')
                 ]
             ]
         ],

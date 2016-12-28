@@ -7,6 +7,7 @@ return [
                 'label' => "Inicio",
                 'icon'  => 'fa fa-dashboard',
                 'uri'   => '#',
+                'resource' => 'controller/Application\Controller\Dashboard' ,
                 'pages' => [
                     [
                         'label' => 'DashBoard',
@@ -15,12 +16,15 @@ return [
                 ]
             ],
             [
-                'label' => "Cadastros",
+                'label' => "Delopep",
+                'icon'  => 'fa fa-laptop', 
                 'uri'   => '#',
+                 'resource' => 'controller/Application\Controller\Module',
                 'pages' => [
                     [
                         'label' => "Module",
                         'uri'   => '#',
+                        'resource' => 'controller/Application\Controller\Module',
                         'pages' => [
                             [
                                'label' => 'Listar',
@@ -41,18 +45,50 @@ return [
                         ]
                     ],
                     [
-                        'label' => 'Controlador',
-                        'route' => 'dashboard/controlador',
+                        'Label' => 'Controlador',
+                        'uri'   => '#',
+                        'pages' => [
+                            [
+                                'label' => 'Listar',
+                                'route' => 'dashboard/controlador',
+                            ],
+                            [
+                                'label' => 'Inserir',
+                                'route' => 'dashboard/controlador/inserir',
+                            ],
+                            [
+                                'label' => 'Excluir',
+                                'route' => 'dashboard/controlador/excluir',
+                            ],
+                            [
+                                'label' => 'Editar',
+                                'route' => 'dashboard/controlador/editar',
+                            ]
+                        ]
                     ],
                     [
-                        'label' => 'Menu',
-                        'route' => 'dashboard/menu',
+                        'label' => "Menu" ,
+                        'uri'   => '#' ,
+                        'pages' => [
+                            [
+                                'label' => 'Listar',
+                                'route' => 'dashboard/menu',
+                            ],
+                            [
+                                'label' => 'Inserir',
+                                'route' => 'dashboard/menu/inserir',
+                            ],
+                            [
+                                'label' => 'Excluir',
+                                'route' => 'dashboard/menu/excluir',
+                            ],
+                            [
+                                'label' => 'Editar',
+                                'route' => 'dashboard/menu/editar',
+                            ]
+                        ]
                     ]
                 ]
-            ],
-            [
-                 'label' => "Inicio",
-                'uri'   => '#',
             ]
         ]
     ]

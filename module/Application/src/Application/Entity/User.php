@@ -6,31 +6,23 @@ use BjyAuthorize\Provider\Role\ProviderInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use ZfcUser\Entity\UserInterface;
-
+use Base\Entity\AbstractEntity;
 /**
  * An example of how to implement a role aware user entity.
  *
  * @ORM\Entity
  * @ORM\Table(name="users")
- *
+ * @ORM\HasLifecycleCallbacks
  * @author Tom Oram <tom@scl.co.uk>
  */
-class User implements UserInterface, ProviderInterface {
-
-    /**
-     * @var int
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
+class User extends AbstractEntity implements UserInterface, ProviderInterface {
 
     /**
      * @var string
      * @ORM\Column(type="string", length=255, unique=true, nullable=true)
      */
     protected $username;
-
+   
     /**
      * @var string
      * @ORM\Column(type="string", unique=true,  length=255)

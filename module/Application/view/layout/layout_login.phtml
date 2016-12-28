@@ -1,0 +1,28 @@
+<?php
+echo $this->doctype();
+?>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <?php echo $this->headTitle('ZF2 ' . $this->translate('Skeleton Application'))->setSeparator(' - ')->setAutoEscape(false) ?>
+        <!-- Tell the browser to be responsive to screen width -->
+        <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no') ?>
+        <!-- Importação dos arquivos CSS -->
+        <?php
+        echo $this->headLink(
+                        array(
+                            'rel' => 'shortcut icon',
+                            'type' => 'image/vnd.microsoft.icon',
+                ))
+                ->prependStylesheet($this->basePath('css/dashboard/vendor/adminlte/css/AdminLTE.min.css')) // Theme style
+                ->prependStylesheet($this->basePath('css/dashboard/vendor/fontawesome/css/font-awesome.min.css')) //  Font Awesome
+                ->prependStylesheet($this->basePath('css/dashboard/vendor/ionicons/css/ionicons.min.css')) // Ionicons
+                ->prependStylesheet($this->basePath('css/dashboard/vendor/bootstrap/css/bootstrap.min.css')) // Bootstrap 3.3.6
+        ?>
+
+    </head>
+    <body class="hold-transition ">
+        <?php echo $this->content ?>
+    </body>
+</html>

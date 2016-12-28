@@ -2,7 +2,6 @@
 echo $this->doctype();
 /* @var $user \Application\Entity\User */
 /* @var $roles \Application\Entity\Role */
-
 ?>
 
 <html lang="pt-br">
@@ -18,12 +17,12 @@ echo $this->doctype();
                         'rel' => 'shortcut icon',
                         'type' => 'image/vnd.microsoft.icon',
                         'href' => $this->basePath()))
-                                        ->prependStylesheet($this->basePath('css/dashboard/dashboard_style.css'))
-                                        ->prependStylesheet($this->basePath('css/dashboard/vendor/adminlte/css/skins/_all-skins.min.css')) // AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load.
-                                        ->prependStylesheet($this->basePath('css/dashboard/vendor/adminlte/css/AdminLTE.min.css')) // Theme style
-                                        ->prependStylesheet($this->basePath('css/dashboard/vendor/fontawesome/css/font-awesome.min.css')) //  Font Awesome
-                                        ->prependStylesheet($this->basePath('css/dashboard/vendor/ionicons/css/ionicons.min.css')) // Ionicons
-                                        ->prependStylesheet($this->basePath('css/dashboard/vendor/bootstrap/css/bootstrap.min.css')) // Bootstrap 3.3.6
+            ->prependStylesheet($this->basePath('css/dashboard/dashboard_style.css'))
+            ->prependStylesheet($this->basePath('css/dashboard/vendor/adminlte/css/skins/_all-skins.min.css')) // AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load.
+            ->prependStylesheet($this->basePath('css/dashboard/vendor/adminlte/css/AdminLTE.min.css')) // Theme style
+            ->prependStylesheet($this->basePath('css/dashboard/vendor/fontawesome/css/font-awesome.min.css')) //  Font Awesome
+            ->prependStylesheet($this->basePath('css/dashboard/vendor/ionicons/css/ionicons.min.css')) // Ionicons
+            ->prependStylesheet($this->basePath('css/dashboard/vendor/bootstrap/css/bootstrap.min.css')) // Bootstrap 3.3.6
     ?>
 
 
@@ -80,17 +79,17 @@ echo $this->doctype();
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="<?php echo $this->basePath('dist/img/user2-160x160.jpg');?>" class="user-image" alt="User Image">
-                                <span class="hidden-xs">Nome Usuario </span>
+                                <img src="<?php echo $this->basePath('dist/img/user2-160x160.jpg'); ?>" class="user-image" alt="User Image">
+                                <span class="hidden-xs"><?=  ($this->zfcUserIdentity()) ? $this->zfcUserIdentity()->getUsername() : 'Null' ; ?> </span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header">
                                     <img src="<?php echo $this->basePath('dist/img/user2-160x160.jpg'); ?>" class="img-circle" alt="User Image">
                                     <p>
-                                        Nome Usuario - 
+                                        <?=  ($this->zfcUserIdentity()) ? $this->zfcUserIdentity()->getUsername() : 'Null' ; ?> - 
                                         Tipo Acesso
-                                        <small>Member since Nov. 2012</small>
+                                        <small>Membro Desde 2016-Dezembro-27</small>
                                     </p>
                                 </li>
                                 <!-- Menu Body -->
@@ -136,10 +135,10 @@ echo $this->doctype();
                 <!-- Sidebar user panel -->
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="<?php echo $this->basePath('dist/img/user2-160x160.jpg') ; ?>" class="img-circle" alt="User Image">
+                        <img src="<?php echo $this->basePath('dist/img/user2-160x160.jpg'); ?>" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
-                        <p>  Nome Usuario</p>
+                        <p>  <?=  ($this->zfcUserIdentity()) ? $this->zfcUserIdentity()->getUsername() : 'Null' ; ?> </p>
                         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                     </div>
                 </div>
@@ -154,23 +153,19 @@ echo $this->doctype();
                     </div>
                 </form>
                 <!-- /.search form -->
-                <?= $this->navigation('navigationMenu')->menu(); ?>
-                
-                
-                
                 <?php $partial = array('partials/menu.phtml', 'default') ?>
                 <?php $this->navigation('navigationMenu')->menu()->setPartial($partial) ?>
                 <?php echo $this->navigation('navigationMenu')->menu() ?>
-                
-                
-                
+
+
+
             </section>
             <!-- /.sidebar -->
         </aside>
-         <!--****************** Fim Menu Lateral ***********************-->
+        <!--****************** Fim Menu Lateral ***********************-->
         <!--******************Corpo do Painel  ***********************-->
         <div class="content-wrapper">
-            
+
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
@@ -178,17 +173,18 @@ echo $this->doctype();
                     <small>de Controle</small>
                 </h1>    
                 <!-- Breadcrumb -->
-                <?= 
-                    $this->navigation('navigation')->breadcrumbs()->setMinDepth()->setPartial('partials/breadcrumbs.phtml');
+                <?=
+                $this->navigation('navigation')->breadcrumbs()->setMinDepth()->setPartial('partials/breadcrumbs.phtml');
                 ?>
                 <!-- fim Breadcrumb -->
             </section>
             <!-- Fim Content Header (Page header) -->
             <!-- Main content -->
-    <section class="content">
-        <?php echo $this->content ;?>
-    </section>
-    <!-- /.content -->
+            <section class="content">
+               
+                <?php echo $this->content; ?>
+            </section>
+            <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
@@ -201,11 +197,11 @@ echo $this->doctype();
 
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
-          
-           
+
+
         </aside>
         <!-- Fim control-sidebar -->
-        
+
         <!-- Add the sidebar's background. This div must be placed
              immediately after the control sidebar -->
         <div class="control-sidebar-bg"></div>

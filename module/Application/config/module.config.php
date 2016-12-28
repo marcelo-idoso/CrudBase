@@ -23,6 +23,19 @@ return array(
                         'module' => 'application',
                     ),
                 ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'login' => array(
+                        'type' => 'Literal',
+                        'options' => array(
+                            'route' => 'login',
+                            'defaults' => array(
+                                'controller' => 'zfcuser',
+                                'action' => 'login'
+                            )
+                        )
+                    ),
+                ),
             ),
             'application' => array(
                 'type' => 'Literal',
@@ -56,7 +69,6 @@ return array(
                     ),
                 ),
             ),
-            
         ),
     ),
     'service_manager' => array(
@@ -78,11 +90,11 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Index'       => 'Application\Controller\IndexController',
-            'Application\Controller\Module'      => 'Application\Controller\Module',
+            'Application\Controller\Index' => 'Application\Controller\IndexController',
+            'Application\Controller\Module' => 'Application\Controller\Module',
             'Application\Controller\Controlador' => 'Application\Controller\Controlador',
-            'Application\Controller\Menu'        => 'Application\Controller\Menu',
-            'Application\Controller\Dashboard'   => 'Application\Controller\Dashboard',
+            'Application\Controller\Menu' => 'Application\Controller\Menu',
+            'Application\Controller\Dashboard' => 'Application\Controller\Dashboard',
         ),
     ),
     'view_manager' => array(
@@ -96,6 +108,7 @@ return array(
             'error/404' => __DIR__ . '/../view/error/404.phtml',
             'error/403Permission' => __DIR__ . '/../view/error/403.phtml',
             'error/index' => __DIR__ . '/../view/error/index.phtml',
+            'zfc-user/user/login' => __DIR__. '/../view/zfc-user/user/login.phtml'
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',

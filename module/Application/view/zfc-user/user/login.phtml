@@ -1,0 +1,43 @@
+<?php
+$this->layout('layout/layout_login.phtml');
+$form = $this->loginForm;
+$form->prepare();
+$form->setAttribute('action', $this->url('zfcuser/login'));
+$form->setAttribute('method', 'post');
+$this->placeholder('mostraFooter')->set('não');
+?>
+
+<div class="login-box">
+    <div class="login-logo">  
+        <a href="#">
+            <img src="<?= $this->basePath('imagem/php_logo.png'); ?>" class="img-responsive" style="padding: 10px">
+        </a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+        <?php echo $this->form()->openTag($form) ?>
+
+        <div class="form-group has-feedback">
+            <input type="email" class="form-control" placeholder="Email" name="identity">
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            <?php echo $this->formElementErrors($form->get('identity')); ?>
+        </div>
+        <div class="form-group has-feedback">
+            <input type="password" class="form-control" placeholder="Password" name="credential">
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            <?php echo $this->formElementErrors($form->get('credential')); ?>
+        </div>
+        <div class="row">
+            <div class="col-xs-8">
+
+            </div>
+            <!-- /.col -->
+            <div class="col-xs-4">
+                <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+            </div>
+            <!-- /.col -->
+        </div>
+        <?php echo $this->form()->closeTag() ?>
+    </div>
+    <!-- /.login-box-body -->
+</div>

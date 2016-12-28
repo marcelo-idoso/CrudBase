@@ -23,6 +23,14 @@ class Module {
         $serviceManager = $e->getApplication()->getServiceManager();
         $config = $serviceManager->get('Config');
         // You'll need to get the information from the DB here
+        
+        $sm = $e->getApplication()->getServiceManager();
+        // Add ACL information to the Navigation view helper
+        $authorize = $sm->get('BjyAuthorizeServiceAuthorize');
+        $acl = $authorize->getAcl();
+        $role = $authorize->getIdentity();
+        \Zend\View\Helper\Navigation::setDefaultAcl($acl);
+        \Zend\View\Helper\Navigation::setDefaultRole($role);
     }
 
     public function getConfig() {
