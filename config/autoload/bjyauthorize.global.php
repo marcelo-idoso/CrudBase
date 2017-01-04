@@ -7,7 +7,7 @@ return [
         'default_role'       => 'guest',         // not authenticated
         'template' => 'error/403Permission',
         
-       //'unauthorized_strategy' => 'BjyAuthorize\View\RedirectionStrategy',
+       'unauthorized_strategy' => 'BjyAuthorize\View\RedirectionStrategy',
         
         'identity_provider' => \BjyAuthorize\Provider\Identity\AuthenticationIdentityProvider::class,
        
@@ -60,7 +60,11 @@ return [
                 ],
                 [
                     'controller' => 'Application\Controller\Empresa',
-                    'roles' => array('user', 'authenticated')
+                    'roles' => array('user')
+                ],
+                [
+                    'controller' => 'Application\Controller\Index',
+                    'roles' => array ('guest')
                 ]
             ]
         ],

@@ -94,6 +94,7 @@ return [
                 'label' => 'Empresa',
                 'uri'   => '#',
                 'icon'  => 'fa fa-building-o',
+                'resource' => 'controller/Application\Controller\Empresa',
                 'pages' => [
                     [
                         'label' => 'Inserir',
