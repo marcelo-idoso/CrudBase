@@ -11,66 +11,6 @@
 namespace Application;
 
 return array(
-    'router' => array(
-        'routes' => array(
-            'home' => array(
-                'type' => 'Segment',
-                'options' => array(
-                    'route' => '/[page/:page]',
-                    'defaults' => array(
-                        'controller' => 'Application\Controller\Index',
-                        'action' => 'index',
-                        'module' => 'application',
-                    ),
-                ),
-                'may_terminate' => true,
-                'child_routes' => array(
-                    'login' => array(
-                        'type' => 'Literal',
-                        'options' => array(
-                            'route' => 'login',
-                            'defaults' => array(
-                                'controller' => 'zfcuser',
-                                'action' => 'login'
-                            )
-                        )
-                    ),
-                ),
-            ),
-            'application' => array(
-                'type' => 'Literal',
-                'options' => array(
-                    'route' => '/application',
-                    'defaults' => array(
-                        'controller' => 'Index',
-                        'action' => 'index',
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'module' => 'application'
-                    ),
-                ),
-                'may_terminate' => true,
-                'child_routes' => array(
-                    'default' => array(
-                        'type' => 'Segment',
-                        'options' => array(
-                            'route' => '/[:controller[/:action]]',
-                            'constraints' => array(
-                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                            ),
-                            'defaults' => array(
-                            ),
-                        ),
-                        'child_routes' => array(//permite mandar dados pela url 
-                            'wildcard' => array(
-                                'type' => 'Wildcard'
-                            ),
-                        ),
-                    ),
-                ),
-            ),
-        ),
-    ),
     'service_manager' => array(
         'factories' => array(
             'translator' => 'Zend\I18n\Translator\TranslatorServiceFactory',

@@ -9,6 +9,7 @@ return array(
     'modules' => array(
         'ZendDeveloperTools',
         'Application',
+        'Site',
         'Base',
         'ZfcBase',
         'ZfcUser',

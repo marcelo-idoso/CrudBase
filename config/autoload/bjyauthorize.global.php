@@ -65,6 +65,10 @@ return [
                 [
                     'controller' => 'Application\Controller\Index',
                     'roles' => array ('guest')
+                ],
+                [
+                    'controller' => 'IndexSite',
+                    'roles' => array ('guest')
                 ]
             ]
         ],
