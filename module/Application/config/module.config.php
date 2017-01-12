@@ -45,7 +45,7 @@ return array(
         'not_found_template' => 'error/404',
         'exception_template' => 'error/index',
         'template_map' => array(
-            'layout/layout' => __DIR__ . '/../view/layout/layout_dashboard.phtml',
+            'layout/DashBoard' => __DIR__ . '/../view/layout/layout_dashboard.phtml',
             'error/404' => __DIR__ . '/../view/error/404.phtml',
             'error/403Permission' => __DIR__ . '/../view/error/403.phtml',
             'error/index' => __DIR__ . '/../view/error/index.phtml',

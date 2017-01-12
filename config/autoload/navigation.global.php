@@ -7,6 +7,7 @@ return array(
                 'route' => 'dashboard',
                 'icon'  => 'fa fa-dashboard',
                 'pages' => array(
+           
                     array(
                         'label' => 'Module',
                         'route' => 'dashboard/module',
@@ -61,6 +62,10 @@ return array(
                             ),
                         ),
                     ),
+                    array(
+                        'label' => 'Profile',
+                        'route' => 'zfcuser',
+                    )
                 ),
             ),
             

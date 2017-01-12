@@ -2,7 +2,7 @@
 
 namespace Base;
 
-use Base\Identity\Identity;
+
 
 class Module {
 
@@ -32,7 +32,8 @@ class Module {
     public function getViewHelperConfig() {
         return array(
             'invokables' => array(
-                'render_form' => 'Base\Helper\FormBoostrap',
+                'render_form'     => 'Base\Helper\FormBoostrap',
+                'formatDate'      => 'Base\Helper\FormatDate' 
             )
         );
     }
