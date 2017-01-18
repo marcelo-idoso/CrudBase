@@ -67,6 +67,14 @@ return [
                     'roles' => array ('guest')
                 ],
                 [
+                    'controller' => 'Application\Controller\Categoria',
+                    'roles' => array ('user')
+                ],
+                [
+                    'controller' => 'Application\Controller\Postagem',
+                    'roles' => array ('user')
+                ],
+                [
                     'controller' => 'IndexSite',
                     'roles' => array ('guest')
                 ]

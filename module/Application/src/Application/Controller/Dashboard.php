@@ -13,11 +13,14 @@ namespace Application\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-
 class Dashboard extends AbstractActionController {
 
     public function indexAction() {
-        return new ViewModel();
+        $form = new \Application\Form\Tiny();
+
+        return new ViewModel(array(
+            "form" => $form
+        ));
     }
 
 }

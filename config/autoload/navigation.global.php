@@ -63,6 +63,42 @@ return array(
                         ),
                     ),
                     array(
+                        'label' => 'Categoria',
+                        'route' => 'dashboard/postagem',
+                        'pages' => array(
+                            array(
+                                'label' => 'Inserir',
+                                'route' => 'dashboard/categoria/inserir',
+                            ),
+                            array(
+                                'label' => 'Excluir',
+                                'route' => 'dashboard/categoria/excluir',
+                            ),
+                            array(
+                                'label' => 'Editar',
+                                'route' => 'dashboard/categoria/editar',
+                            ),
+                        ),
+                    ),
+                    array(
+                        'label' => 'Postagem',
+                        'route' => 'dashboard/postagem',
+                        'pages' => array(
+                            array(
+                                'label' => 'Inserir',
+                                'route' => 'dashboard/postagem/inserir',
+                            ),
+                            array(
+                                'label' => 'Excluir',
+                                'route' => 'dashboard/postagem/excluir',
+                            ),
+                            array(
+                                'label' => 'Editar',
+                                'route' => 'dashboard/postagem/editar',
+                            ),
+                        ),
+                    ),
+                    array(
                         'label' => 'Profile',
                         'route' => 'zfcuser',
                     )

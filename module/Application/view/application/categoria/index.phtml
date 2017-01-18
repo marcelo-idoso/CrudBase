@@ -33,6 +33,7 @@
                             <thead>
                                 <tr>
                                     <th> # </th>
+                                    <th> Categoria   </th>
                                     <th style="width: 100px">
                                         <em class="fa fa-cog"></em>
                                     </th>
@@ -42,6 +43,7 @@
                                 <?php foreach ($this->data as $entity) : ?>
                                     <tr>
                                         <td> <?php echo $entity->getId(); ?> </td>
+                                        <td> <?php echo $entity->getNome(); ?> </td>
                                         <td>
                                             <a class="btn btn-success" href="<?php
                                             echo $this->url("dashboard/$this->router/editar", array(

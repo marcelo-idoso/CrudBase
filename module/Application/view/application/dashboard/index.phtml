@@ -1,5 +1,37 @@
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+<script>tinymce.init({selector: 'textarea'});</script>
 
-<div class="hero-unit">
-    <h1>DashBoard Controller </h1>
+<div class="box">
+    <div class="box-header with-border">
+        <!--*************** Title da Pagina ***************-->
+        <h3 class="box-title">DashBoard Controller</h3>
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                <i class="fa fa-minus"></i>
+            </button>
+        </div>
+        <!--*************** Fim Title da Pagina ***************-->
+    </div>
+    <!--*************** Corpo da pagina ***************-->
+    <div class="box-body">
+        <?php
+        $form = $this->form;
+        $this->formElementErrors()
+                ->setMessageOpenFormat(
+                        '<div class="alert alert-error">' .
+                        '<button type="button" class="close" data-dismiss="alert">' .
+                        '<i class="fa fa-times"></i>' .
+                        '</button>')
+                ->setMessageCloseString('</div>')
+                ->render($form);
+        $form->setAttribute('role', 'form');
+        $form->prepare();
+
+
+        echo $this->form()->openTag($form);
+        echo $this->renderForm($form);
+        echo $this->form()->closeTag($form);
+        ?>
+    </div>
+    <!--*************** Fim Corpo da pagina***************-->
 </div>
-

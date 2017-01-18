@@ -5,9 +5,9 @@ return [
         'navigationMenu' => [
             [
                 'label' => "Inicio",
-                'icon'  => 'fa fa-dashboard',
-                'uri'   => '#',
-                'resource' => 'controller/Application\Controller\Dashboard' ,
+                'icon' => 'fa fa-dashboard',
+                'uri' => '#',
+                'resource' => 'controller/Application\Controller\Dashboard',
                 'pages' => [
                     [
                         'label' => 'DashBoard',
@@ -17,18 +17,18 @@ return [
             ],
             [
                 'label' => "Delopep",
-                'icon'  => 'fa fa-laptop', 
-                'uri'   => '#',
-                 'resource' => 'controller/Application\Controller\Module',
+                'icon' => 'fa fa-laptop',
+                'uri' => '#',
+                'resource' => 'controller/Application\Controller\Module',
                 'pages' => [
                     [
                         'label' => "Module",
-                        'uri'   => '#',
+                        'uri' => '#',
                         'resource' => 'controller/Application\Controller\Module',
                         'pages' => [
                             [
-                               'label' => 'Listar',
-                                'route' => 'dashboard/module', 
+                                'label' => 'Listar',
+                                'route' => 'dashboard/module',
                             ],
                             [
                                 'label' => 'Inserir',
@@ -46,7 +46,7 @@ return [
                     ],
                     [
                         'Label' => 'Controlador',
-                        'uri'   => '#',
+                        'uri' => '#',
                         'pages' => [
                             [
                                 'label' => 'Listar',
@@ -67,8 +67,8 @@ return [
                         ]
                     ],
                     [
-                        'label' => "Menu" ,
-                        'uri'   => '#' ,
+                        'label' => "Menu",
+                        'uri' => '#',
                         'pages' => [
                             [
                                 'label' => 'Listar',
@@ -92,26 +92,78 @@ return [
             ],
             [
                 'label' => 'Empresa',
-                'uri'   => '#',
-                'icon'  => 'fa fa-building-o',
+                'uri' => '#',
+                'icon' => 'fa fa-building-o',
                 'resource' => 'controller/Application\Controller\Empresa',
                 'pages' => [
                     [
                         'label' => 'Inserir',
-                        'route' => 'dashboard/empresa/inserir',  
+                        'route' => 'dashboard/empresa/inserir',
                     ],
                     [
                         'label' => 'Listar',
-                        'route' => 'dashboard/empresa',  
+                        'route' => 'dashboard/empresa',
                     ],
                     [
                         'label' => 'Editar',
-                        'route' => 'dashboard/empresa/editar',  
+                        'route' => 'dashboard/empresa/editar',
                     ],
                     [
                         'label' => 'Excluir',
-                        'route' => 'dashboard/empresa/excluir',  
+                        'route' => 'dashboard/empresa/excluir',
                     ],
+                ]
+            ],
+            [
+                'label' => 'Postagem',
+                'uri' => '#',
+                'icon' => 'fa fa-building-o',
+                'resource' => 'controller/Application\Controller\Categoria',
+                'pages' => [
+                    [
+                        'label' => "Categoria",
+                        'uri' => '#',
+                        'pages' => [
+                            [
+                                'label' => 'Inserir',
+                                'route' => 'dashboard/categoria/inserir',
+                            ],
+                            [
+                                'label' => 'Listar',
+                                'route' => 'dashboard/categoria',
+                            ],
+                            [
+                                'label' => 'Editar',
+                                'route' => 'dashboard/categoria/editar',
+                            ],
+                            [
+                                'label' => 'Excluir',
+                                'route' => 'dashboard/categoria/excluir',
+                            ],
+                        ]
+                    ],
+                    [
+                        'label' => "Post",
+                        'uri' => '#',
+                        'pages' => [
+                            [
+                                'label' => 'Inserir',
+                                'route' => 'dashboard/postagem/inserir',
+                            ],
+                            [
+                                'label' => 'Listar',
+                                'route' => 'dashboard/postagem',
+                            ],
+                            [
+                                'label' => 'Editar',
+                                'route' => 'dashboard/postagem/editar',
+                            ],
+                            [
+                                'label' => 'Excluir',
+                                'route' => 'dashboard/postagem/excluir',
+                            ],
+                        ]
+                    ]
                 ]
             ]
         ]
