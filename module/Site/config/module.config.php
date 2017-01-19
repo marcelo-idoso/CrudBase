@@ -63,6 +63,11 @@ return array(
             'IndexSite' => 'Site\Controller\IndexSite',
         ),
     ),
+    'view_helpers' => array(
+        'invokables'=> array(
+            'render_Slider' => 'Site\View\Helper\Slider'  
+        )
+    ),
     'view_manager' => array(
         'display_not_found_reason' => true,
         'display_exceptions' => true,

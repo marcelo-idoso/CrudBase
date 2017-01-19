@@ -163,6 +163,16 @@ return [
                                 'route' => 'dashboard/postagem/excluir',
                             ],
                         ]
+                    ],
+                    [
+                        'label' => "Slider",
+                        'uri' => '#',
+                        'pages' => [
+                            [
+                                'label' => 'Inserir',
+                                'route' => 'dashboard/slider',
+                            ],
+                        ]
                     ]
                 ]
             ]

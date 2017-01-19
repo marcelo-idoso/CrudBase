@@ -425,6 +425,18 @@ return [
                                 )
                             ),
                         ),
+                    ),
+                    'slider' => array(
+                        'type' => 'Literal',
+                        'options' => array(
+                            'route' => '/slider',
+                            'defaults' => array(
+                                'controller' => 'Slider',
+                                'action' => 'index',
+                                '__NAMESPACE__' => 'Application\Controller',
+                                'module' => 'application'
+                            ),
+                        ),
                     )
                 ]
             ],

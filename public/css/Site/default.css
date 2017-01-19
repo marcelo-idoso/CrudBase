@@ -264,3 +264,8 @@ body > footer {
           margin-right: 0; }
 
 /*# sourceMappingURL=default.css.map */
+
+.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+    height: 450px;
+    width: 100%;
+}

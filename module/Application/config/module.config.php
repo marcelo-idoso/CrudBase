@@ -38,6 +38,7 @@ return array(
             'Application\Controller\Empresa' => 'Application\Controller\Empresa',
             'Application\Controller\Categoria' => 'Application\Controller\Categoria',
             'Application\Controller\Postagem' => 'Application\Controller\Postagem',
+            'Application\Controller\Slider' => 'Application\Controller\Slider',
         ),
     ),
     'view_manager' => array(

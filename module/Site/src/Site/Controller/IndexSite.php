@@ -14,7 +14,14 @@ use Zend\View\Model\ViewModel;
 class IndexSite extends AbstractActionController {
 
     public function indexAction() {
-        return new ViewModel();
+        $slide = 'teste';
+        
+        
+        return new ViewModel([
+            'slide' => $slide,
+            
+        ]);
     }
-
+    
+    
 }

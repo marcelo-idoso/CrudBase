@@ -98,7 +98,7 @@ class Postagem extends AbstractEntity {
         $this->titulo = $titulo;
     }
 
-    function setDatapub(\Date $datapub) {
+    function setDatapub(\DateTime $datapub) {
         $this->datapub = $datapub;
     }
 

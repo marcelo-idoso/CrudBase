@@ -75,6 +75,10 @@ return [
                     'roles' => array ('user')
                 ],
                 [
+                    'controller' => 'Application\Controller\Slider',
+                    'roles' => array ('user')
+                ],
+                [
                     'controller' => 'IndexSite',
                     'roles' => array ('guest')
                 ]

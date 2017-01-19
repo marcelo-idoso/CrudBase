@@ -99,6 +99,10 @@ return array(
                         ),
                     ),
                     array(
+                        'label' => 'Slider',
+                        'route' => 'dashboard/slider',
+                    ),
+                    array(
                         'label' => 'Profile',
                         'route' => 'zfcuser',
                     )

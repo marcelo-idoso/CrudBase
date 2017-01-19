@@ -33,7 +33,8 @@ class Module {
         return array(
             'invokables' => array(
                 'render_form'     => 'Base\Helper\FormBoostrap',
-                'formatDate'      => 'Base\Helper\FormatDate' 
+                'formatDate'      => 'Base\Helper\FormatDate',
+                'render_Slide'    => 'Site\Helper\Slider'
             )
         );
     }
