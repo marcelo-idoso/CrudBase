@@ -7,7 +7,6 @@ use Doctrine\ORM\EntityManager;
 use Zend\ServiceManager\ServiceManagerAwareInterface;
 use Zend\ServiceManager\ServiceManager;
 
-
 class Slider extends AbstractHelper implements ServiceManagerAwareInterface {
 
     /**
@@ -33,14 +32,65 @@ class Slider extends AbstractHelper implements ServiceManagerAwareInterface {
         return $render;
     }
 
-    public function renderSlider($entity) {
+    public function renderItem($item) {
+        /* @var $itens \Application\Entity\Slider */
         $html = '';
-        foreach ($entity as $key) {
-            $html.= $key->getId();
+        foreach ($item as $itens) {
+
+            if ($itens->getActive() == 1) {
+                $html .= '<div class="item active" >';
+            } else {
+                $html .= '<div class="item" >';
+            }
+
+            $html .= '<img src="' . $itens->getImg() . '" alt="' . $itens->getId() . '">';
+            if ($itens->getTitulo() or $itens->getDescricao()) {
+                $html .= '<div class="carousel-caption">';
+                if ($itens->getTitulo()) {
+                    $html .= '<h3>';
+                    $html .= $itens->getTitulo();
+                    $html .= '</h3>';
+                }
+                if ($itens->getDescricao()) {
+                    $html .= '<p>';
+                    $html .= $itens->getDescricao();
+                    $html .= '</p>';
+                }
+                $html .= '</div>';
+            }
+            $html .= '</div>';
         }
-         
-         return $html;
+        return $html;
     }
+
+    public function renderSlider($entity) {
+        $html = '<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">';
+        $html .= '<ol class="carousel-indicators">';
+        $count = 0;
+        foreach ($entity as $itens) {
+            if ($itens->getActive() == 1) {
+                $html .= '<li data-target="#carousel-example-generic" data-slide-to="' . $count . '" class="active"></li>';
+            } else {
+                $html .= '<li data-target="#carousel-example-generic" data-slide-to="' . $count . '"></li>';
+            }
+            $count++;
+        }
+        $html .= '</ol>';
+        $html .= '<div class="carousel-inner">';
+        $html .= $this->renderItem($entity);
+        $html .= '</div>';
+        $html .= '<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">';
+        $html .= '   <span class="glyphicon glyphicon-chevron-left"></span>';
+        $html .= '</a>';
+        $html .= '<a class="right carousel-control" href="#carousel-example-generic" data-slide="next">';
+        $html .= '   <span class="glyphicon glyphicon-chevron-right"></span>';
+        $html .= '</a>';
+        $html .= '</div>';
+
+
+        return $html;
+    }
+
     /**
      * @return Doctrine\ORM\EntityManager
      */

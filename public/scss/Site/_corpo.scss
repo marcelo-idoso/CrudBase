@@ -1,0 +1,125 @@
+> div#widget-menu{
+        > div.row{
+            > div#widget-menu-list{
+                @include make-md-column(9);
+                padding: 0;
+                > div.box {
+                    @include make-md-column(3.8);
+                    width: 100%;;
+                    background: $background_header;
+                    padding: 30px 10px ;
+                    margin: 4px;
+                    margin-bottom: 8px;
+                    text-align: center;
+                    -webkit-transition: all ease-out 300ms;
+                    transition: all ease-out 300ms;
+                }
+                > div.box:hover {
+                    box-shadow: 0 0 5px rgb(122, 122, 122);
+                }
+                > div.box i {
+                    background: #297BAA;
+                    width: 100px;
+                    line-height: 100px !important;
+                    color: rgb(255, 255, 255);
+                    font-size: 50px !important;
+                    border-radius: 50%;
+                }
+                > div.box h2{
+                    display: block;
+                    font-size: 1.5em;
+                    -webkit-margin-before: 0.83em;
+                    -webkit-margin-after: 0.83em;
+                    -webkit-margin-start: 0px;
+                    -webkit-margin-end: 0px;
+                    font-weight: bold;
+                }
+                > div.box p {
+                    display: block;
+                    -webkit-margin-before: 1em;
+                    -webkit-margin-after: 1em;
+                    -webkit-margin-start: 0px;
+                    -webkit-margin-end: 0px;
+                }
+                > div.box a {
+                    text-decoration: none;
+                    transition: all ease-out 300ms;
+                    width: 100px;
+                    font: 16px/40px 'Archivo Narrow', sans-serif;
+                    color: rgb(255, 255, 255);
+                    background: rgb(51, 51, 51);
+                    display: block;
+                    margin: 0 auto
+                }
+            }
+
+            > div#widget-menu-list-lateral{
+                @include make-md-column(3);
+                padding:0;
+                > div#publicidade-lateral{
+                    margin-top: 25px;
+                    padding: 0;
+                }
+                > div#ultimas_noticias h1{
+                    font-size: 18px;
+                    margin-bottom: 10px;
+                    padding-bottom: 2px;
+                    color: #3a4755;
+                    text-align: right;
+                    border-bottom: 5px solid #297BAA;
+                    line-height: 30px
+                }
+                > div#ultimas_noticias ul{
+                    list-style-type: none;
+                    margin: 0px;
+                    padding: 0px 0px 20px 0px;
+                }
+
+                > div#ultimas_noticias ul li{
+                    padding: 7px 0px;
+                    font-weight: inherit;
+                    border-bottom: 1px dotted #ddd;
+                    color: #000;
+                    text-align: right;
+                }
+                > div#publicidade-lateral h1{
+                    font-size: 18px;
+                    margin-bottom: 10px;
+                    padding-bottom: 2px;
+                    color: #3a4755;
+                    text-align: right;
+                    border-bottom: 5px solid #297BAA;
+                    line-height: 30px
+                }
+
+            }
+        }  
+    }
+    > div#likn {
+        margin-top: 25px; 
+        background: #297BAA;
+        padding: 10px;
+        > div#redes {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            > a {
+                width: 60px;
+                cursor: auto;
+                text-decoration: none;
+                line-height: 60px !important;
+                color: rgb(255, 255, 255);
+                font-size: 25px !important;
+                background: rgba(0, 0, 0, .3);
+                text-align: center;
+            }
+            > a .fa {
+                display: inline-block;
+                font: normal normal normal 14px/1 FontAwesome;
+                font-size: inherit;
+                text-rendering: auto;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+        }
+    }   

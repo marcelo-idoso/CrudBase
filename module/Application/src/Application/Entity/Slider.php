@@ -23,7 +23,7 @@ class Slider extends AbstractEntity {
     /**
      * @var string
      * 
-     * @ORM\Column(name="img" ,type="string" , length=255, nullable=false) 
+     * @ORM\Column(name="img" ,type="text" , length=255, nullable=false) 
      */
     private $img;
 
@@ -37,11 +37,27 @@ class Slider extends AbstractEntity {
 
     /**
      *
+     * @var integer
+     * 
+     * @ORM\Column (name="active" , type="integer" , nullable=true)
+     */
+    private $active;
+
+    /**
+     *
      * @var string
      * 
      * @ORM\Column (name="descricao" , type="string" , length=255 , nullable=true)
      */
     private $descricao;
+
+    function getActive() {
+        return $this->active;
+    }
+
+    function setActive($active) {
+        $this->active = $active;
+    }
 
     function getImg() {
         return $this->img;
