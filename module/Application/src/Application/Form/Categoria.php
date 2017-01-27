@@ -25,6 +25,28 @@ class Categoria extends AbstractForm {
                 'class' => 'form-control input-lg'
             )
         ));
+        
+        $this->add(array(
+            'name' => 'ico',
+            'type' => 'Text',
+            'options' => array(
+                'label' => 'Icone :'
+            ),
+            'attributes' => array(
+                'class' => 'form-control input-lg'
+            )
+        ));
+        
+        $this->add(array(
+            'name' => 'descr',
+            'type' => 'Text',
+            'options' => array(
+                'label' => 'Descrição'
+            ),
+            'attributes' => array(
+                'class' => 'form-control input-lg'
+            )
+        ));
     }
 
 }

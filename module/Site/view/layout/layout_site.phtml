@@ -9,10 +9,10 @@
         <!-- Le styles -->
         <?php
         echo $this->headLink(
-                array( 
-                    'rel'  => 'shortcut icon',
-                    'type' => 'image/vnd.microsoft.icon'))
-                   // 'href' => $this->basePath($iconeLogo) ))
+                        array(
+                            'rel' => 'shortcut icon',
+                            'type' => 'image/vnd.microsoft.icon'))
+                // 'href' => $this->basePath($iconeLogo) ))
                 ->prependStylesheet($this->basePath('css/site/default.css'))
                 ->prependStylesheet($this->basePath('css/vendor/fortawesome/font-awesome.min.css'))
                 ->prependStylesheet($this->basePath('css/vendor/plugins.css'));
@@ -21,7 +21,6 @@
         <!-- Scripts -->
         <?php
         echo $this->headScript()->prependFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
-                
                 ->prependFile($this->basePath('/js/bootstrap.min.js'))
                 ->prependFile($this->basePath('/js/jquery-2.2.3.min.js'))
         ?>
@@ -35,7 +34,7 @@
                         <img src="imagem/php_logo.png" class="img-responsive" alt="" />
                     </div>
                     <div id="pesquisa"><!--Inicio da Div pesquisa  -->
-                        <p>Olá, Seja bem-Vindo <a href="<?= $this->url('login')?>"> Área Restrita </a> </p>
+                        <p>Olá, Seja bem-Vindo <a href="<?= $this->url('login') ?>"> Área Restrita </a> </p>
                         <form action="">
                             <div class="input-group">
                                 <input type="text" name="buscar" class="form-control" id="buscar" required placeholder="Pesquisar no Site... " />
@@ -88,7 +87,7 @@
                 </nav><!-- Fim tag nav -->
             </div><!-- Fim do container -->
         </div><!-- Fim da div menu -->
-            <?php echo $this->content; ?>
+        <?php echo $this->content; ?>
         <footer>
             <div class="container">
                 <div class="content" id="footer-sidebar">
@@ -97,52 +96,44 @@
                             <img src="imagem/php_logo.png" class="img-responsive" alt="Criando sites profissionais passo a passo" title="Criando sites profissionais passo a passo">
                         </a>
                         <p>
-                                É um fato conhecido de todos que um leitor se distrairá com o conteúdo de texto legível de uma página quando estiver examinando sua diagramação. A vantagem de usar Lorem Ipsum é que ele tem uma distribuição normal de letras, ao contrário de "Conteúdo aqui, conteúdo aqui", fazendo com que ele tenha uma aparência similar a de um texto legível. Muitos softwares de publicação e editores de páginas na internet agora usam Lorem Ipsum como texto-modelo padrão, e uma rápida busca por 'lorem ipsum' mostra vários websites ainda em sua fase de construção. 
+                            É um fato conhecido de todos que um leitor se distrairá com o conteúdo de texto legível de uma página quando estiver examinando sua diagramação. A vantagem de usar Lorem Ipsum é que ele tem uma distribuição normal de letras, ao contrário de "Conteúdo aqui, conteúdo aqui", fazendo com que ele tenha uma aparência similar a de um texto legível. Muitos softwares de publicação e editores de páginas na internet agora usam Lorem Ipsum como texto-modelo padrão, e uma rápida busca por 'lorem ipsum' mostra vários websites ainda em sua fase de construção. 
                             Várias versões novas surgiram ao longo dos anos, eventualmente por acidente, e às vezes de propósito (injetando humor, e coisas do gênero).
                         </p>
                     </div>
                     <div class="footer-widget">
-                        <h4 class="widget__title">
-                            <span></span> Noticias
-                        </h4>
-                        <ul class="clearfix" id="fotos">
-                            <li>
-                                <a href="#" title="Fotos do rodapé">
-                                    <img src="images/card01.jpg" class="img-responsive" alt="Fotos do rodapé" title="Fotos do rodapé">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="Fotos do rodapé">
-                                    <img src="images/card01.jpg" class="img-responsive" alt="Fotos do rodapé" title="Fotos do rodapé">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="Fotos do rodapé">
-                                    <img src="images/card01.jpg" class="img-responsive" alt="Fotos do rodapé" title="Fotos do rodapé">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="Fotos do rodapé">
-                                    <img src="images/card01.jpg" class="img-responsive" alt="Fotos do rodapé" title="Fotos do rodapé">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="Fotos do rodapé">
-                                    <img src="images/card01.jpg" class="img-responsive" alt="Fotos do rodapé" title="Fotos do rodapé">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="Fotos do rodapé">
-                                    <img src="images/card01.jpg" class="img-responsive" alt="Fotos do rodapé" title="Fotos do rodapé">
-                                </a>
-                            </li>
-                        </ul>
+                        <div class="widget__title">
+                            <span class="glyphicon glyphicon-education"></span> 
+                            <p>Menu Principal</p>
+                        </div>
+                                                    
+                            <ul>
+                                <li>
+                                    Página Principal
+                                </li>
+                                <li>
+                                    Contato
+                                </li>
+                                <li>
+                                    Empresa
+                                </li>
+                                <li>
+                                    Serviços
+                                </li>
+                            </ul>
                     </div>
                     <div class="footer-widget">
-                        <h4 class="widget__title">
-                            <span></span> Localização
-                        </h4>
-                        <iframe src="" width="100%" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        <div class="widget__title">
+                            <span class="glyphicon glyphicon-pencil"></span> 
+                            <p>Localização</p>
+                        </div>
+                        <address>
+                            <strong>Example Inc.</strong><br>
+                            <strong>Endereço:</strong>Antartica, Example 0987<br>
+                            <strong>CEP.</strong> 72800-000 <br>
+                            <strong>Horario:</strong>08:00 - 17:00 <br>
+                            <strong>Telefone:</strong> (061) 95456-7890
+                        </address>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15321.433420745605!2d-47.9564596!3d-16.253394!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8076d0e1a61c60fb!2sConstrutora+Castor!5e0!3m2!1spt-BR!2sbr!4v1485175986826"  frameborder="0" style="border:0" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>

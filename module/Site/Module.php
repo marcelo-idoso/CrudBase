@@ -28,6 +28,12 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface, Vi
         $sm->get('viewhelpermanager')->setFactory('render_Slider', function ($sm) use ($e) {
             return new View\Helper\Slider($e, $sm);
         });
+        $sm->get('viewhelpermanager')->setFactory('render_Categoria', function ($sm) use ($e) {
+            return new View\Helper\Categoria($e, $sm);
+        });
+        $sm->get('viewhelpermanager')->setFactory('render_Parceiros', function ($sm) use ($e) {
+            return new View\Helper\Parceiros($e, $sm);
+        });
     }
 
     public function getConfig() {
@@ -52,6 +58,7 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface, Vi
         return array(
             'invokables' => array(
                 'render_Slider' => 'Application\View\Helper\Slider',
+                'render_Categoria' => 'Application\View\Helper\Categoria',
             )
         );
     }

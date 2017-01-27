@@ -1,4 +1,6 @@
-> div#widget-menu{
+body{
+    >div#widget-menu{
+        margin-top: 35px; 
         > div.row{
             > div#widget-menu-list{
                 @include make-md-column(9);
@@ -62,7 +64,7 @@
                 }
                 > div#ultimas_noticias h1{
                     font-size: 18px;
-                    margin-bottom: 10px;
+                    margin-bottom: 20px;
                     padding-bottom: 2px;
                     color: #3a4755;
                     text-align: right;
@@ -123,3 +125,5 @@
             }
         }
     }   
+
+} 

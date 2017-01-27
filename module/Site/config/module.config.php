@@ -65,7 +65,9 @@ return array(
     ),
     'view_helpers' => array(
         'invokables'=> array(
-            'render_Slider' => 'Site\View\Helper\Slider'  
+            'render_Slider' => 'Site\View\Helper\Slider' ,
+            'render_Categoria' => 'Site\View\Helper\Categoria',
+            'render_Parceiros' => 'Site\View\Helper\Parceiros',
         )
     ),
     'view_manager' => array(

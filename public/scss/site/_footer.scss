@@ -3,52 +3,70 @@ body{
         margin-top: 30px;
         background: #333;
         padding: 20px 0 0;
+
         > .container{
             padding-bottom: 95px;
             padding-left: 0px;
-            padding-right:  0px;    
+            padding-right:  0px; 
+
         }
-        #footer-sidebar{          
+        #footer-sidebar{   
             > .footer-widget{
-                @include make-xs-column(12);
-                @include make-sm-column(4);
-                @include make-md-column(4);
+                &:nth-child(3n){
+                    border: none;
+                }
+                @include make-xs-column(11);
+                @include make-sm-column(3.5);
+                @include make-md-column(3.5);
                 padding-left: 0px;
-                
-                > h4.widget__title{
+                border-right: 1px dotted  #FFF;
+                height: 340px;
+                margin-left: 10px;
+                margin-right: 10px;
+                > div.widget__title{
                     position: relative;
-                    margin: 12px 0;
                     height: 36px;
+                    text-indent: 12px;
                     font: 22px $font_main;
                     color: #fff;
-                    text-indent: 12px;
-                    padding-top: 3px;
-
                     > span{
                         display: block;
                         position: absolute;
                         top: 0;
                         left: 0;
-                        width: 4px;
-                        height: 36px;
-                        background: #297BAA;
+                    }
+                    > p{
+                        font: 22px $font_main;
+                        color: #fff;
+                        padding-left: 36px;
+                        text-indent: 12px;
+                    }
+
+                }
+                address{
+                    color: #777;
+                    font: bold 12px $font_main;
+                    padding: 5px;
+                    strong{
+                        margin-right: 5px;
+                        color: #fff;
+                        font: bold 13px $font_main;
                     }
                 }
                 p{
                     color: #777;
                     font: bold 11px $font_main;
                 }
-                > ul#fotos{
+                > ul {
                     list-style: none;
-                    padding: 0;
-                    > li{
-                        float: left;
-                        display: inline;
-                        width: 30%;
-                        margin: 0 5% 5% 0;
-                        &:nth-child(3n){
-                            margin-right: 0;
+                    color: #777;
+                    >li{
+                        a{
+                            color: #777;
+                            font: bold 12px $font_main;
                         }
+                        font: bold 12px $font_main;
+                        padding: 5px;
                     }
                 }
                 &.footer-widget--about{
