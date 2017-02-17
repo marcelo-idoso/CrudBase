@@ -7,7 +7,7 @@ use Doctrine\ORM\EntityManager;
 use Zend\ServiceManager\ServiceManagerAwareInterface;
 use Zend\ServiceManager\ServiceManager;
 
-class Categoria extends AbstractHelper implements ServiceManagerAwareInterface {
+class UltimasNoticias extends AbstractHelper implements ServiceManagerAwareInterface {
 
     /**
      *
@@ -27,25 +27,20 @@ class Categoria extends AbstractHelper implements ServiceManagerAwareInterface {
      * @return type
      */
     public function __invoke() {
-        $entity = $this->getEntityManager()->getRepository('Application\Entity\Categoria')->findBy(['exibir' => '2']);
+        $entity = $this->getEntityManager()->getRepository('Application\Entity\Postagem')->findBy([], ['id' => 'desc'], 6);
         $render = $this->renderItem($entity);
         return $render;
     }
 
     public function renderItem($item) {
-        /* @var $itens \Application\Entity\Categoria */
+        /* @var $itens \Application\Entity\Postagem */
         $html = '';
-        $html .= '<div id="widget-menu-list">';
         foreach ($item as $itens) {
-
-            $html .= '<div class="box">';
-            $html .= '<i class="' . $itens->getIco() . '" aria-hidden="true"></i>';
-            $html .= '<h2>' . $itens->getNome() . '</h2>';
-            $html .= '<p>' . $itens->getDescr() . '</p>';
-            $html .= ' <a href="http://inlocoassessoriaeservicos.cnt.br.dev/categoria/' . $itens->getLink() . '">mais</a>';
-            $html .= '</div>';
+            $html .= '<li>';
+            $html .= ' <a href="http://inlocoassessoriaeservicos.cnt.br.dev/posts/' . $itens->getLink() . '">' . $itens->getTitulo() . '</a>';
+            $html .= '</li>';    
         }
-        $html .= '</div>';
+        
 
         return $html;
     }
@@ -93,10 +88,7 @@ class Categoria extends AbstractHelper implements ServiceManagerAwareInterface {
      */
     public function getRepository() {
         if (null === $this->em)
-            $this->em = $this->getEntityManager()->getRepository('Application\Entity\Categoria');
+            $this->em = $this->getEntityManager()->getRepository('Application\Entity\Postagem');
         return $this->em;
     }
-
-
-
 }

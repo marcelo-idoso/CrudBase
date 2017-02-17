@@ -80,7 +80,11 @@ return [
                 ],
                 [
                     'controller' => 'IndexSite',
-                    'roles' => array ('guest')
+                    'roles' => array ('guest' , 'user')
+                ],
+                [
+                    'controller' => 'CategoriaSite',
+                    'roles' => array ('guest' , 'user')
                 ]
             ]
         ],

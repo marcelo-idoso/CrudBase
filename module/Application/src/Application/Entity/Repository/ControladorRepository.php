@@ -6,6 +6,6 @@ use Doctrine\ORM\EntityRepository;
 
 class ControladorRepository extends EntityRepository {
     
-    
+   
  
 }

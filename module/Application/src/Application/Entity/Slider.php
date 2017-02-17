@@ -51,6 +51,14 @@ class Slider extends AbstractEntity {
      */
     private $descricao;
 
+    /**
+     *
+     * @var string
+     * 
+     * @ORM\Column (name="link" , type="string" , length=1000 , nullable=true)
+     */
+    private $link;
+
     function getActive() {
         return $this->active;
     }
@@ -82,5 +90,13 @@ class Slider extends AbstractEntity {
     function setDescricao($descricao) {
         $this->descricao = $descricao;
     }
+    function getLink() {
+        return $this->link;
+    }
+
+    function setLink($link) {
+        $this->link = $link;
+    }
+
 
 }

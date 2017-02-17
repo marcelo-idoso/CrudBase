@@ -34,6 +34,12 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface, Vi
         $sm->get('viewhelpermanager')->setFactory('render_Parceiros', function ($sm) use ($e) {
             return new View\Helper\Parceiros($e, $sm);
         });
+        $sm->get('viewhelpermanager')->setFactory('render_Ultimas_Noticas', function ($sm) use ($e) {
+            return new View\Helper\UltimasNoticias($e, $sm);
+        });
+        $sm->get('viewhelpermanager')->setFactory('render_Empresa', function ($sm) use ($e) {
+            return new View\Helper\Empresa($e, $sm);
+        });
     }
 
     public function getConfig() {
@@ -51,7 +57,11 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface, Vi
     }
 
     public function getServiceConfig() {
-        
+        return array(
+            'factories' => array(
+                 'navigationSite' => 'Site\Navigation\NavigationSiteFactory'
+            ),
+        ); 
     }
 
     public function getViewHelperConfig() {
@@ -59,6 +69,7 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface, Vi
             'invokables' => array(
                 'render_Slider' => 'Application\View\Helper\Slider',
                 'render_Categoria' => 'Application\View\Helper\Categoria',
+                'render_Ultimas_Noticas' => 'Application\View\Helper\UltimasNoticias',
             )
         );
     }

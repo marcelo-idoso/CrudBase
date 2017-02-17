@@ -7,7 +7,7 @@ use Doctrine\ORM\EntityManager;
 use Zend\ServiceManager\ServiceManagerAwareInterface;
 use Zend\ServiceManager\ServiceManager;
 
-class Categoria extends AbstractHelper implements ServiceManagerAwareInterface {
+class Empresa extends AbstractHelper implements ServiceManagerAwareInterface {
 
     /**
      *
@@ -27,29 +27,11 @@ class Categoria extends AbstractHelper implements ServiceManagerAwareInterface {
      * @return type
      */
     public function __invoke() {
-        $entity = $this->getEntityManager()->getRepository('Application\Entity\Categoria')->findBy(['exibir' => '2']);
-        $render = $this->renderItem($entity);
-        return $render;
+        $entity = $this->getEntityManager()->getRepository('Application\Entity\Empresa')->findAll();
+        return $entity[0];
     }
 
-    public function renderItem($item) {
-        /* @var $itens \Application\Entity\Categoria */
-        $html = '';
-        $html .= '<div id="widget-menu-list">';
-        foreach ($item as $itens) {
-
-            $html .= '<div class="box">';
-            $html .= '<i class="' . $itens->getIco() . '" aria-hidden="true"></i>';
-            $html .= '<h2>' . $itens->getNome() . '</h2>';
-            $html .= '<p>' . $itens->getDescr() . '</p>';
-            $html .= ' <a href="http://inlocoassessoriaeservicos.cnt.br.dev/categoria/' . $itens->getLink() . '">mais</a>';
-            $html .= '</div>';
-        }
-        $html .= '</div>';
-
-        return $html;
-    }
-
+   
     /**
      * @return Doctrine\ORM\EntityManager
      */
@@ -93,10 +75,12 @@ class Categoria extends AbstractHelper implements ServiceManagerAwareInterface {
      */
     public function getRepository() {
         if (null === $this->em)
-            $this->em = $this->getEntityManager()->getRepository('Application\Entity\Categoria');
+            $this->em = $this->getEntityManager()->getRepository('Application\Entity\Empresa');
         return $this->em;
     }
-
+    public function teste() {
+            return "marcelo" ;
+    }
 
 
 }

@@ -7,7 +7,7 @@ use Zend\Form\Form;
 
 class FormBoostrap extends AbstractHelper {
 
-    public function __invoke(Form $form) {
+    public function __invoke(Form $form , Array $remove = null  ) {
         $this->validTagAttributes = array_merge(
                 $this->validTagAttributes, array(
             "ng-show" => true,
@@ -15,14 +15,18 @@ class FormBoostrap extends AbstractHelper {
             "class" => true
                 )
         );
-        $html = $this->render($form);
+       
+       
+        
+        $html = $this->render($form, $remove);
         return $html;
     }
 
-    public function renderElement(\Zend\Form\Element $element) {
+    public function renderElement(\Zend\Form\Element $element, Array $remove = null) {
+        
         $html = '';
         if (!$element instanceof \Zend\Form\Element\Button) {
-
+                
             $html = '<div ';
             $attributes = (array) $element->getOption('wrapper-attributes');
 
@@ -65,11 +69,17 @@ class FormBoostrap extends AbstractHelper {
                 }
             }
             $html .= '</div>';
+            
+            foreach ($remove as $key) {
+                if($key == $element->getName()){
+                 $html = ''   ;
+                }
+            }
             return $html;
         }
     }
 
-    public function renderElementButton(\Zend\Form\Element $element) {
+    public function renderElementButton(\Zend\Form\Element $element , Array $remove = null) {
         $html = '';
         if (!$element instanceof \Zend\Form\Element\Button) {
             return False;
@@ -79,7 +89,7 @@ class FormBoostrap extends AbstractHelper {
         return $html;
     }
 
-    public function render($elements) {
+    public function render($elements , Array $remove = null) {
         $html = '';
         $html.= '<div class="box-body">';
         foreach ($elements as $element) {
@@ -142,7 +152,9 @@ class FormBoostrap extends AbstractHelper {
                 }
                 $html.= '<hr/></fieldset>';
             } else {
-                $html.= $this->renderElement($element);
+                
+                $html.= $this->renderElement($element , $remove);
+                
             }
         }
         $html.= '</div class>';

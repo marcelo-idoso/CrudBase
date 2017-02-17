@@ -64,10 +64,10 @@ class Categoria extends \Application\Entity\Categoria implements \Doctrine\ORM\P
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'Application\\Entity\\Categoria' . "\0" . 'nome', 'id', 'date_create', 'date_update'];
+            return ['__isInitialized__', '' . "\0" . 'Application\\Entity\\Categoria' . "\0" . 'nome', '' . "\0" . 'Application\\Entity\\Categoria' . "\0" . 'ico', '' . "\0" . 'Application\\Entity\\Categoria' . "\0" . 'descr', '' . "\0" . 'Application\\Entity\\Categoria' . "\0" . 'link', '' . "\0" . 'Application\\Entity\\Categoria' . "\0" . 'exibir', '' . "\0" . 'Application\\Entity\\Categoria' . "\0" . 'orderexibir', 'id', 'date_create', 'date_update'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'Application\\Entity\\Categoria' . "\0" . 'nome', 'id', 'date_create', 'date_update'];
+        return ['__isInitialized__', '' . "\0" . 'Application\\Entity\\Categoria' . "\0" . 'nome', '' . "\0" . 'Application\\Entity\\Categoria' . "\0" . 'ico', '' . "\0" . 'Application\\Entity\\Categoria' . "\0" . 'descr', '' . "\0" . 'Application\\Entity\\Categoria' . "\0" . 'link', '' . "\0" . 'Application\\Entity\\Categoria' . "\0" . 'exibir', '' . "\0" . 'Application\\Entity\\Categoria' . "\0" . 'orderexibir', 'id', 'date_create', 'date_update'];
     }
 
     /**
@@ -176,6 +176,72 @@ class Categoria extends \Application\Entity\Categoria implements \Doctrine\ORM\P
     /**
      * {@inheritDoc}
      */
+    public function setExibir($exibir)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setExibir', [$exibir]);
+
+        return parent::setExibir($exibir);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getExibir()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getExibir', []);
+
+        return parent::getExibir();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getIco()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIco', []);
+
+        return parent::getIco();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getDescr()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescr', []);
+
+        return parent::getDescr();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setIco($ico)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIco', [$ico]);
+
+        return parent::setIco($ico);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setDescr($descr)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescr', [$descr]);
+
+        return parent::setDescr($descr);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function getNome()
     {
 
@@ -193,6 +259,50 @@ class Categoria extends \Application\Entity\Categoria implements \Doctrine\ORM\P
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNome', [$nome]);
 
         return parent::setNome($nome);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getLink()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLink', []);
+
+        return parent::getLink();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setLink($link)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLink', [$link]);
+
+        return parent::setLink($link);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getOrderexibir()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrderexibir', []);
+
+        return parent::getOrderexibir();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setOrderexibir($orderexibir)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrderexibir', [$orderexibir]);
+
+        return parent::setOrderexibir($orderexibir);
     }
 
     /**
@@ -281,6 +391,18 @@ class Categoria extends \Application\Entity\Categoria implements \Doctrine\ORM\P
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDateUpdate', []);
 
         return parent::setDateUpdate();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function genereteUrl($str, $replace = array (
+), $delimiter = '-')
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'genereteUrl', [$str, $replace, $delimiter]);
+
+        return parent::genereteUrl($str, $replace, $delimiter);
     }
 
 }

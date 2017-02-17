@@ -47,6 +47,13 @@ class Categoria extends AbstractForm {
                 'class' => 'form-control input-lg'
             )
         ));
+        
+        $this->add(array(
+            'name' => 'link',
+            'type' => 'Hidden',
+        ));
+        
+      
     }
 
 }

@@ -1,0 +1,50 @@
+<div id="menu_navegacao"><!-- Inicio div menu -->
+    <div class="container"><!-- Inicio da container -->
+        <nav class="navbar navbar-default" id="menu_content"><!-- Inicio da taf Nav -->
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <?php $count = 0 ?>
+                        <?php foreach ($this->container as $page): ?>
+                            <?php $hasChildren = $page->hasPages() ?>
+                            <?php if (!$hasChildren): ?>
+                                <li <?php if ($page->isActive()) echo 'class="active"' ?> >
+                                    <a href="<?= $page->getHref() ?>"> <?= $page->getLabel() ?><span class="sr-only">(current)</span></a>
+                                </li>   
+                            <?php else: ?>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Menu Categoria <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <?php foreach ($page->getPages() as $child): ?>
+                                            <?php // when using partials we need to manually check for ACL conditions ?>
+                                            <?php if (!$child->isVisible() || !$this->navigation()->accept($child)) continue; ?>
+                                            <li class="active">
+                                                <a href="<?php echo $child->getHref() . '/' .$child->get('id') ?>">
+                                                    <i class="fa fa-circle-o"></i> <?php echo $this->translate($child->getLabel()) ?>
+                                                </a>
+                                            </li>
+                                        <?php endforeach ?>
+                                    </ul>
+                                </li>
+
+                            <?php endif ?>
+
+                            <?php $count++ ?> 
+
+                        <?php endforeach; ?>                        
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav><!-- Fim tag nav -->
+    </div><!-- Fim do container -->
+</div><!-- Fim da div menu -->

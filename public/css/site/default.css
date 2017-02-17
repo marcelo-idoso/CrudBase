@@ -4,7 +4,7 @@
 
 body > header {
   height: 144px;
-  background-color: #ECECEC; }
+  background-color: #FFF; }
   body > header > div#container {
     padding-top: 20px; }
     body > header > div#container > div#topo {
@@ -139,8 +139,48 @@ body > div#menu_navegacao {
               background: #ECECEC;
               color: #09F; }
 
-body > div#widget-menu {
-  margin-top: 35px; }
+body > div#widget-menu > div.row {
+  margin-top: 20px; }
+  body > div#widget-menu > div.row > div#widget_post {
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding: 0px; }
+    @media (min-width: 992px) {
+      body > div#widget-menu > div.row > div#widget_post {
+        float: left;
+        width: 75%; } }
+    body > div#widget-menu > div.row > div#widget_post > div.list_post {
+      padding: 10px; }
+      body > div#widget-menu > div.row > div#widget_post > div.list_post > div.list_post_topo {
+        text-indent: 12px;
+        font: 16px "Tahoma";
+        color: #fff;
+        background: #ddd;
+        padding: 15px 15px;
+        border: 1px solid #000; }
+        body > div#widget-menu > div.row > div#widget_post > div.list_post > div.list_post_topo p {
+          font: 14px "Tahoma"; }
+      body > div#widget-menu > div.row > div#widget_post > div.list_post > div.list_post_corpo {
+        padding: 25px 25px 10px;
+        color: #132A3A;
+        border: 1px solid #000;
+        inline-box-align: inherit;
+        border-top: none;
+        text-align: center; }
+        body > div#widget-menu > div.row > div#widget_post > div.list_post > div.list_post_corpo p {
+          margin: 10px;
+          text-align: justify; }
+        body > div#widget-menu > div.row > div#widget_post > div.list_post > div.list_post_corpo a {
+          text-decoration: none;
+          transition: all ease-out 300ms;
+          width: 200px;
+          font: 16px/50px 'Archivo Narrow', sans-serif;
+          color: white;
+          background: #333333;
+          display: block;
+          margin: 0 auto; }
   body > div#widget-menu > div.row > div#widget-menu-list {
     position: relative;
     min-height: 1px;

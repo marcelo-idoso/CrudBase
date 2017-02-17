@@ -10,18 +10,42 @@ namespace Site\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Base\Entity\EntityManagerAwareTrait;
 
 class IndexSite extends AbstractActionController {
 
+    use EntityManagerAwareTrait;
+
     public function indexAction() {
-        $slide = 'teste';
         
-        
+
+
         return new ViewModel([
-            'slide' => $slide,
-            
         ]);
     }
-    
-    
+
+    public function empresaAction() {
+        $empresa = $this->getEntityManager()->getRepository("Application\Entity\Empresa")->getEmpresa();
+     
+        return new ViewModel([
+            'data' => $empresa,
+        ]);
+    }
+
+    public function contatoAction() {
+        $empresa = $this->getEntityManager()->getRepository("Application\Entity\Empresa")->getContato();
+     
+        return new ViewModel([
+            'data' => $empresa,
+        ]);
+    }
+
+    public function servicoAction() {
+        $empresa = $this->getEntityManager()->getRepository("Application\Entity\Empresa")->getServico();
+     
+        return new ViewModel([
+            'data' => $empresa,
+        ]);
+    }
+
 }

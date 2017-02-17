@@ -4,6 +4,7 @@ namespace Application\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Base\Entity\AbstractEntity;
+use Base\Funcoes\Url;
 
 /**
  * Postagem
@@ -14,48 +15,64 @@ use Base\Entity\AbstractEntity;
  */
 class Postagem extends AbstractEntity {
 
+    use Url;
+
     /**
      * @var string
      *
      * @ORM\Column(name="TITULO", type="string", length=255, nullable=false)
      */
     private $titulo;
-    
+
     /**
      * @var Date
      *
      * @ORM\Column(name="datapub", type="date",  nullable=false)
      */
     private $datapub;
-    
+
     /**
      * @var string
      *
-     * @ORM\Column(name="conteudo", type="text", length=255, nullable=false)
+     * @ORM\Column(name="conteudo", type="text",  nullable=false)
      */
     private $conteudo;
-    
+
     /**
      * @var string
      *
      * @ORM\Column(name="tags", type="string", length=45, nullable=false)
      */
     private $tags;
-    
+
     /**
      * @var string
      *
      * @ORM\Column(name="imagem", type="string", length=255, nullable=false)
      */
     private $imagem;
-    
+
     /**
      * @var string
      *
      * @ORM\Column(name="status", type="integer", length=1, nullable=false)
      */
     private $status;
-    
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="resumo", type="text", length=1000, nullable=false)
+     */
+    private $resumo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="link", type="text", length=500, nullable=false)
+     */
+    private $link;
+
     /**
      * @var \Application\Entity\Categoria
      *
@@ -65,6 +82,14 @@ class Postagem extends AbstractEntity {
      * })
      */
     private $idcategoria;
+
+    function getResumo() {
+        return $this->resumo;
+    }
+
+    function setResumo($resumo) {
+        $this->resumo = $resumo;
+    }
 
     function getTitulo() {
         return $this->titulo;
@@ -122,6 +147,13 @@ class Postagem extends AbstractEntity {
         $this->idcategoria = $idcategoria;
     }
 
+    function getLink() {
+        return $this->link;
+    }
 
-  
+    function setLink($link) {
+        $link = $this->genereteUrl($this->getTitulo());
+        $this->link = $link;
+    }
+
 }

@@ -30,7 +30,7 @@ class Empresa extends AbstractForm {
         // Telefone
         $this->add([
             'name' => 'telefone',
-            'type' => 'Number',
+            'type' => 'Text',
             'options' => array(
                 'label' => 'Telefone'
             ),
@@ -39,6 +39,29 @@ class Empresa extends AbstractForm {
             )
         ]);
         
+         // Enderço
+        $this->add([
+            'name' => 'endereco',
+            'type' => 'Text',
+            'options' => array(
+                'label' => 'Endereço'
+            ),
+            'attributes' => array(
+                'class' => 'form-control input-medium'
+            )
+        ]);
+        
+         // Cep
+        $this->add([
+            'name' => 'cep',
+            'type' => 'Text',
+            'options' => array(
+                'label' => 'Cep'
+            ),
+            'attributes' => array(
+                'class' => 'form-control input-medium'
+            )
+        ]);
         
         // Contato
         $this->add([
@@ -46,6 +69,17 @@ class Empresa extends AbstractForm {
             'type' => 'Text',
             'options' => array(
                 'label' => 'Contato'
+            ),
+            'attributes' => array(
+                'class' => 'form-control input-medium'
+            )
+        ]);
+         // Horario
+        $this->add([
+            'name' => 'horario',
+            'type' => 'Text',
+            'options' => array(
+                'label' => 'Horário'
             ),
             'attributes' => array(
                 'class' => 'form-control input-medium'
@@ -98,6 +132,46 @@ class Empresa extends AbstractForm {
             ),
             'attributes' => array(
                 'style' => 'height:60px; resize:vertical;',
+                'class' => 'form-control input-medium'
+            )
+        ]);
+        
+         // googleMaps
+        $this->add([
+            'name' => 'pempresa',
+            'type' => 'TextArea',
+            'options' => array(
+                'label' => 'Empresa'
+            ),
+            'attributes' => array(
+                'style' => 'height:550px; resize:vertical;',
+                'class' => 'form-control input-medium'
+            )
+        ]);
+        
+         // Contato
+        $this->add([
+            'name' => 'pcontatos',
+            'type' => 'TextArea',
+            'options' => array(
+                'label' => 'Contatos'
+            ),
+            'attributes' => array(
+                'style' => 'height:550px; resize:vertical;',
+                'class' => 'form-control input-medium'
+            )
+        ]);
+        
+        
+         // Serviços
+        $this->add([
+            'name' => 'pservicos',
+            'type' => 'TextArea',
+            'options' => array(
+                'label' => 'Servicos'
+            ),
+            'attributes' => array(
+                'style' => 'height:550px; resize:vertical;',
                 'class' => 'form-control input-medium'
             )
         ]);

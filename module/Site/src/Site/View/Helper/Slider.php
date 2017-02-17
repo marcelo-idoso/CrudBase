@@ -42,21 +42,27 @@ class Slider extends AbstractHelper implements ServiceManagerAwareInterface {
             } else {
                 $html .= '<div class="item" >';
             }
-
+            if ($itens->getLink()){
+                $html .= '<a href="'. $itens->getLink() .'">';
+            }
+            
             $html .= '<img src="' . $itens->getImg() . '" alt="' . $itens->getId() . '">';
-            if ($itens->getTitulo() or $itens->getDescricao()) {
-                $html .= '<div class="carousel-caption">';
-                if ($itens->getTitulo()) {
-                    $html .= '<h3>';
-                    $html .= $itens->getTitulo();
-                    $html .= '</h3>';
+                if ($itens->getTitulo() or $itens->getDescricao()) {
+                    $html .= '<div class="carousel-caption">';
+                    if ($itens->getTitulo()) {
+                        $html .= '<h3>';
+                        $html .= $itens->getTitulo();
+                        $html .= '</h3>';
+                    }
+                    if ($itens->getDescricao()) {
+                        $html .= '<p>';
+                        $html .= $itens->getDescricao();
+                        $html .= '</p>';
+                    }
+                    $html .= '</div>';
                 }
-                if ($itens->getDescricao()) {
-                    $html .= '<p>';
-                    $html .= $itens->getDescricao();
-                    $html .= '</p>';
-                }
-                $html .= '</div>';
+            if ($itens->getLink()){
+                $html .= '</a>';
             }
             $html .= '</div>';
         }

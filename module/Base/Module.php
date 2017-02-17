@@ -32,9 +32,10 @@ class Module {
     public function getViewHelperConfig() {
         return array(
             'invokables' => array(
-                'render_form'     => 'Base\Helper\FormBoostrap',
-                'formatDate'      => 'Base\Helper\FormatDate',
-                'render_Slide'    => 'Site\Helper\Slider'
+                'render_form'           => 'Base\Helper\FormBoostrap',
+                'render_formRow'        => 'Base\Helper\BaseFormRow',
+                'formatDate'            => 'Base\Helper\FormatDate',
+                'render_Slide'          => 'Site\Helper\Slider'
             )
         );
     }

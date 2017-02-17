@@ -1,8 +1,11 @@
 <?php echo $this->doctype(); ?>
+<?php $icone = ($this->render_Empresa()->getLogoico() ? $this->render_Empresa()->getLogoico()  :'php_logo.ico');
+      $logo = ($this->render_Empresa()->getLogo() ? $this->render_Empresa()->getLogo()  :'php_logo.png');
+?> 
 <html lang="pt-br">
     <head>
         <meta charset="utf-8">
-        <?php echo $this->headTitle('ZF2 ' . $this->translate('Skeleton Application'))->setSeparator(' - ')->setAutoEscape(false) ?>
+        <?php echo $this->headTitle($this->translate($this->render_Empresa()->getNome()))->setSeparator(' - ')->setAutoEscape(false) ?>
 
         <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
 
@@ -11,8 +14,7 @@
         echo $this->headLink(
                         array(
                             'rel' => 'shortcut icon',
-                            'type' => 'image/vnd.microsoft.icon'))
-                // 'href' => $this->basePath($iconeLogo) ))
+                            'href' => "imagem/icon/$icone" ), 'PREPEND')
                 ->prependStylesheet($this->basePath('css/site/default.css'))
                 ->prependStylesheet($this->basePath('css/vendor/fortawesome/font-awesome.min.css'))
                 ->prependStylesheet($this->basePath('css/vendor/plugins.css'));
@@ -27,11 +29,12 @@
 
     </head>
     <body>
+        
         <header><!-- Inicio da Header -->
             <div class="container" id="container"> <!--Inicio do Container -->
                 <div id="topo"><!--Inicio da Div Topo -->
                     <div id="logo">
-                        <img src="imagem/php_logo.png" class="img-responsive" alt="" />
+                        <img src="<?= $this->basePath('imagem/'.$logo) ?>" class="img-responsive" alt="" />
                     </div>
                     <div id="pesquisa"><!--Inicio da Div pesquisa  -->
                         <p>Olá, Seja bem-Vindo <a href="<?= $this->url('login') ?>"> Área Restrita </a> </p>
@@ -49,55 +52,20 @@
                 </div> <!--Fim Topo -->
             </div> <!--Fim Container -->
         </header><!-- Fim da Header -->
-        <div id="menu_navegacao"><!-- Inicio div menu -->
-            <div class="container"><!-- Inicio da container -->
-                <nav class="navbar navbar-default" id="menu_content"><!-- Inicio da taf Nav -->
-                    <div class="container-fluid">
-                        <!-- Brand and toggle get grouped for better mobile display -->
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
-                        <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav">
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Menu Categoria <span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Action</a></li>
-                                        <li><a href="#">Another action</a></li>
-                                        <li><a href="#">Something else here</a></li>
-                                        <li role="separator" class="divider" > </li>
-                                        <li><a href="#">Separated link</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li><a href="#">One more separated link</a></li>
-                                    </ul>
-                                </li>
-                                <li class="active"><a href="<?php echo $this->url('home') ?>">Início<span class="sr-only">(current)</span></a></li>
-                                <li><a href="<?php echo $this->url('home') ?>">Empresa</a></li>
-                                <li><a href="<?php echo $this->url('home') ?>">Contatos</a></li>
-                                <li><a href="<?php echo $this->url('home') ?>">Serviços</a></li>
-                            </ul>
-                        </div><!-- /.navbar-collapse -->
-                    </div><!-- /.container-fluid -->
-                </nav><!-- Fim tag nav -->
-            </div><!-- Fim do container -->
-        </div><!-- Fim da div menu -->
+        <?php $partial = array('partials/_site_navigation.phtml', 'default') ?>
+        <?php $this->navigation('navigationSite')->menu()->setPartial($partial) ?>
+        <?php echo $this->navigation('navigationSite')->menu() ?>
+        
         <?php echo $this->content; ?>
         <footer>
             <div class="container">
                 <div class="content" id="footer-sidebar">
                     <div class="footer-widget footer-widget--about">
                         <a href="" title="Criando sites profissionais passo a passo">
-                            <img src="imagem/php_logo.png" class="img-responsive" alt="Criando sites profissionais passo a passo" title="Criando sites profissionais passo a passo">
+                            <img src="<?= $this->basePath('imagem/'.$logo) ?>" class="img-responsive" alt="Criando sites profissionais passo a passo" title="Criando sites profissionais passo a passo">
                         </a>
                         <p>
-                            É um fato conhecido de todos que um leitor se distrairá com o conteúdo de texto legível de uma página quando estiver examinando sua diagramação. A vantagem de usar Lorem Ipsum é que ele tem uma distribuição normal de letras, ao contrário de "Conteúdo aqui, conteúdo aqui", fazendo com que ele tenha uma aparência similar a de um texto legível. Muitos softwares de publicação e editores de páginas na internet agora usam Lorem Ipsum como texto-modelo padrão, e uma rápida busca por 'lorem ipsum' mostra vários websites ainda em sua fase de construção. 
-                            Várias versões novas surgiram ao longo dos anos, eventualmente por acidente, e às vezes de propósito (injetando humor, e coisas do gênero).
+                            <?= ($this->render_Empresa()->getMimidescrempre()? $this->render_Empresa()->getMimidescrempre() : '');?>
                         </p>
                     </div>
                     <div class="footer-widget">
@@ -105,21 +73,21 @@
                             <span class="glyphicon glyphicon-education"></span> 
                             <p>Menu Principal</p>
                         </div>
-                                                    
-                            <ul>
-                                <li>
-                                    Página Principal
-                                </li>
-                                <li>
-                                    Contato
-                                </li>
-                                <li>
-                                    Empresa
-                                </li>
-                                <li>
-                                    Serviços
-                                </li>
-                            </ul>
+
+                        <ul>
+                            <li>
+                                Página Principal
+                            </li>
+                            <li>
+                                Contato
+                            </li>
+                            <li>
+                                Empresa
+                            </li>
+                            <li>
+                                Serviços
+                            </li>
+                        </ul>
                     </div>
                     <div class="footer-widget">
                         <div class="widget__title">
@@ -127,13 +95,13 @@
                             <p>Localização</p>
                         </div>
                         <address>
-                            <strong>Example Inc.</strong><br>
-                            <strong>Endereço:</strong>Antartica, Example 0987<br>
-                            <strong>CEP.</strong> 72800-000 <br>
-                            <strong>Horario:</strong>08:00 - 17:00 <br>
-                            <strong>Telefone:</strong> (061) 95456-7890
+                            <strong><?= ($this->render_Empresa()->getNome()? $this->render_Empresa()->getNome() : '');?></strong><br>
+                            <strong>Endereço:</strong><?= ($this->render_Empresa()->getEndereco()? $this->render_Empresa()->getEndereco() : '');?><br>
+                            <strong>CEP.</strong> <?= ($this->render_Empresa()->getCep()? $this->render_Empresa()->getCep() : '');?> <br>
+                            <strong>Horario:</strong><?= ($this->render_Empresa()->getHorario()? $this->render_Empresa()->getHorario() : '');?> <br>
+                            <strong>Telefone:</strong> <?= ($this->render_Empresa()->getTelefone()? $this->render_Empresa()->getTelefone() : '');?>
                         </address>
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15321.433420745605!2d-47.9564596!3d-16.253394!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8076d0e1a61c60fb!2sConstrutora+Castor!5e0!3m2!1spt-BR!2sbr!4v1485175986826"  frameborder="0" style="border:0" allowfullscreen></iframe>
+                        <iframe src="<?= ($this->render_Empresa()->getgoogleMaps()? $this->render_Empresa()->getgoogleMaps() : '');?>"  frameborder="0" style="border:0" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>

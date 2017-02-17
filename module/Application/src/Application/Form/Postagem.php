@@ -77,6 +77,9 @@ class Postagem extends AbstractForm {
             'type' => 'Date',
             'attributes' => array(
                 'class' => 'form-control input-lg',
+            ),
+            'options' => array(
+                'label' => 'Data de Publicação'
             )
         ]);
         $this->add([
@@ -89,6 +92,19 @@ class Postagem extends AbstractForm {
                 'class' => 'form-control input-lg',
             )
         ]);
+        
+         $this->add([
+            'name' => 'resumo',
+            'type' => 'Textarea',
+            'options' => array(
+                'label' => 'Resumo da Postagem'
+            ),
+            'attributes' => array(
+                'class' => 'form-control input-lg',
+                'style' => 'height:130px; resize:vertical;'
+            )
+        ]);
+        
         $this->add([
             'name' => 'conteudo',
             'type' => 'Textarea',
@@ -97,6 +113,11 @@ class Postagem extends AbstractForm {
                 'style' => 'height:330px; resize:vertical;'
             )
         ]);
+        
+        $this->add(array(
+            'name' => 'link',
+            'type' => 'Hidden',
+        ));
     }
 
 }

@@ -8,8 +8,10 @@
 
 namespace Application\Controller;
 
-use Base\Controller\AbstractCrudController; 
+use Base\Controller\AbstractCrudController;
 
-class Categoria extends AbstractCrudController{
-    
+class Categoria extends AbstractCrudController {
+
+
+
 }

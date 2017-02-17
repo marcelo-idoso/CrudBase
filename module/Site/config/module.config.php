@@ -3,6 +3,19 @@
 return array(
     'router' => array(
         'routes' => array(
+            'posts' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/posts[/:id]',
+                    'constraints' => array(
+                        'id' => '[a-zA-Z0-9_-][a-zA-Z0-9_-]*'
+                    ),
+                    'defaults' => array(
+                        'controller' => 'CategoriaSite',
+                        'action' => 'post'
+                    )
+                )
+            ),
             'home' => array(
                 'type' => 'Segment',
                 'options' => array(
@@ -21,6 +34,49 @@ return array(
                     'defaults' => array(
                         'controller' => 'zfcuser',
                         'action' => 'login'
+                    )
+                )
+            ),
+            'empresa' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/empresa',
+                    'defaults' => array(
+                        'controller' => 'IndexSite',
+                        'action' => 'empresa'
+                    )
+                )
+            ),
+            'contato' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/contato',
+                    'defaults' => array(
+                        'controller' => 'IndexSite',
+                        'action' => 'contato'
+                    )
+                )
+            ),
+            'servico' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/servico',
+                    'defaults' => array(
+                        'controller' => 'IndexSite',
+                        'action' => 'servico'
+                    )
+                )
+            ),
+            'categoria' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/categoria[/:id]',
+                    'constraints' => array(
+                        'id' => '[a-zA-Z][a-zA-Z0-9_-]*'
+                    ),
+                    'defaults' => array(
+                        'controller' => 'CategoriaSite',
+                        'action' => 'categoria'
                     )
                 )
             ),
@@ -61,13 +117,16 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'IndexSite' => 'Site\Controller\IndexSite',
+            'CategoriaSite' => 'Site\Controller\CategoriaSite',
         ),
     ),
     'view_helpers' => array(
-        'invokables'=> array(
-            'render_Slider' => 'Site\View\Helper\Slider' ,
+        'invokables' => array(
+            'render_Slider' => 'Site\View\Helper\Slider',
             'render_Categoria' => 'Site\View\Helper\Categoria',
             'render_Parceiros' => 'Site\View\Helper\Parceiros',
+            'render_Empresa'   => 'Site\View\Helper\Empresa', 
+            'render_Ultimas_Noticas' => 'Site\View\Helper\UltimasNoticias',
         )
     ),
     'view_manager' => array(
@@ -86,4 +145,5 @@ return array(
             __DIR__ . '/../view',
         ),
     ),
+
 );
