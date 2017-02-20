@@ -1,3 +1,16 @@
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+<script>tinymce.init({
+  selector: 'textarea.TextTinymce',
+   menubar: false,
+  plugins: [
+    'advlist autolink lists link image charmap print preview anchor',
+    'searchreplace visualblocks code fullscreen',
+    'insertdatetime media table contextmenu paste code'
+  ],
+  toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+  content_css: '//www.tinymce.com/css/codepen.min.css'
+});</script>
+
 <div class="row">
     <div class="col-xs-12">
         <div class="nav-tabs-custom">
@@ -30,24 +43,37 @@
 
 
                         echo $this->form()->openTag($form);
-                        echo $this->renderForm($form);
+                        echo $this->renderForm($form, ['pcontatos','pempresa' , 'pservicos']);
                         echo $this->form()->closeTag($form);
                         ?>
                     </div>
                 </div>
                 <div class="tab-pane" id="Contato">
-                    1echo
+                    <?php
+                        echo $this->form()->openTag($form);
+                        echo $this->renderFormRow($form->get('pcontatos'));
+                        echo $this->FormRow($form->get('Salvar'));
+                        echo $this->form()->closeTag($form);
+                    ?>
                 </div>
 
                 <div class="tab-pane" id="Empresa">
-                    2echo
+                    <?php
+                        echo $this->form()->openTag($form);
+                        echo $this->renderFormRow($form->get('pempresa'));
+                        echo $this->FormRow($form->get('Salvar'));
+                        echo $this->form()->closeTag($form);
+                    ?>
                 </div>
-
 
                 <div class="tab-pane" id="Servicos">
-                    3echo
+                    <?php
+                        echo $this->form()->openTag($form);
+                        echo $this->renderFormRow($form->get('pservicos'));
+                        echo $this->FormRow($form->get('Salvar'));
+                        echo $this->form()->closeTag($form);
+                    ?>
                 </div>
-
 
             </div><!-- /.tabs-content -->
         </div><!-- /.nav-tabs-custom -->

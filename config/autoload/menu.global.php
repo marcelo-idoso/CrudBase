@@ -170,7 +170,19 @@ return [
                         'pages' => [
                             [
                                 'label' => 'Inserir',
+                                'route' => 'dashboard/slider/inserir',
+                            ],
+                            [
+                                'label' => 'Listar',
                                 'route' => 'dashboard/slider',
+                            ],
+                            [
+                                'label' => 'Editar',
+                                'route' => 'dashboard/slider/editar',
+                            ],
+                            [
+                                'label' => 'Excluir',
+                                'route' => 'dashboard/slider/excluir',
                             ],
                         ]
                     ]

@@ -15,7 +15,7 @@ use Base\Entity\AbstractEntity;
  * Postagem
  *
  * @ORM\Table(name="Slider")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Application\Repository\SliderRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class Slider extends AbstractEntity {
@@ -59,6 +59,14 @@ class Slider extends AbstractEntity {
      */
     private $link;
 
+    /**
+     *
+     * @var integer
+     * 
+     * @ORM\Column (name="orderexibir" , type="integer" , length=1 , nullable=true)
+     */
+    private $orderexibir;
+
     function getActive() {
         return $this->active;
     }
@@ -90,6 +98,7 @@ class Slider extends AbstractEntity {
     function setDescricao($descricao) {
         $this->descricao = $descricao;
     }
+
     function getLink() {
         return $this->link;
     }
@@ -98,5 +107,12 @@ class Slider extends AbstractEntity {
         $this->link = $link;
     }
 
+    function getOrderexibir() {
+        return $this->orderexibir;
+    }
+
+    function setOrderexibir($orderexibir) {
+        $this->orderexibir = $orderexibir;
+    }
 
 }

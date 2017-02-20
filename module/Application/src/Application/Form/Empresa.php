@@ -145,7 +145,7 @@ class Empresa extends AbstractForm {
             ),
             'attributes' => array(
                 'style' => 'height:550px; resize:vertical;',
-                'class' => 'form-control input-medium'
+                'class' => 'form-control input-medium TextTinymce'
             )
         ]);
         
@@ -158,7 +158,7 @@ class Empresa extends AbstractForm {
             ),
             'attributes' => array(
                 'style' => 'height:550px; resize:vertical;',
-                'class' => 'form-control input-medium'
+                'class' => 'form-control input-medium TextTinymce'
             )
         ]);
         
@@ -172,7 +172,7 @@ class Empresa extends AbstractForm {
             ),
             'attributes' => array(
                 'style' => 'height:550px; resize:vertical;',
-                'class' => 'form-control input-medium'
+                'class' => 'form-control input-medium TextTinymce'
             )
         ]);
     }

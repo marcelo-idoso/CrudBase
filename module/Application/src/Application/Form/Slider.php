@@ -8,49 +8,38 @@
 
 namespace Application\Form;
 
-use Base\Form\AbstractForm;
+use Zend\Form\Form;
+use Zend\InputFilter\InputFilterProviderInterface;
+use Doctrine\ORM\EntityManager;
 
-class Menu extends AbstractForm {
+class Slider extends Form implements InputFilterProviderInterface {
 
-    public function __construct() {
-        parent::__construct('Menu_Form');
+    protected $entityManager;
 
-        $view = array(
-            'name' => 'view',
-            'type' => 'Text',
-            'options' => array(
-                'label' => "View: "
-            ),
-            'attributes' => array(
-                'class' => 'form-control input-lg'
-            ),
-        );
+    public function __construct(EntityManager $entityManager) {
+        parent::__construct();
 
-        $controlador = array(
-            'name' => 'idControlador',
+        $this->entityManager = $entityManager;
+    }
+
+    public function init() {
+        $this->add(array(
+            'name' => 'continent',
             'type' => 'DoctrineModule\Form\Element\ObjectSelect',
             'options' => array(
-                'object_manager' => $this->getObjectManager(),
-                'target_class' => 'Application\Entity\Controlador',
-                'property' => 'dsControlador',
-                'label' => 'Modelo: ',
-                'empty_option' => '--- Selecionar Module ---',
+                'object_manager' => $this->entityManager,
+                'target_class' => 'Application\Entity\Slider',
+                'property' => 'order',
                 'is_method' => true,
                 'find_method' => array(
-                    'name' => 'findBy',
-                    'params' => array(
-                        'criteria' => array(),
-                        'orderBy' => array('dsControlador' => 'ASC'),
-                    ),
+                    'name' => 'getContinent',
                 ),
             ),
-            'attributes' => array(
-                'class' => 'form-control input-lg'
-            ),
-        );
+        ));
+    }
 
-        $this->add($view);
-        $this->add($controlador);
+    public function getInputFilterSpecification() {
+        return array();
     }
 
 }

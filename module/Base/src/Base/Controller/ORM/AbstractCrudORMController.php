@@ -127,7 +127,11 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
 
     public function indexAction() {
         // Recupera todos os registros no banco de Dados
-        $list = $this->getEntityManager()->getRepository($this->getEntityClass())->findAll();
+        if($this->getColumOrder() == NULL){
+            $list = $this->getEntityManager()->getRepository($this->getEntityClass())->findAll();
+        }else{
+            $list = $this->getEntityManager()->getRepository($this->getEntityClass())->findBy([], [$this->getColumOrder() => $this->defaultOrder]);
+        }
         $viewModel = new ViewModel(array(
             'router' => $this->getControllerName(1),
         ));

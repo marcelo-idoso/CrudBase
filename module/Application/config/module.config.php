@@ -40,6 +40,14 @@ return array(
             'Application\Controller\Postagem' => 'Application\Controller\Postagem',
             'Application\Controller\Slider' => 'Application\Controller\Slider',
         ),
+        'factories' => array(
+            'Application\Controller\Slider' => 'Application\Factory\Controller\SliderControllerFactory'
+        )
+    ),
+    'form_elements' => array(
+        'factories' => array(
+            'Application\Form\Slider' => 'Application\Form\Factory\SliderFormFactory',  
+        ),
     ),
     'view_manager' => array(
         'display_not_found_reason' => true,
@@ -56,6 +64,10 @@ return array(
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',
+        ),
+        // para enviar dados Json
+        'strategies' => array(
+            'ViewJsonStrategy',
         ),
     ),
     //Mapeamento de Entity Doctrine

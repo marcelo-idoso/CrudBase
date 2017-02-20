@@ -15,7 +15,7 @@ abstract class AbstractBaseController extends AbstractActionController{
     
     protected $errorMessage     = 'Erro Não Foi Possivel concluir a Operação Contate o Administrador!' ;
     
-    
+    protected $columOrder       = NULL;
     /**
      * Recupera o nome Do Module
      * 
@@ -56,7 +56,14 @@ abstract class AbstractBaseController extends AbstractActionController{
         return  $this->getControllerName(1) . '/' . $action;
     }
 
-    public function indexAction() {
-        return array();
+    function getColumOrder() {
+        return $this->columOrder;
     }
+
+    function setColumOrder($columOrder) {
+        $this->columOrder = $columOrder;
+    }
+
+
+    
 }
