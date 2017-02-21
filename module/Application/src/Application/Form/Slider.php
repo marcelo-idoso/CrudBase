@@ -1,45 +1,95 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 namespace Application\Form;
 
-use Zend\Form\Form;
-use Zend\InputFilter\InputFilterProviderInterface;
-use Doctrine\ORM\EntityManager;
+use Base\Form\AbstractForm;
+use Application\Form\Filter\SliderFilter;
 
-class Slider extends Form implements InputFilterProviderInterface {
+class Slider extends AbstractForm {
 
-    protected $entityManager;
 
-    public function __construct(EntityManager $entityManager) {
-        parent::__construct();
+    public function __construct() {
+        parent::__construct('Slider');
 
-        $this->entityManager = $entityManager;
-    }
+        $this->setInputFilter(new SliderFilter());
 
-    public function init() {
-        $this->add(array(
-            'name' => 'continent',
+        $this->add([
+            'name' => 'titulo',
+            'type' => 'Text',
+            'options' => array(
+                'label' => "Titulo: "
+            ),
+            'attributes' => array(
+                'class' => 'form-control input-lg'
+            ),
+        ]);
+
+
+        $this->add([
+            'name' => 'descricao',
+            'type' => 'Text',
+            'options' => array(
+                'label' => "Descrição: "
+            ),
+            'attributes' => array(
+                'class' => 'form-control input-lg'
+            ),
+        ]);
+
+
+        $this->add([
+            'name' => 'link',
+            'type' => 'Text',
+            'options' => array(
+                'label' => "Link: "
+            ),
+            'attributes' => array(
+                'class' => 'form-control input-lg'
+            ),
+        ]);
+
+
+        $this->add([
+            'name' => 'img',
+            'type' => 'File',
+            'options' => array(
+                'label' => "Imagem: "
+            ),
+            'attributes' => array(
+                'class' => 'form-control input-lg'
+            ),
+        ]);
+
+
+        $this->add([
+            'name' => 'active',
+            'type' => 'Checkbox',
+            'options' => array(
+                'label' => "Ativo: "
+            ),
+        ]);
+        
+        $this->add([
+            'name' => 'idmodule',
             'type' => 'DoctrineModule\Form\Element\ObjectSelect',
             'options' => array(
-                'object_manager' => $this->entityManager,
+                'object_manager' => $this->getObjectManager(),
                 'target_class' => 'Application\Entity\Slider',
-                'property' => 'order',
+                'property' => 'orderexibir',
+                'label' => 'Ordem: ',
                 'is_method' => true,
                 'find_method' => array(
-                    'name' => 'getContinent',
+                    'name' => 'findall',
+                    'params' => array(
+                        'criteria' => array(),
+                    ),
                 ),
             ),
-        ));
-    }
-
-    public function getInputFilterSpecification() {
-        return array();
+            'attributes' => array(
+                'class' => 'form-control input-lg'
+            ),
+        ]);
+         
     }
 
 }

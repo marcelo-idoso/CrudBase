@@ -21,7 +21,7 @@ class SliderRepository extends EntityRepository {
 
         $max = $select[0][1];
         if (isset($max)) {
-            return $max + 1;
+            return $max ;
         } else {
             return 1;
         }
@@ -30,7 +30,7 @@ class SliderRepository extends EntityRepository {
     public function getContinent() {
         $querybuilder = $this->createQueryBuilder('c');
         return $querybuilder->select('c')
-                        ->orderBy('c.id', 'ASC')
+                        ->where('c.orderexibir =' . $this->MaxOrder())
                         ->getQuery()->getResult();
     }
 

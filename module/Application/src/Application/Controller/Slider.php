@@ -2,25 +2,10 @@
 
 namespace Application\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
-use Zend\Form\FormInterface;
-use Zend\View\Model\ViewModel;
+use Base\Controller\AbstractCrudController;
 
-class Slider extends AbstractActionController {
+class Slider extends AbstractCrudController {
 
-    protected $countriesForm;
-
-    public function __construct(FormInterface $countriesForm) {
-        $this->countriesForm = $countriesForm;
-    }
-   
-    public function inserir() {
-        return new ViewModel(array(
-            'form' => $this->countriesForm ,
-        ));
-    }
-    
-    
     public function indexAction() {
         if ($this->getRequest()->isPost()) {
 

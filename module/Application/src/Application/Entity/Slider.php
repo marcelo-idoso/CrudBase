@@ -23,7 +23,7 @@ class Slider extends AbstractEntity {
     /**
      * @var string
      * 
-     * @ORM\Column(name="img" ,type="text" , length=255, nullable=false) 
+     * @ORM\Column(name="img" ,type="text" , length=255, nullable=TRUE) 
      */
     private $img;
 
@@ -112,7 +112,7 @@ class Slider extends AbstractEntity {
     }
 
     function setOrderexibir($orderexibir) {
-        $this->orderexibir = $orderexibir;
+        $this->orderexibir = $orderexibir + 1;
     }
 
 }

@@ -174,8 +174,16 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
         $request = $this->getRequest();
 
         if ($request->isPost()) {
-            $form->setData($request->getPost());
+            
+            $postImg = array_merge_recursive(
+                    $this->getRequest()->getPost()->toArray(),
+                    $this->getRequest()->getFiles()->toArray()
+                    );
+            
+            
+            $form->setData($postImg);
 
+            
             $form->bind($entity);
 
             if ($form->isValid()) {
