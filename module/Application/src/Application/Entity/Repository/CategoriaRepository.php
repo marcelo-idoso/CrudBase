@@ -30,68 +30,76 @@ class CategoriaRepository extends EntityRepository {
 
         return $return[0];
     }
-    
+
     public function listView() {
         $naoExibir = $this->listView1();
-        $exbir     = $this->listView2();
-        
-        $nav = $naoExibir + $exbir;
-        
-        return $nav;
+        $exbir = $this->listView2();
+
+        if ($naoExibir != false or $exbir != False) {
+
+            return array_merge($naoExibir, $exbir);
+        }else {
+            return FALSE ;
+        }
     }
+
     public function listView1($parent = 1) {
         $listView = $this->createQueryBuilder('s')
-                ->where("s.exibir = '$parent'") 
-                ->orderBy('s.orderexibir' , 'ASC')
+                ->where("s.exibir = '$parent'")
+                ->orderBy('s.orderexibir', 'ASC')
                 ->getQuery()
                 ->getResult();
         $i = 0;
-        if (!empty($listView)) {
-            foreach ($listView as $product) {
-                 $nav[$i] = array(
+        if ($listView != NULL) {
+            if (!empty($listView)) {
+                foreach ($listView as $product) {
+                    $nav[$i] = array(
                         'label' => $product->getNome(),
                         'route' => $product->getLink(),
-                    );                
-                if ($product->getExibir() == 1) {
-                    $nav[$i] = $nav[$i];
+                    );
+                    if ($product->getExibir() == 1) {
+                        $nav[$i] = $nav[$i];
+                    }
+                    $i++;
                 }
-                $i++;
             }
+            return $nav;
+        } else {
+            return FALSE;
         }
-        return $nav;
     }
-    
+
     public function listView2($parent = 2) {
         $listView = $this->createQueryBuilder('s')
                 ->where("s.exibir = '$parent'")
-                ->orderBy('s.orderexibir' , 'ASC')
-                ->orderBy('s.nome' , 'ASC')
+                ->orderBy('s.orderexibir', 'ASC')
+                ->orderBy('s.nome', 'ASC')
                 ->getQuery()
                 ->getResult();
         $i = 0;
-        if (!empty($listView)) {
-            foreach ($listView as $product) {
-                 $nav[$i] = array(
+        if ($listView != NULL) {
+
+            if (!empty($listView)) {
+                foreach ($listView as $product) {
+                    $nav[$i] = array(
                         'label' => $product->getNome(),
                         'route' => 'categoria',
-                        'id'    => $product->getLink()
-                    );                
-                $i++;
+                        'id' => $product->getLink()
+                    );
+                    $i++;
+                }
             }
+            $final['categoria'] = array(
+                'label' => 'Categoria',
+                'uri' => '#',
+                'pages' => $nav
+            );
+            return $final;
+        } else {
+            return FALSE;
         }
-        $final['categoria'] = array(
-            'label' => 'Categoria',
-            'uri'   => '#',
-            'pages' => $nav
-            
-        );
-        
-       
-        
-        return $final;
     }
-    
-    
+
     public function AllView() {
         $alllist = $this->findAll();
 

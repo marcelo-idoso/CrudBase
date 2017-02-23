@@ -28,19 +28,28 @@ class UltimasNoticias extends AbstractHelper implements ServiceManagerAwareInter
      */
     public function __invoke() {
         $entity = $this->getEntityManager()->getRepository('Application\Entity\Postagem')->findBy([], ['id' => 'desc'], 6);
-        $render = $this->renderItem($entity);
-        return $render;
+
+        if ($entity != NULL) {
+            $render = $this->renderItem($entity);
+            return $render;
+        }else{
+            return FALSE;
+        }
     }
 
     public function renderItem($item) {
         /* @var $itens \Application\Entity\Postagem */
         $html = '';
+        $html.= '<div id="ultimas_noticias">';
+        $html.= '<h1>Últimas Postagens</h1>';
+        $html.= '<ul>';
         foreach ($item as $itens) {
             $html .= '<li>';
             $html .= ' <a href="http://inlocoassessoriaeservicos.cnt.br.dev/posts/' . $itens->getLink() . '">' . $itens->getTitulo() . '</a>';
-            $html .= '</li>';    
+            $html .= '</li>';
         }
-        
+        $html.= '</ul>';
+        $html.= '</div>';
 
         return $html;
     }
@@ -91,4 +100,5 @@ class UltimasNoticias extends AbstractHelper implements ServiceManagerAwareInter
             $this->em = $this->getEntityManager()->getRepository('Application\Entity\Postagem');
         return $this->em;
     }
+
 }

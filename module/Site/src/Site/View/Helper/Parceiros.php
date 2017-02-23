@@ -28,8 +28,12 @@ class Parceiros extends AbstractHelper implements ServiceManagerAwareInterface {
      */
     public function __invoke() {
         $entity = $this->getEntityManager()->getRepository('Application\Entity\Parceiros')->findAll();
-        $render = $this->renderItem($entity);
-        return $render;
+        if ($entity != NULL) {
+            $render = $this->renderItem($entity);
+            return $render;
+        }else{
+            return FALSE ;
+        }
     }
 
     public function renderItem($item) {
@@ -38,8 +42,8 @@ class Parceiros extends AbstractHelper implements ServiceManagerAwareInterface {
         $html .= '<div class="col-md-12" id="publicidade-lateral">';
         $html .= '<h1>Parceiros </h1>';
         foreach ($item as $itens) {
-            $html .= '<a href="'. $itens->getLink() . '"> ';
-            $html .='<img src="'. $itens->getImg() .'" alt="" width="292" height="190"/>';
+            $html .= '<a href="' . $itens->getLink() . '"> ';
+            $html .='<img src="' . $itens->getImg() . '" alt="" width="292" height="190"/>';
             $html .='</a>';
         }
         $html .= '</div>';

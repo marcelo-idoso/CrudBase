@@ -28,10 +28,13 @@ class Empresa extends AbstractHelper implements ServiceManagerAwareInterface {
      */
     public function __invoke() {
         $entity = $this->getEntityManager()->getRepository('Application\Entity\Empresa')->findAll();
-        return $entity[0];
+        if ($entity != null) {
+            return $entity[0];
+        } else {
+            return false;
+        }
     }
 
-   
     /**
      * @return Doctrine\ORM\EntityManager
      */
@@ -78,9 +81,9 @@ class Empresa extends AbstractHelper implements ServiceManagerAwareInterface {
             $this->em = $this->getEntityManager()->getRepository('Application\Entity\Empresa');
         return $this->em;
     }
-    public function teste() {
-            return "marcelo" ;
-    }
 
+    public function teste() {
+        return "marcelo";
+    }
 
 }

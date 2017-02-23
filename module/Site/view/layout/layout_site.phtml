@@ -1,11 +1,19 @@
 <?php echo $this->doctype(); ?>
-<?php $icone = ($this->render_Empresa()->getLogoico() ? $this->render_Empresa()->getLogoico()  :'php_logo.ico');
-      $logo = ($this->render_Empresa()->getLogo() ? $this->render_Empresa()->getLogo()  :'php_logo.png');
+<?php
+if ($this->render_Empresa() != false) {
+    $icone = $this->render_Empresa()->getLogoico();
+    $logo = $this->render_Empresa()->getLogo();
+    $empresa = $this->render_Empresa()->getNome();
+} else {
+    $icone = 'php_logo.ico';
+    $logo = 'php_logo.png';
+    $empresa = "ZF2";
+}
 ?> 
 <html lang="pt-br">
     <head>
         <meta charset="utf-8">
-        <?php echo $this->headTitle($this->translate($this->render_Empresa()->getNome()))->setSeparator(' - ')->setAutoEscape(false) ?>
+        <?php echo $this->headTitle($this->translate($empresa))->setSeparator(' - ')->setAutoEscape(false) ?>
 
         <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
 
@@ -13,8 +21,8 @@
         <?php
         echo $this->headLink(
                         array(
-                            'rel' => 'shortcut icon',
-                            'href' => "imagem/icon/$icone" ), 'PREPEND')
+                    'rel' => 'shortcut icon',
+                    'href' => "imagem/icon/$icone"), 'PREPEND')
                 ->prependStylesheet($this->basePath('css/site/default.css'))
                 ->prependStylesheet($this->basePath('css/vendor/fortawesome/font-awesome.min.css'))
                 ->prependStylesheet($this->basePath('css/vendor/plugins.css'));
@@ -29,12 +37,14 @@
 
     </head>
     <body>
-        
+
         <header><!-- Inicio da Header -->
             <div class="container" id="container"> <!--Inicio do Container -->
                 <div id="topo"><!--Inicio da Div Topo -->
                     <div id="logo">
-                        <img src="<?= $this->basePath('imagem/'.$logo) ?>" class="img-responsive" alt="" />
+                        <a href="<?= $this->url('home') ?>" title="Inloco Assessoria e Serviço">
+                            <img src="<?= $this->basePath('imagem/' . $logo) ?>" class="img-responsive" alt="Inloco Assessoria & Serviço" />
+                        </a>
                     </div>
                     <div id="pesquisa"><!--Inicio da Div pesquisa  -->
                         <p>Olá, Seja bem-Vindo <a href="<?= $this->url('login') ?>"> Área Restrita </a> </p>
@@ -55,17 +65,21 @@
         <?php $partial = array('partials/_site_navigation.phtml', 'default') ?>
         <?php $this->navigation('navigationSite')->menu()->setPartial($partial) ?>
         <?php echo $this->navigation('navigationSite')->menu() ?>
-        
+
         <?php echo $this->content; ?>
         <footer>
             <div class="container">
                 <div class="content" id="footer-sidebar">
                     <div class="footer-widget footer-widget--about">
-                        <a href="" title="Criando sites profissionais passo a passo">
-                            <img src="<?= $this->basePath('imagem/'.$logo) ?>" class="img-responsive" alt="Criando sites profissionais passo a passo" title="Criando sites profissionais passo a passo">
+                        <a href="<?= $this->url('home') ?>" title="inloco assessoria e serviços">
+                            <img src="<?= $this->basePath('imagem/' . $logo) ?>" class="img-responsive" alt="Inloco Assessoria & Serviço" />
                         </a>
                         <p>
-                            <?= ($this->render_Empresa()->getMimidescrempre()? $this->render_Empresa()->getMimidescrempre() : '');?>
+                            <?php
+                            if ($this->render_Empresa() != FALSE) {
+                                echo ($this->render_Empresa()->getMimidescrempre() ? $this->render_Empresa()->getMimidescrempre() : '');
+                            }
+                            ?>
                         </p>
                     </div>
                     <div class="footer-widget">
@@ -94,14 +108,16 @@
                             <span class="glyphicon glyphicon-pencil"></span> 
                             <p>Localização</p>
                         </div>
-                        <address>
-                            <strong><?= ($this->render_Empresa()->getNome()? $this->render_Empresa()->getNome() : '');?></strong><br>
-                            <strong>Endereço:</strong><?= ($this->render_Empresa()->getEndereco()? $this->render_Empresa()->getEndereco() : '');?><br>
-                            <strong>CEP.</strong> <?= ($this->render_Empresa()->getCep()? $this->render_Empresa()->getCep() : '');?> <br>
-                            <strong>Horario:</strong><?= ($this->render_Empresa()->getHorario()? $this->render_Empresa()->getHorario() : '');?> <br>
-                            <strong>Telefone:</strong> <?= ($this->render_Empresa()->getTelefone()? $this->render_Empresa()->getTelefone() : '');?>
-                        </address>
-                        <iframe src="<?= ($this->render_Empresa()->getgoogleMaps()? $this->render_Empresa()->getgoogleMaps() : '');?>"  frameborder="0" style="border:0" allowfullscreen></iframe>
+                        <?php if ($this->render_Empresa() != FALSE): ?>
+                            <address>
+                                <strong><?= ($this->render_Empresa()->getNome() ? $this->render_Empresa()->getNome() : ''); ?></strong><br>
+                                <strong>Endereço:</strong><?= ($this->render_Empresa()->getEndereco() ? $this->render_Empresa()->getEndereco() : ''); ?><br>
+                                <strong>CEP.</strong> <?= ($this->render_Empresa()->getCep() ? $this->render_Empresa()->getCep() : ''); ?> <br>
+                                <strong>Horario:</strong><?= ($this->render_Empresa()->getHorario() ? $this->render_Empresa()->getHorario() : ''); ?> <br>
+                                <strong>Telefone:</strong> <?= ($this->render_Empresa()->getTelefone() ? $this->render_Empresa()->getTelefone() : ''); ?>
+                            </address>
+                            <iframe src="<?= ($this->render_Empresa()->getgoogleMaps() ? $this->render_Empresa()->getgoogleMaps() : ''); ?>"  frameborder="0" style="border:0" allowfullscreen></iframe>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>

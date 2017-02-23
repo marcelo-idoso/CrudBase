@@ -7,14 +7,10 @@ echo $this->render_Slider();
     <div class="row">
         <?= $this->render_Categoria(); ?>
         <div id="widget-menu-list-lateral">
-            <div id="ultimas_noticias">
-                <h1>Últimas Postagens</h1>
-                <ul>
-                   <?= $this->render_Ultimas_Noticas(); ?> 
-                </ul>
-            </div>
-            
-                <?= $this->render_Parceiros(); ?>
+
+            <?= $this->render_Ultimas_Noticas(); ?> 
+
+            <?= $this->render_Parceiros(); ?>
 
         </div>
     </div>

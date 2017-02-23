@@ -1,4 +1,9 @@
 <?php
+if ($this->render_Empresa() != false) {
+    $logo = $this->render_Empresa()->getLogo();
+} else {
+    $logo = 'php_logo.png';
+}
 $this->layout('layout/layout_login.phtml');
 $form = $this->loginForm;
 $form->prepare();
@@ -9,9 +14,10 @@ $this->placeholder('mostraFooter')->set('não');
 
 <div class="login-box">
     <div class="login-logo">  
-        <a href="#">
-            <img src="<?= $this->basePath('imagem/php_logo.png'); ?>" class="img-responsive" style="padding: 10px">
+        <a href="<?= $this->url('home') ?>" title="Inloco Assessoria e Serviço">
+            <img src="<?= $this->basePath('imagem/' . $logo) ?>" class="img-responsive" alt="Inloco Assessoria & Serviço" style="padding: 10px"/>
         </a>
+
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">

@@ -14,25 +14,24 @@ class NavigationSite extends DefaultNavigationFactory {
         return 'navigationSite';
     }
 
-    protected function getPages(ServiceLocatorInterface $serviceLocator)
-    {
+    protected function getPages(ServiceLocatorInterface $serviceLocator) {
         $navigation = array();
         if (null === $this->pages) {
             $navigation = $serviceLocator->get('Doctrine\ORM\EntityManager')
-                                           ->getRepository('Application\Entity\Categoria')
-                                           ->listView();
-            
-            $mvcEvent = $serviceLocator->get('Application')
-                                       ->getMvcEvent();
-            $routeMatch = $mvcEvent->getRouteMatch();
-            $router     = $mvcEvent->getRouter();
-            $pages      = $this->getPagesFromConfig($navigation);
-            
-            $this->pages = $this->injectComponents(
-                                $pages,
-                                $routeMatch,
-                                $router
-                            );
+                    ->getRepository('Application\Entity\Categoria')
+                    ->listView();
+            if($navigation != NULL) {
+
+                $mvcEvent = $serviceLocator->get('Application')
+                        ->getMvcEvent();
+                $routeMatch = $mvcEvent->getRouteMatch();
+                $router = $mvcEvent->getRouter();
+                $pages = $this->getPagesFromConfig($navigation);
+
+                $this->pages = $this->injectComponents(
+                        $pages, $routeMatch, $router
+                );
+            }
         }
         return $this->pages;
     }

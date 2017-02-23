@@ -6,7 +6,7 @@ $settings = array(
     //'zend_db_adapter' => 'Zend\Db\Adapter\Adapter',
     'user_entity_class' => 'Application\Entity\User',
     'enable_default_entities' => FALSE,
-    'enable_registration' => True,
+    'enable_registration' => FALSE,
     'enable_username' => false,
     'auth_adapters' => array( 100 => 'ZfcUser\Authentication\Adapter\Db' ),
     'enable_display_name' => true,

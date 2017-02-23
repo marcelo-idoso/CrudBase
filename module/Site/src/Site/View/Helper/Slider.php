@@ -27,9 +27,15 @@ class Slider extends AbstractHelper implements ServiceManagerAwareInterface {
      * @return type
      */
     public function __invoke() {
-        $entity = $this->getEntityManager()->getRepository('Application\Entity\Slider')->findBy([], ['orderexibir' => 'ASC' , 'active' => 1 ]);
-        $render = $this->renderSlider($entity);
-        return $render;
+
+        $entity = $this->getEntityManager()->getRepository('Application\Entity\Slider')->findBy([], ['orderexibir' => 'ASC']);
+        if ($entity != NULL) {
+            $entity = $this->getEntityManager()->getRepository('Application\Entity\Slider')->findBy([], ['orderexibir' => 'ASC', 'active' => '1']);
+            $render = $this->renderSlider($entity);
+            return $render;
+        }else{
+            return false;
+        }
     }
 
     public function renderItem($item) {
@@ -42,26 +48,26 @@ class Slider extends AbstractHelper implements ServiceManagerAwareInterface {
             } else {
                 $html .= '<div class="item" >';
             }
-            if ($itens->getLink()){
-                $html .= '<a href="'. $itens->getLink() .'">';
+            if ($itens->getLink()) {
+                $html .= '<a href="' . $itens->getLink() . '">';
             }
-            
+
             $html .= '<img src="' . $itens->getImg() . '" alt="' . $itens->getId() . '">';
-                if ($itens->getTitulo() or $itens->getDescricao()) {
-                    $html .= '<div class="carousel-caption">';
-                    if ($itens->getTitulo()) {
-                        $html .= '<h3>';
-                        $html .= $itens->getTitulo();
-                        $html .= '</h3>';
-                    }
-                    if ($itens->getDescricao()) {
-                        $html .= '<p>';
-                        $html .= $itens->getDescricao();
-                        $html .= '</p>';
-                    }
-                    $html .= '</div>';
+            if ($itens->getTitulo() or $itens->getDescricao()) {
+                $html .= '<div class="carousel-caption">';
+                if ($itens->getTitulo()) {
+                    $html .= '<h3>';
+                    $html .= $itens->getTitulo();
+                    $html .= '</h3>';
                 }
-            if ($itens->getLink()){
+                if ($itens->getDescricao()) {
+                    $html .= '<p>';
+                    $html .= $itens->getDescricao();
+                    $html .= '</p>';
+                }
+                $html .= '</div>';
+            }
+            if ($itens->getLink()) {
                 $html .= '</a>';
             }
             $html .= '</div>';
