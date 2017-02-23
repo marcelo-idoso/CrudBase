@@ -6,9 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Base\Entity\AbstractEntity;
 
 /**
- * Module
+ * MODULE
  *
- * @ORM\Table(name="module")
+ * @ORM\Table(name="MODULE")
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */

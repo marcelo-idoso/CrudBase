@@ -11,7 +11,7 @@
 namespace Application;
 
 use Zend\Mvc\ModuleRouteListener;
-
+use Zend\View\Helper\Navigation;
 class Module {
 
     public function onBootstrap($e) {
@@ -29,8 +29,10 @@ class Module {
         $authorize = $sm->get('BjyAuthorizeServiceAuthorize');
         $acl = $authorize->getAcl();
         $role = $authorize->getIdentity();
-        \Zend\View\Helper\Navigation::setDefaultAcl($acl);
-        \Zend\View\Helper\Navigation::setDefaultRole($role);
+        $setacl = new Navigation();
+        $setacl->setDefaultAcl($acl);
+        $setacl->setDefaultRole($role);
+        
     }
 
     public function getConfig() {

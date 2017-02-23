@@ -58,11 +58,11 @@
 
                     <input type="button" id="Atualizar" value="Atualizar" />    
                     <div id="OrderList" class="numberlist">
-                        <?php if ($this->data->count()): ?>
+                        <?php if ($this->parent->listOrder): ?>
                             <ol>
                                 <?php foreach ($this->data as $entity) : ?>
                                     <li id="widgetArray_<?= $entity->getId() ?>"> <a href="#"><?= $entity->getTitulo() ?> - Ordem  <?= $entity->getOrderExibir() ?></a></li>
-                                <?php endforeach; ?>
+                                    <?php endforeach; ?>
                             </ol>    
                         <?php endif; ?>
                     </div>

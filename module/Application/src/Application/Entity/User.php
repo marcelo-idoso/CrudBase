@@ -11,7 +11,7 @@ use Base\Entity\AbstractEntity;
  * An example of how to implement a role aware user entity.
  *
  * @ORM\Entity
- * @ORM\Table(name="users")
+ * @ORM\Table(name="USERS")
  * @ORM\HasLifecycleCallbacks
  * @author Tom Oram <tom@scl.co.uk>
  */

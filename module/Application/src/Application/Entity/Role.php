@@ -1,11 +1,4 @@
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 namespace Application\Entity;
 
 use BjyAuthorize\Acl\HierarchicalRoleInterface;
@@ -15,12 +8,12 @@ use Doctrine\ORM\Mapping as ORM;
  * An example entity that represents a role.
  *
  * @ORM\Entity
- * @ORM\Table(name="role")
+ * @ORM\Table(name="ROLE")
  *
  * @author Tom Oram <tom@scl.co.uk>
  */
-class Role implements HierarchicalRoleInterface
-{
+class Role implements HierarchicalRoleInterface {
+
     /**
      * @var int
      * @ORM\Id
@@ -46,8 +39,7 @@ class Role implements HierarchicalRoleInterface
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -58,9 +50,8 @@ class Role implements HierarchicalRoleInterface
      *
      * @return void
      */
-    public function setId($id)
-    {
-        $this->id = (int)$id;
+    public function setId($id) {
+        $this->id = (int) $id;
     }
 
     /**
@@ -68,8 +59,7 @@ class Role implements HierarchicalRoleInterface
      *
      * @return string
      */
-    public function getRoleId()
-    {
+    public function getRoleId() {
         return $this->roleId;
     }
 
@@ -80,8 +70,7 @@ class Role implements HierarchicalRoleInterface
      *
      * @return void
      */
-    public function setRoleId($roleId)
-    {
+    public function setRoleId($roleId) {
         $this->roleId = (string) $roleId;
     }
 
@@ -90,8 +79,7 @@ class Role implements HierarchicalRoleInterface
      *
      * @return Role
      */
-    public function getParent()
-    {
+    public function getParent() {
         return $this->parent;
     }
 
@@ -102,8 +90,8 @@ class Role implements HierarchicalRoleInterface
      *
      * @return void
      */
-    public function setParent(Role $parent)
-    {
+    public function setParent(Role $parent) {
         $this->parent = $parent;
     }
+
 }

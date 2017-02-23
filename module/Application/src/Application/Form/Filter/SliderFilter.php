@@ -14,7 +14,7 @@ class SliderFilter extends InputFilter {
         $arquivo = new FileInput('img');
         $arquivo->setRequired(FALSE);
         $arquivo->getFilterChain()->attach(new RenameUpload([
-            'target' => './data',
+            'target' => './public/imagem/upload/',
             'use_upload_extension' => TRUE,
             'randomize' => TRUE
         ]));

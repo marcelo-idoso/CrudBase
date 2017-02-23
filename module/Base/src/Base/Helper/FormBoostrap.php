@@ -26,60 +26,115 @@ class FormBoostrap extends AbstractHelper {
 
         $html = '';
         if (!$element instanceof \Zend\Form\Element\Button) {
+            if (!$element instanceof \Zend\Form\Element\File) {
+                $html = '<div ';
+                $attributes = (array) $element->getOption('wrapper-attributes');
 
-            $html = '<div ';
-            $attributes = (array) $element->getOption('wrapper-attributes');
-
-            $attributes['class'] = (isset($attributes['class']) ? $attributes['class'] : '') . ' form-group';
-            $html .= $this->createAttributesString($attributes);
-
-
-            $html .='>';
-            $html .= '<label for="' . $element->getName() . '" class="col-sm-2 control-label">'
-                    . $element->getLabel()
-                    . '</label>';
-            if ($element->getOption('append')) {
-                $html .= '<div class="col-sm-8">';
-            } else {
-                $html .= '<div class="col-sm-10">';
-            }
-            $html.= $this->getView()->formElement($element);
-            $html .= '</div>';
-            if ($element->getOption('append')) {
-                $html.= '<div class="col-sm-2">'
-                        . $element->getOption('append')
-                        . '</div>';
-            }
-            $html .= '</div>';
-            $html = '<div ';
-            $attributes = (array) $element->getOption('wrapper-attributes');
-
-            $attributes['class'] = (isset($attributes['class']) ? $attributes['class'] : '') . ' form-group';
-            $html .= $this->createAttributesString($attributes);
+                $attributes['class'] = (isset($attributes['class']) ? $attributes['class'] : '') . ' form-group';
+                $html .= $this->createAttributesString($attributes);
 
 
-            $html .='>';
-            $html .= '<label for="' . $element->getName() . '" class="control-label">'
-                    . $element->getLabel()
-                    . '</label>';
-            $html.= $this->getView()->formElement($element);
-            if ($element->getMessages()) {
-                foreach ($element->getMessages() as $messagem) {
-                    $html .= '<span class="help-block">' . $messagem . '</span>';
+                $html .='>';
+                $html .= '<label for="' . $element->getName() . '" class="col-sm-2 control-label">'
+                        . $element->getLabel()
+                        . '</label>';
+                if ($element->getOption('append')) {
+                    $html .= '<div class="col-sm-8">';
+                } else {
+                    $html .= '<div class="col-sm-10">';
                 }
-            }
-            $html .= '</div>';
-            
-            if (isset($remove)) {
-                foreach ($remove as $key) {
-                    if ($key == $element->getName()) {
-                        $html = '';
+                $html.= $this->getView()->formElement($element);
+                $html .= '</div>';
+                if ($element->getOption('append')) {
+                    $html.= '<div class="col-sm-2">'
+                            . $element->getOption('append')
+                            . '</div>';
+                }
+                $html .= '</div>';
+                $html = '<div ';
+                $attributes = (array) $element->getOption('wrapper-attributes');
+
+                $attributes['class'] = (isset($attributes['class']) ? $attributes['class'] : '') . ' form-group';
+                $html .= $this->createAttributesString($attributes);
+
+
+                $html .='>';
+                $html .= '<label for="' . $element->getName() . '" class="control-label">'
+                        . $element->getLabel()
+                        . '</label>';
+                $html.= $this->getView()->formElement($element);
+                
+                if ($element->getMessages()) {
+                    foreach ($element->getMessages() as $messagem) {
+                        $html .= '<span class="help-block">' . $messagem . '</span>';
                     }
                 }
-            }
+                $html .= '</div>';
 
-            return $html;
+                if (isset($remove)) {
+                    foreach ($remove as $key) {
+                        if ($key == $element->getName()) {
+                            $html = '';
+                        }
+                    }
+                }
+
+                return $html;
+            } else {
+                return $this->renderElementFile($element);
+            }
         }
+    }
+
+    public function renderElementFile(\Zend\Form\Element $element, Array $remove = null) {
+        $html = '<div ';
+            $attributes = (array) $element->getOption('wrapper-attributes');
+            $attributes['class'] = (isset($attributes['class']) ? $attributes['class'] : '') . ' form-group';
+            $html .= $this->createAttributesString($attributes);
+        $html .='>';
+        
+        $html .= '<label for="' . $element->getName() . '" class="col-sm-2 control-label">'
+                . $element->getLabel()
+                . '</label>';
+        if ($element->getOption('append')) {
+            $html .= '<div class="col-sm-8">';
+        } else {
+            $html .= '<div class="col-sm-10">';
+        }
+        $html.= $this->getView()->formElement($element);
+        
+        
+        $html .= '</div>';
+        if ($element->getOption('append')) {
+            $html.= '<div class="col-sm-2">'
+                    . $element->getOption('append')
+                    . '</div>';
+        }
+        $html .= '</div>';
+        $html = '<div ';
+        $attributes = (array) $element->getOption('wrapper-attributes');
+
+        $attributes['class'] = (isset($attributes['class']) ? $attributes['class'] : '') . ' form-group';
+        $html .= $this->createAttributesString($attributes);
+
+
+        $html .='>';
+        $html .= '<label for="' . $element->getName() . '" class="control-label">'
+                . $element->getLabel()
+                . '</label>';
+        $html.= $this->getView()->formElement($element);
+        $html.= '<div class="input-group">';
+        $html.= '<span class="input-group-addon"> <i class="fa fa-envelope"> Upload </i></span>';
+        $html.= '<input class="form-control input-lg" type="text" id="imagem_text" value="'.$element->getValue() .'" />';
+        $html.= '</div>';
+        if ($element->getMessages()) {
+            foreach ($element->getMessages() as $messagem) {
+                $html .= '<span class="help-block">' . $messagem . '</span>';
+            }
+        }
+        $html .= '</div>';
+        
+        return $html;
     }
 
     public function renderElementButton(\Zend\Form\Element $element, Array $remove = null) {

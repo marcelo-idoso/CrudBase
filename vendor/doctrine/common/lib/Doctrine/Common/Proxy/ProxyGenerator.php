@@ -59,7 +59,7 @@ class ProxyGenerator
      * @var string[]|callable[]
      */
     protected $placeholders = [
-        'baseProxyInterface'   => Proxy::class,
+        'baseProxyInterface'   => 'Proxy',
         'additionalProperties' => '',
     ];
 

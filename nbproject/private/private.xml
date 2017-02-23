@@ -17,13 +17,24 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/CrudBase/module/Application/config/module.config.php</file>
-            <file>file:/C:/xampp/htdocs/CrudBase/module/Application/src/Application/Factory/Form/SliderFormFactory.php</file>
-            <file>file:/C:/xampp/htdocs/CrudBase/module/Application/src/Application/Repository/SliderRepository.php</file>
-            <file>file:/C:/xampp/htdocs/CrudBase/module/Application/src/Application/Controller/Slider.php</file>
-            <file>file:/C:/xampp/htdocs/CrudBase/module/Application/src/Application/Form/Slider.php</file>
+            <file>file:/C:/xampp/htdocs/CrudBase/module/Application/src/Application/Entity/Menu.php</file>
+            <file>file:/C:/xampp/htdocs/CrudBase/module/Application/src/Application/Entity/Role.php</file>
+            <file>file:/C:/xampp/htdocs/CrudBase/module/Application/src/Application/Entity/Empresa.php</file>
+            <file>file:/C:/xampp/htdocs/CrudBase/module/Application/src/Application/Entity/Module.php</file>
+            <file>file:/C:/xampp/htdocs/CrudBase/config/application.config.php</file>
             <file>file:/C:/xampp/htdocs/CrudBase/module/Application/src/Application/Entity/Slider.php</file>
-            <file>file:/C:/xampp/htdocs/CrudBase/module/Application/src/Application/Factory/Controller/SliderControllerFactory.php</file>
+            <file>file:/C:/xampp/htdocs/CrudBase/module/Application/src/Application/Entity/User.php</file>
+            <file>file:/C:/xampp/htdocs/CrudBase/data/Sql/Trigger_limitar_insert.sql</file>
+            <file>file:/C:/xampp/htdocs/CrudBase/module/Application/src/Application/Entity/Postagem.php</file>
+            <file>file:/C:/xampp/htdocs/CrudBase/module/Site/src/Site/View/Helper/Slider.php</file>
+            <file>file:/C:/xampp/htdocs/CrudBase/module/Application/src/Application/Entity/Parceiros.php</file>
+            <file>file:/C:/xampp/htdocs/CrudBase/init_autoloader.php</file>
+            <file>file:/C:/xampp/htdocs/CrudBase/config/autoload/doctrine_orm.global.php</file>
+            <file>file:/C:/xampp/htdocs/CrudBase/module/Application/src/Application/Entity/Controlador.php</file>
+            <file>file:/C:/xampp/htdocs/CrudBase/config/autoload/bjyauthorize.global.php</file>
+            <file>file:/C:/xampp/htdocs/CrudBase/public/index.php</file>
+            <file>file:/C:/xampp/htdocs/CrudBase/module/Application/src/Application/Entity/Repository/CategoriaRepository.php</file>
+            <file>file:/C:/xampp/htdocs/CrudBase/module/Application/src/Application/Entity/Categoria.php</file>
         </group>
     </open-files>
 </project-private>

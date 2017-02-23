@@ -7,9 +7,9 @@ use Base\Entity\AbstractEntity;
 use Base\Funcoes\Url;
 
 /**
- * Postagem
+ * POSTAGEM
  *
- * @ORM\Table(name="Postagem", indexes={@ORM\Index(name="fk_categoria_postagem", columns={"idcategoria"})})
+ * @ORM\Table(name="POSTAGEM", indexes={@ORM\Index(name="fk_categoria_postagem", columns={"idcategoria"})})
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */

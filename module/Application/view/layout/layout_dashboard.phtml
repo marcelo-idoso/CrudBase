@@ -19,6 +19,7 @@ echo $this->doctype();
                         'rel' => 'shortcut icon',
                         'type' => 'image/vnd.microsoft.icon',
                         'href' => $this->basePath()))
+            ->prependStylesheet($this->basePath() . '/css/dashboard/style_Default.css')
             ->prependStylesheet($this->basePath('css/dashboard/dashboard_style.css'))
             ->prependStylesheet($this->basePath('css/dashboard/vendor/adminlte/css/skins/_all-skins.min.css')) // AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load.
             ->prependStylesheet($this->basePath('css/dashboard/vendor/adminlte/css/AdminLTE.min.css')) // Theme style
@@ -35,7 +36,6 @@ echo $this->doctype();
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     
-</script>
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -84,13 +84,13 @@ echo $this->doctype();
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="<?php echo $this->basePath('dist/img/user2-160x160.jpg'); ?>" class="user-image" alt="User Image">
+                                <img src="<?php echo $this->basePath('imagem/perfil/perfil_user.png'); ?>" class="user-image" alt="User Image">
                                 <span class="hidden-xs"><?=  ($this->zfcUserIdentity()) ? $this->zfcUserIdentity()->getUsername() : 'Null' ; ?> </span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header">
-                                    <img src="<?php echo $this->basePath('dist/img/user2-160x160.jpg'); ?>" class="img-circle" alt="User Image">
+                                    <img src="<?php echo $this->basePath('imagem/perfil/perfil_user.png'); ?>" class="img-circle" alt="User Image">
                                     <p>
                                         <?=  ($this->zfcUserIdentity()) ? $this->zfcUserIdentity()->getUsername() : 'Null' ; ?>  
                                         <small>Membro Desde <?= $this->formatDate($this->zfcUserIdentity()->getDateCreate()); ?></small>
@@ -123,7 +123,7 @@ echo $this->doctype();
                 <!-- Sidebar user panel -->
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="<?php echo $this->basePath('dist/img/user2-160x160.jpg'); ?>" class="img-circle" alt="User Image">
+                        <img src="<?php echo $this->basePath('imagem/perfil/perfil_user.png'); ?>" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
                         <p>  <?=  ($this->zfcUserIdentity()) ? $this->zfcUserIdentity()->getUsername() : 'Null' ; ?> </p>
@@ -211,8 +211,9 @@ echo $this->doctype();
     <?php $this->headScript()->prependFile($this->basePath('js/dashboard/vendor/jQueryUI/jquery-ui.min.js')); ?>
     <!-- jQuery 2.2.3 -->
     <?php echo $this->headScript()->prependFile($this->basePath('js/dashboard/vendor/jQuery/jquery-2.2.3.min.js')); ?>
-
-
+    <?php echo $this->headScript()->prependFile($this->basePath('js/dashboard/scripts/carregarImagem.js')); ?>
+    <?php echo $this->headScript()->prependFile($this->basePath('js/dashboard/scripts/teste.js')); ?>
+    
     <?php echo $this->inlineScript(); ?>
 </body>
 </html>

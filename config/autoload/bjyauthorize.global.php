@@ -4,12 +4,12 @@ return [
     'bjyauthorize' => [
         
         
-        'default_role'       => 'guest',         // not authenticated
+        'default_role'     => 'guest',         // not authenticated
         'template' => 'error/403Permission',
         
        'unauthorized_strategy' => 'BjyAuthorize\View\RedirectionStrategy',
         
-        'identity_provider' => \BjyAuthorize\Provider\Identity\AuthenticationIdentityProvider::class,
+        'identity_provider' => "\BjyAuthorize\Provider\Identity\AuthenticationIdentityProvider",
        
         
         'role_providers' => [

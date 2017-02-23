@@ -32,10 +32,10 @@ class CategoriaRepository extends EntityRepository {
     }
     
     public function listView() {
-        $nãoExibir = $this->listView1();
+        $naoExibir = $this->listView1();
         $exbir     = $this->listView2();
         
-        $nav = $nãoExibir + $exbir;
+        $nav = $naoExibir + $exbir;
         
         return $nav;
     }

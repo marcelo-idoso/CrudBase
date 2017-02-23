@@ -6,9 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Base\Entity\AbstractEntity;
 use Base\Funcoes\Url;
 /**
- * Categoria
+ * CATEGORIA
  *
- * @ORM\Table(name="Categoria")
+ * @ORM\Table(name="CATEGORIA")
  * @ORM\Entity(repositoryClass="Application\Entity\Repository\CategoriaRepository")
  * @ORM\HasLifecycleCallbacks
  */

@@ -6,9 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Base\Entity\AbstractEntity;
 
 /**
- * empresa
+ * EMPRESA
  *
- * @ORM\Table(name="empresa")
+ * @ORM\Table(name="EMPRESA")
  * @ORM\Entity(repositoryClass="Application\Entity\Repository\EmpresaRepository")
  * @ORM\HasLifecycleCallbacks
  */

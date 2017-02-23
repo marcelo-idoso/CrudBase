@@ -27,7 +27,7 @@ class Slider extends AbstractHelper implements ServiceManagerAwareInterface {
      * @return type
      */
     public function __invoke() {
-        $entity = $this->getEntityManager()->getRepository('Application\Entity\Slider')->findAll();
+        $entity = $this->getEntityManager()->getRepository('Application\Entity\Slider')->findBy([], ['orderexibir' => 'ASC' , 'active' => 1 ]);
         $render = $this->renderSlider($entity);
         return $render;
     }
@@ -37,7 +37,7 @@ class Slider extends AbstractHelper implements ServiceManagerAwareInterface {
         $html = '';
         foreach ($item as $itens) {
 
-            if ($itens->getActive() == 1) {
+            if ($itens->getOrderexibir() == 1) {
                 $html .= '<div class="item active" >';
             } else {
                 $html .= '<div class="item" >';

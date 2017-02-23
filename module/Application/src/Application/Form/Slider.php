@@ -23,7 +23,17 @@ class Slider extends AbstractForm {
                 'class' => 'form-control input-lg'
             ),
         ]);
-
+        
+        $this->add([
+            'name' => 'alt',
+            'type' => 'Text',
+            'options' => array(
+                'label' => "Imagem Alt: "
+            ),
+            'attributes' => array(
+                'class' => 'form-control input-lg'
+            ),
+        ]);
 
         $this->add([
             'name' => 'descricao',
@@ -56,7 +66,7 @@ class Slider extends AbstractForm {
                 'label' => "Imagem: "
             ),
             'attributes' => array(
-                'class' => 'form-control input-lg'
+                'id'    => 'imagem_file',
             ),
         ]);
 
@@ -70,20 +80,10 @@ class Slider extends AbstractForm {
         ]);
         
         $this->add([
-            'name' => 'idmodule',
-            'type' => 'DoctrineModule\Form\Element\ObjectSelect',
+            'name' => 'orderexibir',
+            'type' => 'text',
             'options' => array(
-                'object_manager' => $this->getObjectManager(),
-                'target_class' => 'Application\Entity\Slider',
-                'property' => 'orderexibir',
-                'label' => 'Ordem: ',
-                'is_method' => true,
-                'find_method' => array(
-                    'name' => 'findall',
-                    'params' => array(
-                        'criteria' => array(),
-                    ),
-                ),
+                'label' => "Ordem"
             ),
             'attributes' => array(
                 'class' => 'form-control input-lg'

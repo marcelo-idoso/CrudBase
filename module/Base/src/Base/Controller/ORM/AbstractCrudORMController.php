@@ -2,7 +2,6 @@
 
 namespace Base\Controller\ORM;
 
-use Zend\Debug\Debug;
 use Zend\View\Model\ViewModel;
 use Base\Controller\AbstractBaseController;
 use Base\Entity\EntityManagerAwareTrait;
@@ -105,7 +104,7 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
                 'attributes' => array(
                     'class' => 'btn btn-app',
                     'onclick' => 'top.location=\'' . $this->url()
-                            ->fromRoute("dashboard/".$this->getControllerName(1)) . '\'',
+                            ->fromRoute("dashboard/" . $this->getControllerName(1)) . '\'',
                 )
                     ), array('priority' => - 100));
         }
@@ -125,14 +124,16 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
         return $objEntity;
     }
 
-    public function indexAction() {
+    public function indexAction( $parent = null ) {
+        
         // Recupera todos os registros no banco de Dados
-        if($this->getColumOrder() == NULL){
+        if ($this->getColumOrder() == NULL) {
             $list = $this->getEntityManager()->getRepository($this->getEntityClass())->findAll();
-        }else{
+        } else {
             $list = $this->getEntityManager()->getRepository($this->getEntityClass())->findBy([], [$this->getColumOrder() => $this->defaultOrder]);
         }
         $viewModel = new ViewModel(array(
+            'parent' => $parent,
             'router' => $this->getControllerName(1),
         ));
 
@@ -174,18 +175,12 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
         $request = $this->getRequest();
 
         if ($request->isPost()) {
-            
-            $postImg = array_merge_recursive(
-                    $this->getRequest()->getPost()->toArray(),
-                    $this->getRequest()->getFiles()->toArray()
-                    );
-            
-            
-            $form->setData($postImg);
 
-            
+            $form->setData(
+                    array_merge_recursive(
+                            $this->getRequest()->getPost()->toArray(), $this->getRequest()->getFiles()->toArray()
+            ));
             $form->bind($entity);
-
             if ($form->isValid()) {
                 $savedEntity = $this->getEntityService()->save($form, $entity);
 
@@ -195,7 +190,7 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
                     $this->flashMessenger()->addSuccessMessage($this->successMessage);
                 }
 
-                return $this->redirect()->toRoute("dashboard/".$this->getActionRouter('inserir'), [], TRUE);
+                return $this->redirect()->toRoute("dashboard/" . $this->getActionRouter('inserir'), [], TRUE);
             }
         }
 
@@ -227,10 +222,11 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
             $em = $this->getEntityManager();
             $objRepository = $em->getRepository($this->getEntityClass());
             $entity = $objRepository->find($id);
+            $foto = $entity->getImg();
             $form->bind($entity);
             $viewModel->setVariable('id', $id);
         } else {
-            return $this->redirect()->toRoute("dashboard/".$this->getControllerName(1), ['controller' => "dashboard/".$this->getControllerName(1)], FALSE);
+            return $this->redirect()->toRoute("dashboard/" . $this->getControllerName(1), ['controller' => "dashboard/" . $this->getControllerName(1)], FALSE);
         }
 
 
@@ -247,17 +243,20 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
             $form->getInputFilter()->remove('date_create');
 
 
-            $form->setData($request->getPost());
+            $form->setData(
+                    array_merge_recursive(
+                            $this->getRequest()->getPost()->toArray(), $this->getRequest()->getFiles()->toArray()
+            ));
 
             if ($form->isValid()) {
-                $savedEntity = $this->getEntityService()->save($form, $entity);
+                $savedEntity = $this->getEntityService()->save($form, $entity , $foto);
 
                 if (!is_object($savedEntity)) {
                     $this->flashMessenger()->addErrorMessage($this->errorMessage . "</br>" . $savedEntity);
                 } else {
                     $this->flashMessenger()->addSuccessMessage($this->successMessage);
                 }
-                return $this->redirect()->toRoute("dashboard/".$this->getActionRouter(), [], TRUE);
+                return $this->redirect()->toRoute("dashboard/" . $this->getActionRouter(), [], TRUE);
             }
         }
         if ($this->flashMessenger()->hasSuccessMessages()) {
@@ -279,7 +278,7 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
             $objRepository = $em->getRepository($this->getEntityClass());
             $entity = $objRepository->find($id);
             $delete = $this->getEntityService()->delete($entity);
-            
+
             if (is_object($delete)) {
                 $this->flashMessenger()->addSuccessMessage($this->successMessage);
             } else {
@@ -287,7 +286,7 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
             }
         }
 
-        return $this->redirect()->toRoute("dashboard/".$this->getControllerName(1), ['controller' => "dashboard/".$this->getControllerName(1)], true);
+        return $this->redirect()->toRoute("dashboard/" . $this->getControllerName(1), ['controller' => "dashboard/" . $this->getControllerName(1)], true);
     }
 
     public function getEditeForm($entityForm = null) {
@@ -363,10 +362,10 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
                     'disabled' => 'Disabled'
                 ],
                 'options' => [
-                    'label'  => 'Data de Criação',
+                    'label' => 'Data de Criação',
                     'format' => 'd/m/Y    H:i:s'
                 ],
-             ], ['priority' => - 80]);
+                    ], ['priority' => - 80]);
 
             $form->add([
                 'type' => 'Date-Time',
@@ -376,10 +375,10 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
                     'disabled' => 'Disabled'
                 ],
                 'options' => [
-                    'label'   => 'Data de Update',
+                    'label' => 'Data de Update',
                     'format' => 'd/m/Y    H:i:s '
                 ],
-            ], ['priority' => - 80]);
+                    ], ['priority' => - 80]);
 
 
             // Adicionar o Button Novo
@@ -394,10 +393,10 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
                 ),
                 'attributes' => array(
                     'class' => 'btn btn-app ',
-                    'onclick' => 'top.location=\'' . $this->url()->fromRoute("dashboard/".$this->getControllerName(1) . '/inserir') . '\'',
+                    'onclick' => 'top.location=\'' . $this->url()->fromRoute("dashboard/" . $this->getControllerName(1) . '/inserir') . '\'',
                 )
                     ), array('priority' => - 100));
-            
+
             // Excluir
             $form->add(array(
                 'type' => 'Button',
@@ -410,13 +409,13 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
                 ),
                 'attributes' => array(
                     'class' => 'btn btn-app ',
-                    'onclick' => 'top.location=\'' . $this->url()->fromRoute("dashboard/".$this->getControllerName(1) . '/excluir', array(
+                    'onclick' => 'top.location=\'' . $this->url()->fromRoute("dashboard/" . $this->getControllerName(1) . '/excluir', array(
                         'controller' => 'controller',
                         'action' => 'excluir',
                         'id' => $id)) . '\'',
                 )
                     ), array('priority' => - 100));
-            
+
             // Cancelar
             $form->add(array(
                 'type' => 'Button',
@@ -430,7 +429,7 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
                 'attributes' => array(
                     'class' => 'btn btn-app',
                     'onclick' => 'top.location=\'' . $this->url()
-                            ->fromRoute("dashboard/".$this->getControllerName(1)) . '\'',
+                            ->fromRoute("dashboard/" . $this->getControllerName(1)) . '\'',
                 )
                     ), array('priority' => - 100));
         }

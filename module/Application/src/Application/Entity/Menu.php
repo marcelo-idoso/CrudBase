@@ -12,9 +12,9 @@ use Base\Entity\AbstractEntity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Menu
+ * MENU
  *
- * @ORM\Table(name="Menu", indexes={@ORM\Index(name="fk_controlador_menu", columns={"idControlador"})})
+ * @ORM\Table(name="MENU", indexes={@ORM\Index(name="fk_controlador_menu", columns={"idControlador"})})
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  * 

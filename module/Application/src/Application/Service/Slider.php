@@ -21,8 +21,8 @@ class Slider extends AbstractService {
 
         try {
             foreach ($ordem as $key) {
-                $select = $em->createQueryBuilder()
-                            ->update($entity, ' s')
+                $select = $em->createQueryBuilder('s')
+                        ->update($entity, ' s')
                         ->set('s.orderexibir', '?1')
                         ->where('s.id = ?2')
                         ->setParameter(1, $newOrdem)
@@ -36,7 +36,7 @@ class Slider extends AbstractService {
         }
 
 
-        return $newOrdem;
+        return $em;
     }
 
 }

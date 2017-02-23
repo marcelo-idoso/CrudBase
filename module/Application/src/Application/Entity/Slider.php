@@ -12,9 +12,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Base\Entity\AbstractEntity;
 
 /**
- * Postagem
+ * SLIDER
  *
- * @ORM\Table(name="Slider")
+ * @ORM\Table(name="SLIDER")
  * @ORM\Entity(repositoryClass="Application\Repository\SliderRepository")
  * @ORM\HasLifecycleCallbacks
  */
@@ -23,9 +23,16 @@ class Slider extends AbstractEntity {
     /**
      * @var string
      * 
-     * @ORM\Column(name="img" ,type="text" , length=255, nullable=TRUE) 
+     * @ORM\Column(name="img" ,type="text" , length=255, nullable=false) 
      */
     private $img;
+    
+    /**
+     * @var string
+     * 
+     * @ORM\Column(name="imgalt" ,type="text" , length=255, nullable=false) 
+     */
+    private $imgalt;
 
     /**
      *
@@ -67,52 +74,68 @@ class Slider extends AbstractEntity {
      */
     private $orderexibir;
 
-    function getActive() {
-        return $this->active;
-    }
-
-    function setActive($active) {
-        $this->active = $active;
-    }
-
     function getImg() {
         return $this->img;
+    }
+
+    function getImgalt() {
+        return $this->imgalt;
     }
 
     function getTitulo() {
         return $this->titulo;
     }
 
+    function getActive() {
+        return $this->active;
+    }
+
     function getDescricao() {
         return $this->descricao;
-    }
-
-    function setImg($img) {
-        $this->img = $img;
-    }
-
-    function setTitulo($titulo) {
-        $this->titulo = $titulo;
-    }
-
-    function setDescricao($descricao) {
-        $this->descricao = $descricao;
     }
 
     function getLink() {
         return $this->link;
     }
 
-    function setLink($link) {
-        $this->link = $link;
-    }
-
     function getOrderexibir() {
         return $this->orderexibir;
     }
 
-    function setOrderexibir($orderexibir) {
-        $this->orderexibir = $orderexibir + 1;
+    function setImg($img) {
+        $this->img = $img;
+        return $this;
     }
+
+    function setImgalt($imgalt) {
+        $this->imgalt = $imgalt;
+        return $this;
+    }
+
+    function setTitulo($titulo) {
+        $this->titulo = $titulo;
+        return $this;
+    }
+
+    function setActive($active) {
+        $this->active = $active;
+        return $this;
+    }
+
+    function setDescricao($descricao) {
+        $this->descricao = $descricao;
+        return $this;
+    }
+
+    function setLink($link) {
+        $this->link = $link;
+        return $this;
+    }
+
+    function setOrderexibir($orderexibir) {
+        $this->orderexibir = $orderexibir;
+        return $this;
+    }
+
 
 }

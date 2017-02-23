@@ -6,9 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Base\Entity\AbstractEntity;
 
 /**
- * Controlador
+ * CONTROLADOR
  *
- * @ORM\Table(name="Controlador", indexes={@ORM\Index(name="fk_module_controlador", columns={"idmodule"})})
+ * @ORM\Table(name="CONTROLADOR", indexes={@ORM\Index(name="fk_module_controlador", columns={"idmodule"})})
  * @ORM\Entity(repositoryClass="Application\Entity\Repository\ControladorRepository")
  * @ORM\HasLifecycleCallbacks
  * 

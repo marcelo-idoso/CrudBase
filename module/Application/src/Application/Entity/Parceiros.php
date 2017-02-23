@@ -5,9 +5,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Base\Entity\AbstractEntity;
 
 /**
- * Parceiros
+ * PARCEIROS
  *
- * @ORM\Table(name="Parceiros")
+ * @ORM\Table(name="PARCEIROS")
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
