@@ -88,8 +88,8 @@
                                     <?php if ($this->parent->listOrder != False): ?>
 
                                         <ol>
-                                            <?php foreach ($this->data as $entity) : ?>
-                                                <li id="widgetArray_<?= $entity->getId() ?>"> <a href="#"><?= $entity->getTitulo() ?> - Ordem  <?= $entity->getOrderExibir() ?></a></li>
+                                            <?php foreach ($this->parent->listOrder as $entity) : ?>
+                                                <li id="widgetArray_<?= $entity->getId() ?>"> <a href="#"> Cod. <?= $entity->getId() ?> - Titulo: <?= $entity->getTitulo() ?> </a></li>
                                             <?php endforeach; ?>
                                         </ol>    
 
@@ -105,18 +105,12 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
-
                 </div>
-
             </div><!-- /.tabs-content -->
         </div><!-- /.nav-tabs-custom -->
     </div><!-- /.col -->
 </div><!-- /.row -->
 
-
-<input id="file" type="file"/>
-<input id="trig_file" type="button" value="trigger"/>
 
 

@@ -6,13 +6,14 @@ $(document).ready(function () {
             update: function () {
                 $("#Atualizar").click(function (e) {
                     e.preventDefault();
-                    var order = $("#OrderList ol").sortable('serialize');
+                    var order   = $("#OrderList ol").sortable('serialize');
+                    var formu = document.getElementById('Atualizar').form ;
                     $.ajax({
-                        url: "/dashboard/slider",
+                        url: formu,
                         type: "POST",
                         data:  order,
                         success: function (data, textStatus, xhr) {
-                            console.log(data.some_parameter + data.success)
+                            console.log(data.some_parameter + data.success )
                             
                             $("#Array").html(data.resultad)
                         },

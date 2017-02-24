@@ -1,10 +1,9 @@
-
 <div class="row">
     <div class="col-xs-12">
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#fa-icons" data-toggle="tab">View <?= $this->router; ?></a></li>
-                <li><a href="#glyphicons" data-toggle="tab">Ordem</a></li>
+                <li><a href="#Ordem" data-toggle="tab">Ordem</a></li>
             </ul>
             <div class="tab-content">
                 <div class="tab-pane active" id="fa-icons">
@@ -77,8 +76,37 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane" id="glyphicons">
-                    echo
+                <div class="tab-pane" id="Ordem">
+                    <div class="table-responsive">
+                        <div class="panel panel-default panel-table">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col col-xs-6 pull-right  text-right">
+                                        <input class="btn btn-success" type="button" id="Atualizar" value="Atualizar" form="/dashboard/Categoria"/>    
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div id="OrderList" class="numberlist">
+                                    <?php if ($this->parent->listOrder != False): ?>
+                                        <ol>
+                                            <?php foreach ($this->parent->listOrder as $entity) : ?>
+                                                <li id="widgetArray_<?= $entity->getId() ?>"> <a href="#"><?= $entity->getNome() ?> - Ordem  <?= $entity->getOrderExibir() ?></a></li>
+                                            <?php endforeach; ?>
+                                        </ol>    
+                                    <?php else: ?>
+                                        <p>  Nenhum registro encontrado </p>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                            <div class="panel-footer">
+                                <div class="row">
+                                    <?php echo $this->paginationControl($this->data, 'Sliding', 'partials/paginator', array('route' => "dashboard/$this->router/paginator")); ?>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div><!-- /.tabs-content -->
         </div><!-- /.nav-tabs-custom -->

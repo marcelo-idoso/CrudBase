@@ -33,13 +33,16 @@ class CategoriaRepository extends EntityRepository {
 
     public function listView() {
         $naoExibir = $this->listView1();
-        $exbir = $this->listView2();
-
-        if ($naoExibir != false or $exbir != False) {
-
-            return array_merge($naoExibir, $exbir);
-        }else {
-            return FALSE ;
+        $exibir = $this->listView2();
+        
+        if ($exibir == FALSE && $naoExibir != FALSE) {
+            return $naoExibir;
+        } elseif ($naoExibir == FALSE && $exibir != FALSE) {
+            return $exibir;
+        } elseif ($naoExibir != false && $exibir != False) {
+            return array_merge($naoExibir, $exibir);
+        } else {
+            return FALSE;
         }
     }
 

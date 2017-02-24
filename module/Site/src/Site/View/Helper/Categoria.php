@@ -27,7 +27,7 @@ class Categoria extends AbstractHelper implements ServiceManagerAwareInterface {
      * @return type
      */
     public function __invoke() {
-        $entity = $this->getEntityManager()->getRepository('Application\Entity\Categoria')->findBy(['exibir' => '2']);
+        $entity = $this->getEntityManager()->getRepository('Application\Entity\Categoria')->findBy(['exibir' => '2'], ['orderexibir' => 'ASC']);
         $render = $this->renderItem($entity);
         return $render;
     }

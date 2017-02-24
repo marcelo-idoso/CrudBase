@@ -21,19 +21,19 @@ class AbstractServiceORM extends EventProvider implements ServiceLocatorAwareInt
         if ($form->isValid()) {
             /* @var $form \Zend\Form\Form */
             $entity = $form->getData();
-
-
-            if (is_array($entity->getImg()) && !empty($entity->getImg()['tmp_name'])) {
-                if (is_file($foto) && $foto != NULL) {
-                    unlink($foto);
+            if (method_exists($entity, 'getImg')) {
+                if (is_array($entity->getImg()) && !empty($entity->getImg()['tmp_name'])) {
+                    if (is_file($foto) && $foto != NULL) {
+                        unlink($foto);
+                    } else {
+                        $entity->setImg(substr($entity->getImg()['tmp_name'], 9));
+                    }
                 } else {
-                    $entity->setImg(substr($entity->getImg()['tmp_name'], 9));
-                }
-            } else {
-                if ($entity->getId() > 0) {
-                    $entity->setImg($foto);
-                } else {
-                    $entity->setImg(NULL);
+                    if ($entity->getId() > 0) {
+                        $entity->setImg($foto);
+                    } else {
+                        $entity->setImg(NULL);
+                    }
                 }
             }
         } else {
