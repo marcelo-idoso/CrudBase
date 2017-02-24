@@ -25,7 +25,7 @@ class Slider extends AbstractForm {
         ]);
         
         $this->add([
-            'name' => 'alt',
+            'name' => 'imgalt',
             'type' => 'Text',
             'options' => array(
                 'label' => "Imagem Alt: "

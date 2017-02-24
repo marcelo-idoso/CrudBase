@@ -109,7 +109,7 @@ class Postagem extends AbstractForm {
             'name' => 'conteudo',
             'type' => 'Textarea',
             'attributes' => array(
-                'class' => 'form-control input-medium',
+                'class' => 'form-control input-medium TextTinymce',
                 'style' => 'height:330px; resize:vertical;'
             )
         ]);

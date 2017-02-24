@@ -28,12 +28,11 @@ class Slider extends AbstractHelper implements ServiceManagerAwareInterface {
      */
     public function __invoke() {
 
-        $entity = $this->getEntityManager()->getRepository('Application\Entity\Slider')->findBy([], ['orderexibir' => 'ASC']);
+        $entity = $this->getEntityManager()->getRepository('Application\Entity\Slider')->findBy(['active' => 1], ['orderexibir' => 'ASC', 'active' => 'ASC']);
         if ($entity != NULL) {
-            $entity = $this->getEntityManager()->getRepository('Application\Entity\Slider')->findBy([], ['orderexibir' => 'ASC', 'active' => '1']);
             $render = $this->renderSlider($entity);
             return $render;
-        }else{
+        } else {
             return false;
         }
     }
@@ -49,7 +48,7 @@ class Slider extends AbstractHelper implements ServiceManagerAwareInterface {
                 $html .= '<div class="item" >';
             }
             if ($itens->getLink()) {
-                $html .= '<a href="' . $itens->getLink() . '">';
+                $html .= '<a href="' . $itens->getLink() . '" alt="' . $itens->getImgAlt() . '">';
             }
 
             $html .= '<img src="' . $itens->getImg() . '" alt="' . $itens->getId() . '">';

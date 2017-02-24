@@ -1,77 +1,44 @@
--- phpMyAdmin SQL Dump
--- version 4.4.14
--- http://www.phpmyadmin.net
---
--- Host: 127.0.0.1
--- Generation Time: 19-Jan-2017 às 17:09
--- Versão do servidor: 5.6.26
--- PHP Version: 5.6.12
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `acl`
+-- Estrutura da tabela `CATEGORIA`
 --
+
+DROP TABLE IF EXISTS `CATEGORIA`;
+CREATE TABLE IF NOT EXISTS `CATEGORIA` (
+  `id` int(10) unsigned NOT NULL,
+  `NOME` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `date_create` datetime NOT NULL,
+  `date_update` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `ico` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `descr` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `link` text COLLATE utf8_unicode_ci NOT NULL,
+  `exibir` int(11) DEFAULT '2',
+  `orderexibir` int(11) DEFAULT '99'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `categoria`
+-- Estrutura da tabela `CONTROLADOR`
 --
 
-CREATE TABLE IF NOT EXISTS `categoria` (
+DROP TABLE IF EXISTS `CONTROLADOR`;
+CREATE TABLE IF NOT EXISTS `CONTROLADOR` (
   `id` int(10) unsigned NOT NULL,
-  `NOME` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `idMODULE` int(10) unsigned NOT NULL,
+  `dsCONTROLADOR` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `date_create` datetime NOT NULL,
   `date_update` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Extraindo dados da tabela `categoria`
---
-
-INSERT INTO `categoria` (`id`, `NOME`, `date_create`, `date_update`) VALUES
-(1, 'teste', '2017-01-18 15:34:14', NULL),
-(5, 'teste 2 ', '2017-01-18 15:37:42', NULL);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `controlador`
+-- Estrutura da tabela `EMPRESA`
 --
 
-CREATE TABLE IF NOT EXISTS `controlador` (
-  `id` int(10) unsigned NOT NULL,
-  `idmodule` int(10) unsigned NOT NULL,
-  `dsControlador` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `date_create` datetime NOT NULL,
-  `date_update` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Extraindo dados da tabela `controlador`
---
-
-INSERT INTO `controlador` (`id`, `idmodule`, `dsControlador`, `date_create`, `date_update`) VALUES
-(1, 1, 'Controlador', '2016-12-21 14:06:29', '2016-12-27 10:43:19'),
-(7, 1, 'Menu', '2016-12-27 14:29:22', NULL),
-(8, 1, 'Module', '2016-12-27 14:29:30', NULL),
-(9, 2, 'IndexSite', '2017-01-12 11:13:01', NULL);
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `empresa`
---
-
-CREATE TABLE IF NOT EXISTS `empresa` (
+DROP TABLE IF EXISTS `EMPRESA`;
+CREATE TABLE IF NOT EXISTS `EMPRESA` (
   `id` int(10) unsigned NOT NULL,
   `logo` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `logoIco` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -81,21 +48,21 @@ CREATE TABLE IF NOT EXISTS `empresa` (
   `date_update` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `nome` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `contato` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `telefone` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `telefone` int(11) DEFAULT NULL,
+  `pEMPRESA` text COLLATE utf8_unicode_ci,
+  `pcontatos` text COLLATE utf8_unicode_ci,
+  `pservicos` text COLLATE utf8_unicode_ci,
+  `endereco` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `horario` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `cep` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Extraindo dados da tabela `empresa`
+-- Acionadores `EMPRESA`
 --
-
-INSERT INTO `empresa` (`id`, `logo`, `logoIco`, `mimiDescrEmpre`, `googleMaps`, `date_create`, `date_update`, `nome`, `contato`, `telefone`) VALUES
-(4, 'logo', 'icone logo', 'Quando definimos um Pageem nosso Navigationnão pode simplesmente dizer ao seu desciption, URI, etc. Podemos incluir como muitas propriedades que desejamos, como uma espécie de um ícone que acompanha a descrição. E até mesmo ultrapassar podemos incorporar informações relevantes para cada página, como Title, Keywords, Descriptions, etc. único para cada. Aqui está um exemplo mais elaborado:\r\nAgora podemos ver possibilidades de utilização do Bootstrap CSS que é capaz de exibir ícones ao lado de cada uma das descrições. Agora, se nós simplesmente passar os valores de exibição personalizado como titletemos definidos anteriormente simplesmente temos que localizar a página ativa e recuperar esses dados para atribuir isso a uma variável na view e pode usá -lo .\r\nQuando definimos um Pageem nosso Navigationnão pode simplesmente dizer ao seu desciption, URI, etc. Podemos incluir como muitas propriedades que desejamos, como uma espécie de um ícone que acompanha a descrição. E até mesmo ultrapassar podemos incorporar informações relevantes para cada página, como Title, Keywords, Descriptions, etc. único para cada. Aqui está um exemplo mais elaborado:\r\nAgora podemos ver possibilidades de utilização do Bootstrap CSS que é capaz de exibir ícones ao lado de cada uma das descrições. Agora, se nós simplesmente passar os valores de exibição personalizado como titletemos definidos anteriormente simplesmente temos que localizar a página ativa e recuperar esses dados para atribuir isso a uma variável na view e pode usá -lo .', 'https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d15321.436632703706!2d-47.95650251534423!3d-16.253352799837103!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1482929167749', '2016-12-28 10:31:39', '2016-12-28 11:04:13', 'nome', 'Contatol', 32);
-
---
--- Acionadores `empresa`
---
+DROP TRIGGER IF EXISTS `trigger_limite_insert`;
 DELIMITER $$
-CREATE TRIGGER `trigger_limite_insert` BEFORE INSERT ON `empresa`
+CREATE TRIGGER `trigger_limite_insert` BEFORE INSERT ON `EMPRESA`
  FOR EACH ROW BEGIN
 	IF (SELECT count(ID) FROM EMPRESA) > 0 THEN
 		 CALL `'Não e Possivel Cadastrar Mais que Um registro'`;
@@ -107,116 +74,121 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `menu`
+-- Estrutura da tabela `MENU`
 --
 
-CREATE TABLE IF NOT EXISTS `menu` (
+DROP TABLE IF EXISTS `MENU`;
+CREATE TABLE IF NOT EXISTS `MENU` (
   `id` int(10) unsigned NOT NULL,
   `view` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `date_create` datetime NOT NULL,
   `date_update` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `idControlador` int(10) unsigned NOT NULL
+  `idCONTROLADOR` int(10) unsigned NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `module`
+-- Estrutura da tabela `MODULE`
 --
 
-CREATE TABLE IF NOT EXISTS `module` (
+DROP TABLE IF EXISTS `MODULE`;
+CREATE TABLE IF NOT EXISTS `MODULE` (
   `id` int(10) unsigned NOT NULL,
   `NOME` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `date_create` datetime NOT NULL,
   `date_update` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Extraindo dados da tabela `module`
---
-
-INSERT INTO `module` (`id`, `NOME`, `date_create`, `date_update`) VALUES
-(1, 'Application', '2016-12-21 14:06:14', NULL),
-(2, 'Site', '2017-01-12 11:12:29', NULL);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `postagem`
+-- Estrutura da tabela `PARCEIROS`
 --
 
-CREATE TABLE IF NOT EXISTS `postagem` (
+DROP TABLE IF EXISTS `PARCEIROS`;
+CREATE TABLE IF NOT EXISTS `PARCEIROS` (
   `id` int(10) unsigned NOT NULL,
-  `idcategoria` int(10) unsigned NOT NULL,
+  `nome` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `link` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `img` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `date_create` datetime NOT NULL,
+  `date_update` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `POSTAGEM`
+--
+
+DROP TABLE IF EXISTS `POSTAGEM`;
+CREATE TABLE IF NOT EXISTS `POSTAGEM` (
+  `id` int(10) unsigned NOT NULL,
+  `idCATEGORIA` int(10) unsigned NOT NULL,
   `TITULO` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `datapub` date NOT NULL,
-  `conteudo` tinytext COLLATE utf8_unicode_ci NOT NULL,
+  `conteudo` text COLLATE utf8_unicode_ci NOT NULL,
   `tags` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `imagem` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `status` int(11) NOT NULL,
   `date_create` datetime NOT NULL,
-  `date_update` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Extraindo dados da tabela `postagem`
---
-
-INSERT INTO `postagem` (`id`, `idcategoria`, `TITULO`, `datapub`, `conteudo`, `tags`, `imagem`, `status`, `date_create`, `date_update`) VALUES
-(1, 1, '2', '2017-01-19', '<p>94899990654</p>', '2', '2', 2, '2017-01-19 09:06:39', '2017-01-19 09:07:57');
+  `date_update` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `resumo` text COLLATE utf8_unicode_ci NOT NULL,
+  `link` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `role`
+-- Estrutura da tabela `ROLE`
 --
 
-CREATE TABLE IF NOT EXISTS `role` (
+DROP TABLE IF EXISTS `ROLE`;
+CREATE TABLE IF NOT EXISTS `ROLE` (
   `id` int(11) NOT NULL,
   `parent_id` int(11) DEFAULT NULL,
   `roleId` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
 
 --
 -- Extraindo dados da tabela `role`
 --
 
 INSERT INTO `role` (`id`, `parent_id`, `roleId`) VALUES
-(1, NULL, 'authenticated'),
-(2, 1, 'user'),
-(3, 1, 'agent');
-
--- --------------------------------------------------------
+(1, NULL, 'guest'),
+(2, 4, 'agent'),
+(3, 4, 'user'),
+(4, NULL, 'authenticated');
 
 --
--- Estrutura da tabela `slider`
+-- Estrutura da tabela `SLIDER`
 --
 
-CREATE TABLE IF NOT EXISTS `slider` (
+DROP TABLE IF EXISTS `SLIDER`;
+CREATE TABLE IF NOT EXISTS `SLIDER` (
   `id` int(10) unsigned NOT NULL,
   `date_create` datetime NOT NULL,
   `date_update` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `img` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `img` tinytext COLLATE utf8_unicode_ci NOT NULL,
   `titulo` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `descricao` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Extraindo dados da tabela `slider`
---
-
-INSERT INTO `slider` (`id`, `date_create`, `date_update`, `img`, `titulo`, `descricao`) VALUES
-(1, '2017-01-19 00:00:00', NULL, 'http://placehold.it/1200x500/3498db/2980b9', 'First slide', 'Nulla vitae elit libero, a pharetra augue mollis interdum.'),
-(2, '2017-01-19 00:00:00', NULL, 'http://placehold.it/1200x500/9b59b6/8e44ad', ' Second slide', 'Nulla vitae elit libero, a pharetra augue mollis interdum.'),
-(3, '2017-01-19 00:00:00', NULL, 'http://placehold.it/1200x500/34495e/2c3e50', 'Third slide', 'Nulla vitae elit libero, a pharetra augue mollis interdum.');
+  `descricao` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `active` int(11) DEFAULT NULL,
+  `link` varchar(1000) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `orderexibir` int(11) DEFAULT NULL,
+  `imgalt` tinytext COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `users`
+-- Estrutura da tabela `USERS`
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
+DROP TABLE IF EXISTS `USERS`;
+CREATE TABLE IF NOT EXISTS `USERS` (
   `id` int(10) unsigned NOT NULL,
   `username` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -224,102 +196,95 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
   `date_create` datetime NOT NULL,
   `date_update` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Extraindo dados da tabela `users`
---
-
-INSERT INTO `users` (`id`, `username`, `email`, `displayName`, `password`, `date_create`, `date_update`) VALUES
-(1, 'Marcelo Pereira', 'marcelo_idoso@hotmail.com', 'Marcelo Pereira', '$2y$14$mECpCDYNmP2oQNZH1ggwCuWrzDalCARS5.8iEg6KJd.awkTAJZqwS', '2016-12-28 09:19:05', '2017-01-11 10:06:52');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `user_role_linker`
+-- Estrutura da tabela `USER_ROLE_LINKER`
 --
 
-CREATE TABLE IF NOT EXISTS `user_role_linker` (
+DROP TABLE IF EXISTS `USER_ROLE_LINKER`;
+CREATE TABLE IF NOT EXISTS `USER_ROLE_LINKER` (
   `user_id` int(10) unsigned NOT NULL,
   `role_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Extraindo dados da tabela `user_role_linker`
---
-
-INSERT INTO `user_role_linker` (`user_id`, `role_id`) VALUES
-(1, 2);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `categoria`
+-- Indexes for table `CATEGORIA`
 --
-ALTER TABLE `categoria`
+ALTER TABLE `CATEGORIA`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `controlador`
+-- Indexes for table `CONTROLADOR`
 --
-ALTER TABLE `controlador`
+ALTER TABLE `CONTROLADOR`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_module_controlador` (`idmodule`);
+  ADD KEY `fk_MODULE_CONTROLADOR` (`idMODULE`);
 
 --
--- Indexes for table `empresa`
+-- Indexes for table `EMPRESA`
 --
-ALTER TABLE `empresa`
+ALTER TABLE `EMPRESA`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `menu`
+-- Indexes for table `MENU`
 --
-ALTER TABLE `menu`
+ALTER TABLE `MENU`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_controlador_menu` (`idControlador`);
+  ADD KEY `fk_CONTROLADOR_MENU` (`idCONTROLADOR`);
 
 --
--- Indexes for table `module`
+-- Indexes for table `MODULE`
 --
-ALTER TABLE `module`
+ALTER TABLE `MODULE`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `postagem`
+-- Indexes for table `PARCEIROS`
 --
-ALTER TABLE `postagem`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_categoria_postagem` (`idcategoria`);
+ALTER TABLE `PARCEIROS`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `role`
+-- Indexes for table `POSTAGEM`
 --
-ALTER TABLE `role`
+ALTER TABLE `POSTAGEM`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_CATEGORIA_POSTAGEM` (`idCATEGORIA`);
+
+--
+-- Indexes for table `ROLE`
+--
+ALTER TABLE `ROLE`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `UNIQ_57698A6AB8C2FD88` (`roleId`),
   ADD KEY `IDX_57698A6A727ACA70` (`parent_id`);
 
 --
--- Indexes for table `slider`
+-- Indexes for table `SLIDER`
 --
-ALTER TABLE `slider`
+ALTER TABLE `SLIDER`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Indexes for table `USERS`
 --
-ALTER TABLE `users`
+ALTER TABLE `USERS`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `UNIQ_1483A5E9E7927C74` (`email`),
   ADD UNIQUE KEY `UNIQ_1483A5E9F85E0677` (`username`);
 
 --
--- Indexes for table `user_role_linker`
+-- Indexes for table `USER_ROLE_LINKER`
 --
-ALTER TABLE `user_role_linker`
+ALTER TABLE `USER_ROLE_LINKER`
   ADD PRIMARY KEY (`user_id`,`role_id`),
   ADD KEY `IDX_61117899A76ED395` (`user_id`),
   ADD KEY `IDX_61117899D60322AC` (`role_id`);
@@ -329,85 +294,88 @@ ALTER TABLE `user_role_linker`
 --
 
 --
--- AUTO_INCREMENT for table `categoria`
+-- AUTO_INCREMENT for table `CATEGORIA`
 --
-ALTER TABLE `categoria`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT for table `controlador`
---
-ALTER TABLE `controlador`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
---
--- AUTO_INCREMENT for table `empresa`
---
-ALTER TABLE `empresa`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT for table `menu`
---
-ALTER TABLE `menu`
+ALTER TABLE `CATEGORIA`
   MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `module`
+-- AUTO_INCREMENT for table `CONTROLADOR`
 --
-ALTER TABLE `module`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+ALTER TABLE `CONTROLADOR`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `postagem`
+-- AUTO_INCREMENT for table `EMPRESA`
 --
-ALTER TABLE `postagem`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+ALTER TABLE `EMPRESA`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `MENU`
+--
+ALTER TABLE `MENU`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `MODULE`
+--
+ALTER TABLE `MODULE`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `PARCEIROS`
+--
+ALTER TABLE `PARCEIROS`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `POSTAGEM`
+--
+ALTER TABLE `POSTAGEM`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `role`
 --
-ALTER TABLE `role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+ALTER TABLE `ROLE`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `slider`
+-- AUTO_INCREMENT for table `SLIDER`
 --
-ALTER TABLE `slider`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+ALTER TABLE `SLIDER`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT for table `USERS`
 --
-ALTER TABLE `users`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+ALTER TABLE `USERS`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --
 
 --
--- Limitadores para a tabela `controlador`
+-- Limitadores para a tabela `CONTROLADOR`
 --
-ALTER TABLE `controlador`
-  ADD CONSTRAINT `FK_F6C7268068998B84` FOREIGN KEY (`idmodule`) REFERENCES `module` (`id`);
+ALTER TABLE `CONTROLADOR`
+  ADD CONSTRAINT `FK_F6C7268068998B84` FOREIGN KEY (`idMODULE`) REFERENCES `MODULE` (`id`);
 
 --
--- Limitadores para a tabela `menu`
+-- Limitadores para a tabela `MENU`
 --
-ALTER TABLE `menu`
-  ADD CONSTRAINT `FK_DD3795AD3006562F` FOREIGN KEY (`idControlador`) REFERENCES `controlador` (`id`);
+ALTER TABLE `MENU`
+  ADD CONSTRAINT `FK_DD3795AD3006562F` FOREIGN KEY (`idCONTROLADOR`) REFERENCES `CONTROLADOR` (`id`);
 
 --
--- Limitadores para a tabela `postagem`
+-- Limitadores para a tabela `POSTAGEM`
 --
-ALTER TABLE `postagem`
-  ADD CONSTRAINT `FK_2995E607300BBBD8` FOREIGN KEY (`idcategoria`) REFERENCES `categoria` (`id`);
+ALTER TABLE `POSTAGEM`
+  ADD CONSTRAINT `FK_2995E607300BBBD8` FOREIGN KEY (`idCATEGORIA`) REFERENCES `CATEGORIA` (`id`);
 
 --
--- Limitadores para a tabela `role`
+-- Limitadores para a tabela `ROLE`
 --
-ALTER TABLE `role`
-  ADD CONSTRAINT `FK_57698A6A727ACA70` FOREIGN KEY (`parent_id`) REFERENCES `role` (`id`);
+ALTER TABLE `ROLE`
+  ADD CONSTRAINT `FK_57698A6A727ACA70` FOREIGN KEY (`parent_id`) REFERENCES `ROLE` (`id`);
 
 --
--- Limitadores para a tabela `user_role_linker`
+-- Limitadores para a tabela `USER_ROLE_LINKER`
 --
-ALTER TABLE `user_role_linker`
-  ADD CONSTRAINT `FK_61117899A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `FK_61117899D60322AC` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`);
+ALTER TABLE `USER_ROLE_LINKER`
+  ADD CONSTRAINT `FK_61117899A76ED395` FOREIGN KEY (`user_id`) REFERENCES `USERS` (`id`),
+  ADD CONSTRAINT `FK_61117899D60322AC` FOREIGN KEY (`role_id`) REFERENCES `ROLE` (`id`);
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+

@@ -200,7 +200,7 @@ if ($this->render_Empresa() != false) {
                  immediately after the control sidebar -->
             <div class="control-sidebar-bg"></div>
         </div>
-
+        
         <!-- Importação dos arquivos JavaScrip-->
         <!-- AdminLTE for demo purposes -->
         <?php $this->headScript()->prependFile($this->basePath('js/dashboard/vendor/AdminLTE/demo.js')); ?>
@@ -215,12 +215,13 @@ if ($this->render_Empresa() != false) {
         <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
         <?php $this->headScript()->prependFile($this->basePath('js/dashboard/conflict.js')); ?>
         <!-- jQuery UI 1.11.4 -->
+        <?php $this->headScript()->prependFile($this->basePath('js/dashboard/scripts/carregarImagem.js')); ?>
+        <?php $this->headScript()->prependFile($this->basePath('js/dashboard/scripts/teste.js')); ?>
         <?php $this->headScript()->prependFile($this->basePath('js/dashboard/vendor/jQueryUI/jquery-ui.min.js')); ?>
         <!-- jQuery 2.2.3 -->
         <?php echo $this->headScript()->prependFile($this->basePath('js/dashboard/vendor/jQuery/jquery-2.2.3.min.js')); ?>
-        <?php echo $this->headScript()->prependFile($this->basePath('js/dashboard/scripts/carregarImagem.js')); ?>
-        <?php echo $this->headScript()->prependFile($this->basePath('js/dashboard/scripts/teste.js')); ?>
-
+        
         <?php echo $this->inlineScript(); ?>
+        
     </body>
 </html>

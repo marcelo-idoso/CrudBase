@@ -33,5 +33,7 @@ class SliderRepository extends EntityRepository {
                         ->where('c.orderexibir =' . $this->MaxOrder())
                         ->getQuery()->getResult();
     }
+    
+    
 
 }
