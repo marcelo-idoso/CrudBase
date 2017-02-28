@@ -9,12 +9,15 @@
 namespace Application\Form;
 
 use Base\Form\AbstractForm;
+use Application\Filter\Form\EmpresaFilter;
+
 
 class Empresa extends AbstractForm {
 
     public function __construct() {
         parent::__construct('Empresa');
-
+         $this->setInputFilter(new EmpresaFilter());
+         
         // Nome
         $this->add([
             'name' => 'nome',
@@ -26,7 +29,7 @@ class Empresa extends AbstractForm {
                 'class' => 'form-control input-medium'
             )
         ]);
-        
+
         // Telefone
         $this->add([
             'name' => 'telefone',
@@ -38,8 +41,8 @@ class Empresa extends AbstractForm {
                 'class' => 'form-control input-medium'
             )
         ]);
-        
-         // Enderço
+
+        // Enderço
         $this->add([
             'name' => 'endereco',
             'type' => 'Text',
@@ -50,8 +53,8 @@ class Empresa extends AbstractForm {
                 'class' => 'form-control input-medium'
             )
         ]);
-        
-         // Cep
+
+        // Cep
         $this->add([
             'name' => 'cep',
             'type' => 'Text',
@@ -62,7 +65,7 @@ class Empresa extends AbstractForm {
                 'class' => 'form-control input-medium'
             )
         ]);
-        
+
         // Contato
         $this->add([
             'name' => 'contato',
@@ -74,7 +77,7 @@ class Empresa extends AbstractForm {
                 'class' => 'form-control input-medium'
             )
         ]);
-         // Horario
+        // Horario
         $this->add([
             'name' => 'horario',
             'type' => 'Text',
@@ -85,28 +88,31 @@ class Empresa extends AbstractForm {
                 'class' => 'form-control input-medium'
             )
         ]);
-        
-         // Logo
+
+        // Logo
         $this->add([
             'name' => 'logo',
-            'type' => 'Text',
+            'type' => 'File',
             'options' => array(
                 'label' => 'Logo'
             ),
             'attributes' => array(
-                'class' => 'form-control input-medium'
+                'class' => 'ImagemFile',
+                'id' => 'imagem_file_logo'
             )
         ]);
-        
+
+
         //LogoIco
         $this->add([
             'name' => 'logoico',
-            'type' => 'Text',
+            'type' => 'File',
             'options' => array(
                 'label' => 'Icone Logo'
             ),
             'attributes' => array(
-                'class' => 'form-control input-medium'
+                'class' => 'ImagemFile',
+                'id' => 'imagem_file_ico'
             )
         ]);
 
@@ -135,8 +141,8 @@ class Empresa extends AbstractForm {
                 'class' => 'form-control input-medium'
             )
         ]);
-        
-         // googleMaps
+
+        // googleMaps
         $this->add([
             'name' => 'pempresa',
             'type' => 'TextArea',
@@ -148,8 +154,8 @@ class Empresa extends AbstractForm {
                 'class' => 'form-control input-medium TextTinymce'
             )
         ]);
-        
-         // Contato
+
+        // Contato
         $this->add([
             'name' => 'pcontatos',
             'type' => 'TextArea',
@@ -161,9 +167,9 @@ class Empresa extends AbstractForm {
                 'class' => 'form-control input-medium TextTinymce'
             )
         ]);
-        
-        
-         // Serviços
+
+
+        // Serviços
         $this->add([
             'name' => 'pservicos',
             'type' => 'TextArea',

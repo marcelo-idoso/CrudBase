@@ -49,7 +49,7 @@ class User extends AbstractEntity implements UserInterface, ProviderInterface {
     /**
      * @var \Doctrine\Common\Collections\Collection
      * @ORM\ManyToMany(targetEntity="Application\Entity\Role")
-     * @ORM\JoinTable(name="user_role_linker",
+     * @ORM\JoinTable(name="USER_ROLE_LINKER",
      *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="role_id", referencedColumnName="id")}
      * )

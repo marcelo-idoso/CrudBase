@@ -145,42 +145,30 @@ body > div#widget-menu > div.row {
     position: relative;
     min-height: 1px;
     padding-left: 15px;
-    padding-right: 15px;
-    padding: 0px; }
+    padding-right: 15px; }
     @media (min-width: 992px) {
       body > div#widget-menu > div.row > div#widget_post {
         float: left;
-        width: 75%; } }
-    body > div#widget-menu > div.row > div#widget_post > div.list_post {
-      padding: 10px; }
-      body > div#widget-menu > div.row > div#widget_post > div.list_post > div.list_post_topo {
-        text-indent: 12px;
-        font: 16px "Tahoma";
-        color: #fff;
-        background: #ddd;
-        padding: 15px 15px;
-        border: 1px solid #000; }
-        body > div#widget-menu > div.row > div#widget_post > div.list_post > div.list_post_topo p {
-          font: 14px "Tahoma"; }
-      body > div#widget-menu > div.row > div#widget_post > div.list_post > div.list_post_corpo {
-        padding: 25px 25px 10px;
-        color: #132A3A;
-        border: 1px solid #000;
-        inline-box-align: inherit;
-        border-top: none;
-        text-align: center; }
-        body > div#widget-menu > div.row > div#widget_post > div.list_post > div.list_post_corpo p {
-          margin: 10px;
-          text-align: justify; }
-        body > div#widget-menu > div.row > div#widget_post > div.list_post > div.list_post_corpo a {
-          text-decoration: none;
-          transition: all ease-out 300ms;
-          width: 200px;
-          font: 16px/50px 'Archivo Narrow', sans-serif;
-          color: white;
-          background: #333333;
-          display: block;
-          margin: 0 auto; }
+        width: 66.66667%; } }
+    body > div#widget-menu > div.row > div#widget_post > article.list_post {
+      background: #FFF;
+      padding: 25px;
+      margin-bottom: 25px;
+      border: 1px solid #eaeaea; }
+      body > div#widget-menu > div.row > div#widget_post > article.list_post img {
+        margin-bottom: 1.5em;
+        width: 405.594; }
+      body > div#widget-menu > div.row > div#widget_post > article.list_post h1 {
+        clear: both;
+        margin: 0px 0px 10px 0px;
+        font-family: Oswald; }
+      body > div#widget-menu > div.row > div#widget_post > article.list_post a {
+        text-decoration: none;
+        color: #333333; }
+      body > div#widget-menu > div.row > div#widget_post > article.list_post p {
+        margin-bottom: 1.5em; }
+      body > div#widget-menu > div.row > div#widget_post > article.list_post .list_post_corpo {
+        margin: 1.5em 0 0; }
   body > div#widget-menu > div.row > div#widget-menu-list {
     position: relative;
     min-height: 1px;
@@ -250,6 +238,9 @@ body > div#widget-menu > div.row {
       body > div#widget-menu > div.row > div#widget-menu-list-lateral {
         float: left;
         width: 25%; } }
+    @media (min-width: 992px) {
+      body > div#widget-menu > div.row > div#widget-menu-list-lateral {
+        margin-left: 8.33333%; } }
     body > div#widget-menu > div.row > div#widget-menu-list-lateral > div#publicidade-lateral {
       margin-top: 25px;
       padding: 0; }

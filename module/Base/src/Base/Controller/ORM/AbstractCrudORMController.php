@@ -124,8 +124,8 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
         return $objEntity;
     }
 
-    public function indexAction( $parent = null ) {
-        
+    public function indexAction($parent = null) {
+
         // Recupera todos os registros no banco de Dados
         if ($this->getColumOrder() == NULL) {
             $list = $this->getEntityManager()->getRepository($this->getEntityClass())->findAll();
@@ -222,7 +222,8 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
             $em = $this->getEntityManager();
             $objRepository = $em->getRepository($this->getEntityClass());
             $entity = $objRepository->find($id);
-            $foto = $entity->getImg();
+            $foto = $this->ValidFoto($form, $entity);
+
             $form->bind($entity);
             $viewModel->setVariable('id', $id);
         } else {
@@ -249,7 +250,7 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
             ));
 
             if ($form->isValid()) {
-                $savedEntity = $this->getEntityService()->save($form, $entity , $foto);
+                $savedEntity = $this->getEntityService()->save($form, $entity, $foto);
 
                 if (!is_object($savedEntity)) {
                     $this->flashMessenger()->addErrorMessage($this->errorMessage . "</br>" . $savedEntity);
@@ -435,6 +436,20 @@ abstract class AbstractCrudORMController extends AbstractBaseController {
         }
 
         return $form;
+    }
+
+    public function ValidFoto($form, $entity) {
+        $foto = NULL;
+        foreach ($form as $element) {
+            if ($element instanceof \Zend\Form\Element\File) {
+                $methodoGet = 'get' . ucfirst($element->getName());
+                 if (method_exists($entity, $methodoGet)) {
+                     $foto[$methodoGet] = $entity->$methodoGet();
+                 }
+            }
+        }
+        
+        return $foto;
     }
 
 }

@@ -9,7 +9,7 @@ class Slider extends AbstractCrudController {
         $this->setColumOrder('orderexibir');
     }
     
-    public function indexAction() {
+    public function indexAction($parent = NULL) {
         $order = $this->getEntityManager()->getRepository($this->getEntityClass())->findBy([], [$this->getColumOrder() => $this->defaultOrder]);
         
         $viewModel = new \Zend\View\Model\ViewModel();

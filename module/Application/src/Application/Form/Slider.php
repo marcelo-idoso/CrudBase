@@ -70,7 +70,6 @@ class Slider extends AbstractForm {
             ),
         ]);
 
-
         $this->add([
             'name' => 'active',
             'type' => 'Checkbox',

@@ -39,7 +39,7 @@ class Postagem extends AbstractForm {
                 'find_method' => array(
                     'name' => 'findBy',
                     'params' => array(
-                        'criteria' => array(),
+                        'criteria' => array('exibir' => 2),
                         'orderBy' => array('nome' => 'ASC'),
                     ),
                 ),

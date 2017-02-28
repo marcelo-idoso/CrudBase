@@ -3,41 +3,44 @@
         <div id="widget_post">
             <?php if ($this->data): ?>
                 <?php foreach ($this->data as $entity) : ?>
-                    <div class="list_post">
-                        <div class="list_post_topo">
-                            <div class="list_post_topo_titulo">
-                                <a href="<?= $this->basePath('posts/'.$entity->getLink()) ?>">
-                                    <?php echo $entity->getTitulo(); ?>
+                    <article class="list_post">
+                        <?php if ($entity->getImagem()): ?>
+                            <a href="<?= $this->basePath('posts/' . $entity->getLink()) ?>" title="<?= $entity->getTitulo(); ?>">
+                                <img class="img-responsive" src="<?= $entity->getImagem() ?>" alt="<?= $entity->getTitulo(); ?>">
+                            </a>
+
+                        <?php endif; ?>
+                        <header>
+
+                            <h1>
+                                <a href="<?= $this->basePath('posts/' . $entity->getLink()) ?>" title="<?= $entity->getTitulo(); ?>">
+                                    <?= $entity->getTitulo(); ?>
                                 </a>
+                            </h1>
+                            <div class="data-post">
+                                Postado em <?= $this->formatDate($entity->getDateCreate()) ?>, por <?= $entity->getIdcategoria()->getNome() ?>
                             </div>
-                            <p>
-                                Postado em <?= $this->formatDate($entity->getDateCreate())?>, em <?= $entity->getIdcategoria()->getNome()?>
-                            </p>
-                        </div>
+                        </header>
+                        <hr/>
                         <div class="list_post_corpo">
-                            <img class="aligncenter" title="<?php echo $entity->getTitulo(); ?>" src="<?php echo $entity->getImagem(); ?>" alt="<?php echo $entity->getTitulo(); ?>" width="508" height="185">
                             <p>
                                 <?= $entity->getResumo() ?>
                             </p>
-                        <a href="<?= $this->basePath('posts/'.$entity->getTitulo()) ?>" target="_blank">Mais ...</a>
+                            Tags | 
                         </div>
-                        
-                    </div>
+
+                    </article>
                 <?php endforeach; ?>
-                <?php else:?>
-            <h2>
-                Não Existe Postagens
-            </h2>
-            <?php endif;?>
+            <?php else: ?>
+                <h2>
+                    Não Existe Postagens
+                </h2>
+            <?php endif; ?>
 
         </div>
         <div id="widget-menu-list-lateral">
-            <div id="ultimas_noticias">
-                <h1>Últimas Postagens</h1>
-                <ul>
-                    <?= $this->render_Ultimas_Noticas(); ?> 
-                </ul>
-            </div>
+            <?= $this->render_Ultimas_Noticas(); ?> 
+
 
             <?= $this->render_Parceiros(); ?>
 

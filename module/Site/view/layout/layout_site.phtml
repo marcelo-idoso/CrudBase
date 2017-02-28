@@ -5,8 +5,8 @@ if ($this->render_Empresa() != false) {
     $logo = $this->render_Empresa()->getLogo();
     $empresa = $this->render_Empresa()->getNome();
 } else {
-    $icone = 'php_logo.ico';
-    $logo = 'php_logo.png';
+    $icone = 'imagem/default/php_logo.ico';
+    $logo = 'imagem/default/php_logo.png';
     $empresa = "ZF2";
 }
 ?> 
@@ -22,7 +22,7 @@ if ($this->render_Empresa() != false) {
         echo $this->headLink(
                         array(
                     'rel' => 'shortcut icon',
-                    'href' => "imagem/icon/$icone"), 'PREPEND')
+                    'href' => $this->basePath($icone)), 'PREPEND')
                 ->prependStylesheet($this->basePath('css/site/default.css'))
                 ->prependStylesheet($this->basePath('css/vendor/fortawesome/font-awesome.min.css'))
                 ->prependStylesheet($this->basePath('css/vendor/plugins.css'));
@@ -43,7 +43,7 @@ if ($this->render_Empresa() != false) {
                 <div id="topo"><!--Inicio da Div Topo -->
                     <div id="logo">
                         <a href="<?= $this->url('home') ?>" title="Inloco Assessoria e Serviço">
-                            <img src="<?= $this->basePath('imagem/' . $logo) ?>" class="img-responsive" alt="Inloco Assessoria & Serviço" />
+                            <img src="<?= $this->basePath($logo) ?>" class="img-responsive" alt="Inloco Assessoria & Serviço" />
                         </a>
                     </div>
                     <div id="pesquisa"><!--Inicio da Div pesquisa  -->
@@ -72,7 +72,7 @@ if ($this->render_Empresa() != false) {
                 <div class="content" id="footer-sidebar">
                     <div class="footer-widget footer-widget--about">
                         <a href="<?= $this->url('home') ?>" title="inloco assessoria e serviços">
-                            <img src="<?= $this->basePath('imagem/' . $logo) ?>" class="img-responsive" alt="Inloco Assessoria & Serviço" />
+                            <img src="<?= $this->basePath($logo) ?>" class="img-responsive" alt="Inloco Assessoria & Serviço" />
                         </a>
                         <p>
                             <?php

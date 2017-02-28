@@ -1,3 +1,9 @@
 #imagem_file{
     display: none;
 }
+.ImagemFile{
+    display: none;
+}
+input[type=file].ImagemFile {
+    display: none;
+}

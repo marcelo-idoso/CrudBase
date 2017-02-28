@@ -16,7 +16,8 @@ class Categoria extends AbstractCrudController {
         $this->setColumOrder('orderexibir');
     }
 
-    public function indexAction() {
+    public function indexAction($parent = null) {
+        
         $order = $this->getEntityManager()->getRepository($this->getEntityClass())->findBy(['exibir' => 2], [$this->getColumOrder() => $this->defaultOrder]);
 
         $viewModel = new \Zend\View\Model\ViewModel();

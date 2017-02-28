@@ -125,7 +125,7 @@ class FormBoostrap extends AbstractHelper {
         $html.= $this->getView()->formElement($element);
         $html.= '<div class="input-group">';
         $html.= '<span class="input-group-addon"> <i class="fa fa-envelope"> Upload </i></span>';
-        $html.= '<input class="form-control input-lg" type="text" id="imagem_text" value="'.$element->getValue() .'" />';
+        $html.= '<input class="form-control input-lg" type="text" id="imagem_text_'.$element->getName().'" value="'. $element->getValue() .'" />';
         $html.= '</div>';
         if ($element->getMessages()) {
             foreach ($element->getMessages() as $messagem) {

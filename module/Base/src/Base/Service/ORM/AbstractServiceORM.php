@@ -17,22 +17,31 @@ class AbstractServiceORM extends EventProvider implements ServiceLocatorAwareInt
     use ServiceLocatorAwareTrait;
 
     public function save($form, $entity, $foto = null) {
-
         if ($form->isValid()) {
             /* @var $form \Zend\Form\Form */
             $entity = $form->getData();
-            if (method_exists($entity, 'getImg')) {
-                if (is_array($entity->getImg()) && !empty($entity->getImg()['tmp_name'])) {
-                    if (is_file($foto) && $foto != NULL) {
-                        unlink($foto);
+
+            foreach ($form as $element) {
+                if ($element instanceof \Zend\Form\Element\File) {
+                    $methodGet = 'get' . ucfirst($element->getName());
+                    $methodSet = 'set' . ucfirst($element->getName());
+                    if (method_exists($entity, "get".$element->getName())) {
+                        if ($foto != NULL && empty($entity->$methodGet()['tmp_name'])) {
+                            foreach ($foto as $key => $valor) {
+                                if ($key == $methodGet) {
+                                    if ($entity->getId() > 0) {
+                                        $entity->$methodSet($valor);
+                                    }
+                                }
+                            }
+                        } else {
+                            if (is_array($entity->$methodGet()) && !empty($entity->$methodGet()['tmp_name'])) {
+                                $methodoSet = 'set' . ucfirst($element->getName());
+                                $entity->$methodoSet(substr($entity->$methodGet()['tmp_name'], 14));
+                            }
+                        }
                     } else {
-                        $entity->setImg(substr($entity->getImg()['tmp_name'], 9));
-                    }
-                } else {
-                    if ($entity->getId() > 0) {
-                        $entity->setImg($foto);
-                    } else {
-                        $entity->setImg(NULL);
+                        return "Method $methodGet não Existe !!!";
                     }
                 }
             }
