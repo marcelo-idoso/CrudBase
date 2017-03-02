@@ -79,6 +79,10 @@ return [
                     'roles' => array ('user')
                 ],
                 [
+                    'controller' => 'Application\Controller\Parceiro',
+                    'roles' => array ('user')
+                ],
+                [
                     'controller' => 'IndexSite',
                     'roles' => array ('guest' , 'user')
                 ],

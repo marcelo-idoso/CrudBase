@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-xs-12">
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#fa-icons" data-toggle="tab">View <?= $this->router; ?> - Inserir</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="fa-icons">
+                    <div class="box-body">
+                        <?php
+                        echo $this->partial('partials/flashMesseger.phtml', array('error' => $this->error, 'success' => $this->success));
+                        ?>
+                        <?php
+                        $form = $this->form;
+                        $this->formElementErrors()
+                                ->setMessageOpenFormat(
+                                        '<div class="alert alert-error">' .
+                                        '<button type="button" class="close" data-dismiss="alert">' .
+                                        '<i class="fa fa-times"></i>' .
+                                        '</button>')
+                                ->setMessageCloseString('</div>')
+                                ->render($form);
+                        $form->setAttribute('role', 'form')
+                                ->setAttribute('action', $this->url("dashboard/$this->router/inserir", array('controller' => "dashboard/" . $this->router, 'action' => 'inserir')));
+                        $form->prepare();
+
+
+                        echo $this->form()->openTag($form);
+                        echo $this->renderForm($form);
+                        echo $this->form()->closeTag($form);
+                        ?>
+                    </div>
+                </div>
+            </div><!-- /.tabs-content -->
+        </div><!-- /.nav-tabs-custom -->
+    </div><!-- /.col -->
+</div><!-- /.row -->
+
+
+

@@ -1,0 +1,93 @@
+<div class="row">
+    <div class="col-xs-12">
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#fa-icons" data-toggle="tab">View <?= $this->router; ?></a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="fa-icons">
+                    <div class="box-body">
+                        <?php
+                        echo $this->partial('partials/flashMesseger.phtml', array('error' => $this->error, 'success' => $this->success));
+                        ?>
+                        <div class="table-responsive">
+                            <div class="panel panel-default panel-table">
+                                <div class="panel-heading">
+                                    <div class="row">
+
+                                        <div class="col col-xs-6 pull-right  text-right">
+                                            <a class="btn btn-success" href="<?php echo $this->url("dashboard/$this->router/inserir"); ?>">
+                                                Novo Registro  <i class="glyphicon glyphicon-plus"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <?php if ($this->data->count() > 0): ?>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th> # </th>
+                                                    <th style="width: 100px"><em class="fa fa-cog"></em>  </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php foreach ($this->data as $entity) : ?>
+                                                    <tr>
+                                                        <td> <?php echo $entity->getId(); ?> </td>
+                                                        <td>
+                                                            <a class="btn btn-success" href="
+                                                               <?= $this->url("dashboard/$this->router/editar", ['controller' => 'controller', 'action' => 'editar', 'id' => $entity->getId()]); ?>"
+                                                               >
+                                                                <i class="glyphicon glyphicon-edit"></i>
+                                                            </a>
+
+                                                            <a class="btn btn-danger" href="
+                                                               <?= $this->url("dashboard/$this->router/excluir", ['controller' => 'controller', 'action' => 'excluir', 'id' => $entity->getId()]); ?>"
+                                                               >
+                                                                <i class="glyphicon glyphicon-remove"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>      
+                                                <?php endforeach; ?>
+                                            </tbody>
+                                        </table> 
+                                    <?php else: ?>
+                                        <p>  Nenhum registro encontrado </p>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="panel-footer">
+                                    <div class="row">
+                                        <?php echo $this->paginationControl($this->data, 'Sliding', 'partials/paginator', array('route' => "dashboard/$this->router/paginator")); ?>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="Ordem">
+                    <div class="table-responsive">
+                        <div class="panel panel-default panel-table">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col col-xs-6 pull-right  text-right">
+                                        <input class="btn btn-success" type="button" id="Atualizar" value="Atualizar" />    
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-footer">
+                                <div class="row">
+                                    <?php echo $this->paginationControl($this->data, 'Sliding', 'partials/paginator', array('route' => "dashboard/$this->router/paginator")); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.tabs-content -->
+        </div><!-- /.nav-tabs-custom -->
+    </div><!-- /.col -->
+</div><!-- /.row -->
+
+
+

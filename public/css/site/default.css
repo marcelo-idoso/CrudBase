@@ -178,13 +178,14 @@ body > div#widget-menu > div.row {
     @media (min-width: 992px) {
       body > div#widget-menu > div.row > div#widget-menu-list {
         float: left;
-        width: 75%; } }
+        width: 66.66667%; } }
     body > div#widget-menu > div.row > div#widget-menu-list > div.box {
       position: relative;
       min-height: 1px;
       padding-left: 15px;
       padding-right: 15px;
       width: 100%;
+      height: 295px;
       background: #ECECEC;
       padding: 30px 10px;
       margin: 4px;

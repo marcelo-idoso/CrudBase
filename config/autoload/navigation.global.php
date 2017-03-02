@@ -1,13 +1,13 @@
 <?php
+
 return array(
     'navigation' => array(
         'default' => array(
             array(
                 'label' => 'Home',
                 'route' => 'dashboard',
-                'icon'  => 'fa fa-dashboard',
+                'icon' => 'fa fa-dashboard',
                 'pages' => array(
-           
                     array(
                         'label' => 'Module',
                         'route' => 'dashboard/module',
@@ -64,7 +64,7 @@ return array(
                     ),
                     array(
                         'label' => 'Categoria',
-                        'route' => 'dashboard/postagem',
+                        'route' => 'dashboard/categoria',
                         'pages' => array(
                             array(
                                 'label' => 'Inserir',
@@ -101,6 +101,38 @@ return array(
                     array(
                         'label' => 'Slider',
                         'route' => 'dashboard/slider',
+                        'pages' => array(
+                            array(
+                                'label' => 'Inserir',
+                                'route' => 'dashboard/slider/inserir',
+                            ),
+                            array(
+                                'label' => 'Excluir',
+                                'route' => 'dashboard/slider/excluir',
+                            ),
+                            array(
+                                'label' => 'Editar',
+                                'route' => 'dashboard/slider/editar',
+                            ),
+                        ),
+                    ),
+                    array(
+                        'label' => 'Parceiro',
+                        'route' => 'dashboard/parceiro',
+                        'pages' => array(
+                            array(
+                                'label' => 'Inserir',
+                                'route' => 'dashboard/parceiro/inserir',
+                            ),
+                            array(
+                                'label' => 'Excluir',
+                                'route' => 'dashboard/parceiro/excluir',
+                            ),
+                            array(
+                                'label' => 'Editar',
+                                'route' => 'dashboard/parceiro/editar',
+                            ),
+                        ),
                     ),
                     array(
                         'label' => 'Profile',
@@ -108,7 +140,6 @@ return array(
                     )
                 ),
             ),
-            
         )
     )
 );

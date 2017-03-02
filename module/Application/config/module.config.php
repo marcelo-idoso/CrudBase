@@ -39,6 +39,7 @@ return array(
             'Application\Controller\Categoria' => 'Application\Controller\Categoria',
             'Application\Controller\Postagem' => 'Application\Controller\Postagem',
             'Application\Controller\Slider' => 'Application\Controller\Slider',
+            'Application\Controller\Parceiro' => 'Application\Controller\Parceiro',
         ),
         'factories' => array(
             'Application\Controller\Slider' => 'Application\Factory\Controller\SliderControllerFactory'

@@ -185,7 +185,29 @@ return [
                                 'route' => 'dashboard/slider/excluir',
                             ],
                         ]
-                    ]
+                    ],
+                    [
+                        'label' => "Parceiro",
+                        'uri' => '#',
+                        'pages' => [
+                            [
+                                'label' => 'Inserir',
+                                'route' => 'dashboard/parceiro/inserir',
+                            ],
+                            [
+                                'label' => 'Listar',
+                                'route' => 'dashboard/parceiro',
+                            ],
+                            [
+                                'label' => 'Editar',
+                                'route' => 'dashboard/parceiro/editar',
+                            ],
+                            [
+                                'label' => 'Excluir',
+                                'route' => 'dashboard/parceiro/excluir',
+                            ],
+                        ]
+                    ],
                 ]
             ]
         ]

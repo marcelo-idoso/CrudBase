@@ -16,7 +16,7 @@ return array(
                     )
                 )
             ),
-            'home' => array(
+            'inicio' => array(
                 'type' => 'Segment',
                 'options' => array(
                     'route' => '/[page/:page]',

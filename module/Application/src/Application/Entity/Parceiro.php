@@ -11,7 +11,7 @@ use Base\Entity\AbstractEntity;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
-class Parceiros extends AbstractEntity {
+class Parceiro extends AbstractEntity {
     /**
      * @var string
      *
@@ -29,9 +29,9 @@ class Parceiros extends AbstractEntity {
     /**
      * @var string
      *
-     * @ORM\Column(name="img", type="text", nullable=false)
+     * @ORM\Column(name="imgparceiro", type="text", nullable=false)
      */
-    private $img;
+    private $imgparceiro;
     
     function getNome() {
         return $this->nome;
@@ -41,8 +41,8 @@ class Parceiros extends AbstractEntity {
         return $this->link;
     }
 
-    function getImg() {
-        return $this->img;
+    function getImgparceiro() {
+        return $this->imgparceiro;
     }
 
     function setNome($nome) {
@@ -53,8 +53,8 @@ class Parceiros extends AbstractEntity {
         $this->link = $link;
     }
 
-    function setImg($img) {
-        $this->img = $img;
+    function setImgparceiro($img) {
+        $this->imgparceiro = $img;
     }
 
 

@@ -29,4 +29,14 @@ $(document).ready(function () {
     $(imgCarIco).change(function () {
         document.getElementById('imagem_text_logoico').value = document.getElementById('imagem_file_ico').value;
     });
+    
+    var boxImgIco = $("#imagem_text_imgparceiro");
+    var imgCarIco = $("#imagem_file_parceiro");
+
+    $(boxImgIco).click(function () {
+        $(imgCarIco).trigger('click');
+    });
+    $(imgCarIco).change(function () {
+        document.getElementById('imagem_text_imgparceiro').value = document.getElementById('imagem_file_parceiro').value;
+    });
 });
